@@ -89,6 +89,8 @@ vllm serve NatdhanaiPython/ThaiLLM-30B-NVFP4 --quantization modelopt \
   --gpu-memory-utilization 0.70 --attention-backend flashinfer
 ```
 
+**Known issue (NGC 26.05.post1 only):** on this container (vLLM 0.21.0-NV), serving hybrid-architecture models (Qwen3.6 gated-delta-net family — not ThaiLLM-30B itself) stalled the engine permanently on the first 8k-token rolling prompt-logprobs request under CUDA graphs, with NCCL heartbeat errors ~1 h later; `--enforce-eager` avoided it for that workload. Not reproducible on upstream `vllm/vllm-openai:v0.25.1-aarch64` with CUDA graphs on (verified on the same machine, same model, same eval) — so prefer newer containers for hybrid models, and keep CUDA graphs on everywhere else.
+
 ## Roadmap — planned next phases
 
 1. **Draft-model speculative decoding** — the Qwen3-30B-A3B base ships no MTP head (unlike Qwen3.6-gen models behind the community 97–120 tok/s figures), but a same-tokenizer drafter (e.g. Qwen3-0.6B) is expected to add ~1.3–1.6× decode speed, lossless w.r.t. greedy outputs (63 → ~80–100 tok/s).
