@@ -89,6 +89,13 @@ vllm serve NatdhanaiPython/ThaiLLM-30B-NVFP4 --quantization modelopt \
   --gpu-memory-utilization 0.70 --attention-backend flashinfer
 ```
 
+## Roadmap — planned next phases
+
+1. **Draft-model speculative decoding** — the Qwen3-30B-A3B base ships no MTP head (unlike Qwen3.6-gen models behind the community 97–120 tok/s figures), but a same-tokenizer drafter (e.g. Qwen3-0.6B) is expected to add ~1.3–1.6× decode speed, lossless w.r.t. greedy outputs (63 → ~80–100 tok/s).
+2. **Thai instruction SFT** on the BF16 base → re-quantize with this exact recipe (~25 min) → re-run this suite as the release gate.
+3. **EAGLE-3 head training** post-SFT (~1.5–2× additional decode, the best long-term path).
+4. **FP8 KV cache** (`--kv-cache-dtype fp8`) in production serving — disabled in this study only to isolate weight quantization.
+
 ## License & attribution
 
 Code and reports: **Apache-2.0** (see [LICENSE](LICENSE)). Base model: [ThaiLLM/ThaiLLM-30B](https://huggingface.co/ThaiLLM/ThaiLLM-30B) (Apache-2.0). Quantization: NVIDIA TensorRT Model Optimizer 0.43.0. Evaluation: EleutherAI lm-evaluation-harness 0.4.12.
