@@ -225,7 +225,7 @@
   <h2>6. Qualitative Assessment</h2>
   <p class="note">Twelve domain prompts (Thai news, law, medicine, education, business, travel, mathematics, factual QA, translation; English economics and science; Python) were generated greedily by both models and reviewed by a Thai-fluent evaluator. Result: <strong>8 equivalent · 3 favoring BF16 · 1 favoring NVFP4</strong>. Thai orthography is fully intact in both; repetition artifacts occur equally in both (a property of greedy decoding on a base model, not of quantization); every factual claim tested was correct in both versions.</p>
   <div class="qual" id="qual"></div>
-  <blockquote>The one meaningful regression class is <b>verbatim precision</b>: the NVFP4 model paraphrased Civil &amp; Commercial Code §420 (&ldquo;บุคคลภายนอก&rdquo; in place of &ldquo;บุคคลอื่น&rdquo;) where BF16 quoted the statute exactly. For legal-citation and other precision-quoting applications, retain BF16 or add retrieval grounding.</blockquote>
+  <blockquote>The one meaningful regression class is <b>verbatim precision</b>: the NVFP4 model paraphrased Civil &amp; Commercial Code Section 420 (&ldquo;บุคคลภายนอก&rdquo; in place of &ldquo;บุคคลอื่น&rdquo;) where BF16 quoted the statute exactly. For legal-citation and other precision-quoting applications, retain BF16 or add retrieval grounding.</blockquote>
 </section>
 
 <section>
@@ -288,7 +288,7 @@ const ACC = [
   {t:'ARC-Challenge',th:0,b:.5614, n:.5597, se:.0145, p:'—', sig:0, f:''},
 ];
 const POOL = [
-  {t:'All questions · n=19,786', d:-0.81, p:'<10⁻⁴', sig:1},
+  {t:'All questions · n=19,786', d:-0.81, p:'<1e-4', sig:1},
   {t:'English · n=12,481', d:-0.62, p:'0.0003', sig:1},
   {t:'MMLU · n=2,850', d:-1.40, p:'0.0017', sig:1},
   {t:'Thai MC · n=3,890', d:-1.00, p:'0.13', sig:0},
@@ -317,7 +317,7 @@ const XM = [
   {m:'Qwen3-8B NVFP4', k:'c', te:.467, bb:.766, bpb:.426},
 ];
 const QUAL = [
-  ['Factual QA (TH)','eq'],['News (TH)','eq'],['Law §420 (TH)','b'],['Medicine (TH)','eq'],
+  ['Factual QA (TH)','eq'],['News (TH)','eq'],['Law Sec. 420 (TH)','b'],['Medicine (TH)','eq'],
   ['Education (TH)','eq'],['Business (TH)','eq'],['Travel (TH)','eq'],['Mathematics (TH)','b'],
   ['Economics (EN)','n'],['Science (EN)','eq'],['Python code','eq'],['Translation (TH↔EN)','b'],
 ];

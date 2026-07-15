@@ -4,7 +4,7 @@
 |---|---------|---------|
 | 1 | th_factual_qa | Equivalent — both factually correct (77 provinces etc.) |
 | 2 | th_news | Equivalent — both natural, coherent Thai central-bank prose |
-| 3 | th_legal | **BF16 better** — BF16 quotes CCC §420 verbatim; NVFP4 misquotes "บุคคลอื่น" as "บุคคลภายนอก", drops compensation clause |
+| 3 | th_legal | **BF16 better** — BF16 quotes CCC Section 420 verbatim; NVFP4 misquotes "บุคคลอื่น" as "บุคคลภายนอก", drops compensation clause |
 | 4 | th_medical | Equivalent — both medically sound |
 | 5 | th_education | Equivalent — both correct photosynthesis |
 | 6 | th_business | Equivalent (NVFP4 marginally more varied) |
@@ -17,4 +17,4 @@
 
 **Overall: no systematic quality degradation from NVFP4.** Thai orthography fully intact in both (no broken tone marks, no mojibake). Repetition loops and self-QA chains appear in BOTH versions — base-model + greedy artifacts, roughly balanced. NVFP4 shows a small cluster of localized coherence slips (statutory wording, arithmetic sub-explanation, word redundancy) that BF16 avoids, and is cleaner in others. Net: within normal greedy-divergence variation; caution advised for legal/precision-quoting use cases.
 
-Notable: th_legal — BF16: "…ทำต่อบุคคลอื่นโดยผิดกฎหมาย…" (exact §420 wording); NVFP4: "…ทำต่อบุคคลภายนอก…" (wrong statutory term). Concrete instance of the Marchisio et al. finding that human review catches degradation automatic metrics miss.
+Notable: th_legal — BF16: "…ทำต่อบุคคลอื่นโดยผิดกฎหมาย…" (exact Section 420 wording); NVFP4: "…ทำต่อบุคคลภายนอก…" (wrong statutory term). Concrete instance of the Marchisio et al. finding that human review catches degradation automatic metrics miss.

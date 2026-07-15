@@ -51,7 +51,7 @@ docker run --rm -d --gpus all --ipc=host --network host \
 2. Calibration data: **256 Thai Wikipedia + 256 CNN/DailyMail docs** (512 × 512 tokens), not the playbook's English-only default — deliberate, per the calibration-language literature.
 3. The first ThaiExam task template (choice-text scoring) scored at **chance for both models** and was replaced by a letter-based template matching the model card's protocol ("probability of selecting the correct choice"); both variants were run on both models. Lesson recorded: exam-style Thai MC needs letter scoring.
 4. The quantization container's `transformers` moved 5.6.0 → 4.57.6 (modelopt 0.43.0 pins `<5.0`); torch/vLLM/FlashInfer untouched (guard-verified); serve containers never received any pip install.
-5. Reference-model runs are *capability snapshots*, not part of the controlled A/B (see §7 caveats).
+5. Reference-model runs are *capability snapshots*, not part of the controlled A/B (see Section 7 caveats).
 
 ---
 
@@ -81,7 +81,7 @@ docker run --rm -d --gpus all --ipc=host --network host \
 | HellaSwag (10,042) | 0.6003 / 0.7961ⁿ | 0.5941 / 0.7855ⁿ | −0.62 / −1.06ⁿ | **<0.001** | significant, small |
 | ARC-Challenge (1,172) | 0.5614 ±.015 | 0.5597 ±.015 | −0.17 | — | noise |
 | WinoGrande (1,267) | 0.7395 ±.012 | 0.7285 ±.013 | −1.10 | — | ≤0.9σ |
-| **ALL MC pooled (19,786)**† | — | — | **−0.81** | **<10⁻⁴** | significant, small |
+| **ALL MC pooled (19,786)**† | — | — | **−0.81** | **<1e-4** | significant, small |
 
 † exact McNemar test on paired per-question outcomes (`paired_analysis.json`). ⁿ = acc_norm. The pooled row excludes the broken ThaiExam-v1 template (chance-level for both models) to avoid double-counting the 565 exam questions already pooled via v2.
 
@@ -89,7 +89,7 @@ ThaiExam v2 subsets (BF16 → NVFP4): a_level 0.654→0.622, ic 0.695→0.684, o
 
 ### 3.2 What the paired statistics actually say
 
-Because both models answered the *same* questions, we can count flips directly: over all 19,786 MC questions (ThaiExam counted once, via the letter-based v2 template), BF16 was uniquely right on 727 and NVFP4 uniquely right on 567 — a net 160-question (−0.81 pt) deficit that is decisively non-zero (p < 10⁻⁴) but **very small in magnitude and English-concentrated**:
+Because both models answered the *same* questions, we can count flips directly: over all 19,786 MC questions (ThaiExam counted once, via the letter-based v2 template), BF16 was uniquely right on 727 and NVFP4 uniquely right on 567 — a net 160-question (−0.81 pt) deficit that is decisively non-zero (p < 1e-4) but **very small in magnitude and English-concentrated**:
 
 | Slice | n | Δacc | McNemar p |
 |---|---|---|---|
@@ -117,7 +117,7 @@ Scoring ThaiExam by full choice-text loglikelihood put **both** models at chance
 | WikiText-2 (EN) — bits/byte | 0.5660 | 0.5819 | +0.0159 (+2.8% rel) |
 | WikiText-2 (EN) — word-PPL | 8.148 | 8.645 | +6.1% |
 
-Two honest lenses: **absolute** information loss is nearly language-neutral (+0.014 vs +0.016 bits per byte); **relative** to Thai's lower per-byte entropy (Thai UTF-8 ≈ 3 bytes/char) the same absolute loss is a 1.9× larger fraction. Word-perplexity is only reported for English (Thai has no whitespace word boundaries). Byte-level metrics are tokenizer-independent, which also makes them the only PPL numbers comparable across the reference models in §7.
+Two honest lenses: **absolute** information loss is nearly language-neutral (+0.014 vs +0.016 bits per byte); **relative** to Thai's lower per-byte entropy (Thai UTF-8 ≈ 3 bytes/char) the same absolute loss is a 1.9× larger fraction. Word-perplexity is only reported for English (Thai has no whitespace word boundaries). Byte-level metrics are tokenizer-independent, which also makes them the only PPL numbers comparable across the reference models in Section 7.
 
 ---
 
@@ -138,8 +138,8 @@ Thai agreement *exceeds* English — consistent with the accuracy result that Th
 
 Full review in `qualitative_review.md` / raw text in `usecase_side_by_side.md`. Verdicts: **8 equivalent, 3 BF16-better, 1 NVFP4-slightly-better.** Key findings:
 
-- **No orthography damage** (tone marks, clusters intact), no new repetition-loop behavior (loops occur in *both* — greedy base-model artifacts), all core facts correct in both (77 provinces, §420 = tort provision, 500−250=250, medical/science basics).
-- **The one meaningful regression class: verbatim precision.** NVFP4 misquoted Civil & Commercial Code §420 ("บุคคลภายนอก" for "บุคคลอื่น", dropped the compensation clause) where BF16 quoted it exactly; it also produced one incoherent arithmetic sub-explanation and minor word-stutter. This is a concrete instance of Marchisio's warning that *human review catches what automatic metrics miss* — **for legal/citation-critical applications, keep BF16 or add retrieval grounding.**
+- **No orthography damage** (tone marks, clusters intact), no new repetition-loop behavior (loops occur in *both* — greedy base-model artifacts), all core facts correct in both (77 provinces, Section 420 = tort provision, 500−250=250, medical/science basics).
+- **The one meaningful regression class: verbatim precision.** NVFP4 misquoted Civil & Commercial Code Section 420 ("บุคคลภายนอก" for "บุคคลอื่น", dropped the compensation clause) where BF16 quoted it exactly; it also produced one incoherent arithmetic sub-explanation and minor word-stutter. This is a concrete instance of Marchisio's warning that *human review catches what automatic metrics miss* — **for legal/citation-critical applications, keep BF16 or add retrieval grounding.**
 
 ---
 
@@ -202,7 +202,7 @@ Readings:
 2. **Base-model scope.** All conclusions predate instruction tuning. The correct production sequence is SFT first, then re-quantize the SFT checkpoint with this same recipe (~25 min on this box), then re-run this eval gate (scripts are reusable as-is).
 3. MC accuracy = loglikelihood selection; generative Thai quality is covered only by PPL, fidelity, and the 12-prompt review. MMLU sampled at 50/subject (±0.7 pt aggregate stderr); single seed (0) throughout — loglikelihood is deterministic, but calibration sampling is seed-dependent.
 4. `mmlu_moral_scenarios` significance is a multiple-comparisons casualty until replicated.
-5. Reference comparison caveats as listed in §7; Qwen3.6-35B required `--enforce-eager` for its rolling-PPL pass (its hybrid engine hung under CUDA graphs on this container — ecosystem immaturity, logged in `resume_refs.log`).
+5. Reference comparison caveats as listed in Section 7; Qwen3.6-35B required `--enforce-eager` for its rolling-PPL pass (its hybrid engine hung under CUDA graphs on this container — ecosystem immaturity, logged in `resume_refs.log`).
 6. Numbers are container-specific (26.05.post1); SM121 kernels are improving monthly and perf results will drift upward.
 
 ---

@@ -22,7 +22,7 @@ A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggi
 | **ThaiExam** (letter MC, 565 q) | 0.6195 | 0.6142 | −0.5 pt, p=0.79 (n.s.) |
 | Belebele-TH | 0.7700 | 0.7656 | −0.4 pt (n.s.) |
 | MMLU 5-shot @50/subj | 0.8168 | 0.8028 | −1.4 pt, p=0.002 |
-| **All 19,786 paired MC questions** | — | — | **−0.81 pt**, p<10⁻⁴ |
+| **All 19,786 paired MC questions** | — | — | **−0.81 pt**, p<1e-4 |
 | Thai Wikipedia bits/byte | 0.2680 | 0.2822 | +0.014 |
 | Thai top-1 token agreement | — | — | 92.0 % (32,424 positions) |
 
@@ -47,7 +47,7 @@ A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggi
 - Identical vLLM flags both sides except `--quantization modelopt`; **KV cache BF16 on both** (quantized with `--kv_cache_qformat none`), prefix caching off, seed 0, byte-identical lm-eval invocations.
 - Every MC question answered by both models → **exact McNemar paired tests**, not loose two-sample comparisons.
 - Tokenizer files verified identical (byte-identical except `special_tokens_map.json`, which is re-serialized with identical semantics); both server startup configs diffed.
-- Full deviation ledger in [`results/report.md`](results/report.md) §1.
+- Full deviation ledger in [`results/report.md`](results/report.md), Section 1.
 
 ## Repository layout
 
