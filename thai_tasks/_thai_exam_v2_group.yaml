@@ -1,0 +1,12 @@
+group: thai_exam_v2
+task:
+  - thai_exam_v2_a_level
+  - thai_exam_v2_ic
+  - thai_exam_v2_onet
+  - thai_exam_v2_tgat
+  - thai_exam_v2_tpat1
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: true
+metadata:
+  version: 2.0

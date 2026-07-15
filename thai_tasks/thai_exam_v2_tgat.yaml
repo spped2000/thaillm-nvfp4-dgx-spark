@@ -1,0 +1,3 @@
+include: _thai_exam_v2_template_yaml
+task: thai_exam_v2_tgat
+dataset_name: tgat

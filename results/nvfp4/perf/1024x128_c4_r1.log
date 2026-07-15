@@ -1,0 +1,25 @@
+---------------Time to First Token----------------
+Mean TTFT (ms):                          358.45    
+Median TTFT (ms):                        399.96    
+P50 TTFT (ms):                           399.96    
+P90 TTFT (ms):                           433.59    
+P99 TTFT (ms):                           452.32    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          24.79     
+Median TPOT (ms):                        24.40     
+P50 TPOT (ms):                           24.40     
+P90 TPOT (ms):                           26.65     
+P99 TPOT (ms):                           27.81     
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           24.79     
+Median ITL (ms):                         24.10     
+P50 ITL (ms):                            24.10     
+P90 ITL (ms):                            26.17     
+P99 ITL (ms):                            28.97     
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          3506.49   
+Median E2EL (ms):                        3481.97   
+P50 E2EL (ms):                           3481.97   
+P90 E2EL (ms):                           3669.97   
+P99 E2EL (ms):                           3799.10   
+==================================================

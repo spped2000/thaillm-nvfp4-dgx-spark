@@ -1,0 +1,3 @@
+include: _thai_exam_template_yaml
+task: thai_exam_ic
+dataset_name: ic

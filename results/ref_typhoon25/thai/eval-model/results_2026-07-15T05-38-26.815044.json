@@ -1,0 +1,649 @@
+{
+  "results": {
+    "belebele_tha_Thai": {
+      "name": "belebele_tha_Thai",
+      "alias": "belebele_tha_Thai",
+      "sample_len": 900,
+      "acc,none": 0.8555555555555555,
+      "acc_stderr,none": 0.011724509515301441,
+      "acc_norm,none": 0.8555555555555555,
+      "acc_norm_stderr,none": 0.011724509515301441
+    },
+    "xnli_th": {
+      "name": "xnli_th",
+      "alias": "xnli_th",
+      "sample_len": 2490,
+      "acc,none": 0.37751004016064255,
+      "acc_stderr,none": 0.009716681793583815
+    },
+    "xcopa_th": {
+      "name": "xcopa_th",
+      "alias": "xcopa_th",
+      "sample_len": 500,
+      "acc,none": 0.62,
+      "acc_stderr,none": 0.021728881438701678
+    },
+    "thai_exam_v2_a_level": {
+      "name": "thai_exam_v2_a_level",
+      "alias": "thai_exam_v2_a_level",
+      "sample_len": 127,
+      "acc,none": 0.5275590551181102,
+      "acc_stderr,none": 0.04447582707824135
+    },
+    "thai_exam_v2_ic": {
+      "name": "thai_exam_v2_ic",
+      "alias": "thai_exam_v2_ic",
+      "sample_len": 95,
+      "acc,none": 0.7052631578947368,
+      "acc_stderr,none": 0.047025008739248385
+    },
+    "thai_exam_v2_onet": {
+      "name": "thai_exam_v2_onet",
+      "alias": "thai_exam_v2_onet",
+      "sample_len": 162,
+      "acc,none": 0.5987654320987654,
+      "acc_stderr,none": 0.03862910027060459
+    },
+    "thai_exam_v2_tgat": {
+      "name": "thai_exam_v2_tgat",
+      "alias": "thai_exam_v2_tgat",
+      "sample_len": 65,
+      "acc,none": 0.6615384615384615,
+      "acc_stderr,none": 0.059148294227806535
+    },
+    "thai_exam_v2_tpat1": {
+      "name": "thai_exam_v2_tpat1",
+      "alias": "thai_exam_v2_tpat1",
+      "sample_len": 116,
+      "acc,none": 0.5775862068965517,
+      "acc_stderr,none": 0.046060487688275586
+    },
+    "thai_exam_v2": {
+      "alias": "thai_exam_v2",
+      "name": "thai_exam_v2",
+      "sample_len": 565,
+      "acc,none": 0.6035398230088496,
+      "acc_stderr,none": 0.02051611520900284,
+      "sample_count": {
+        "acc,none": 565
+      }
+    }
+  },
+  "groups": {
+    "thai_exam_v2": {
+      "alias": "thai_exam_v2",
+      "name": "thai_exam_v2",
+      "sample_len": 565,
+      "acc,none": 0.6035398230088496,
+      "acc_stderr,none": 0.02051611520900284,
+      "sample_count": {
+        "acc,none": 565
+      }
+    }
+  },
+  "group_subtasks": {
+    "thai_exam_v2": [
+      "thai_exam_v2_a_level",
+      "thai_exam_v2_ic",
+      "thai_exam_v2_onet",
+      "thai_exam_v2_tgat",
+      "thai_exam_v2_tpat1"
+    ]
+  },
+  "configs": {
+    "belebele_tha_Thai": {
+      "task": "belebele_tha_Thai",
+      "dataset_path": "facebook/belebele",
+      "dataset_name": "tha_Thai",
+      "test_split": "test",
+      "fewshot_split": "test",
+      "doc_to_text": "P: {{flores_passage}}\nQ: {{question.strip()}}\nA: {{mc_answer1}}\nB: {{mc_answer2}}\nC: {{mc_answer3}}\nD: {{mc_answer4}}\nAnswer:",
+      "doc_to_target": "{{['1', '2', '3', '4'].index(correct_answer_num)}}",
+      "unsafe_code": false,
+      "doc_to_choice": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "first_n",
+        "split": "test",
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "P: {{flores_passage}}\nQ: {{question.strip()}}\nA: {{mc_answer1}}\nB: {{mc_answer2}}\nC: {{mc_answer3}}\nD: {{mc_answer4}}\nAnswer:",
+        "doc_to_choice": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "doc_to_target": "{{['1', '2', '3', '4'].index(correct_answer_num)}}",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{question}}",
+      "metadata": {
+        "version": 0.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/.venv-eval/lib/python3.12/site-packages/lm_eval/tasks/belebele/belebele_tha_Thai.yaml"
+      }
+    },
+    "thai_exam_v2_a_level": {
+      "task": "thai_exam_v2_a_level",
+      "dataset_path": "scb10x/thai_exam",
+      "dataset_name": "a_level",
+      "training_split": "train",
+      "test_split": "test",
+      "doc_to_text": "def doc_to_text_letter(doc):\n    lines = [f\"คำถาม: {doc['question'].strip()}\"]\n    for k in _valid_keys(doc):\n        lines.append(f\"{k}. {str(doc[k]).strip()}\")\n    lines.append(\"คำตอบ:\")\n    return \"\\n\".join(lines)\n",
+      "doc_to_target": "def doc_to_target(doc):\n    return _valid_keys(doc).index(doc[\"answer\"].strip().lower())\n",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice_letter(doc):\n    return [k for k in _valid_keys(doc)]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text_letter at 0xf26eb61fa160>",
+        "doc_to_choice": "<function doc_to_choice_letter at 0xf26eb61fa200>",
+        "doc_to_target": "<function doc_to_target at 0xf26eb61fa020>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 2.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/thai_tasks/thai_exam_v2_a_level.yaml"
+      }
+    },
+    "thai_exam_v2_ic": {
+      "task": "thai_exam_v2_ic",
+      "dataset_path": "scb10x/thai_exam",
+      "dataset_name": "ic",
+      "training_split": "train",
+      "test_split": "test",
+      "doc_to_text": "def doc_to_text_letter(doc):\n    lines = [f\"คำถาม: {doc['question'].strip()}\"]\n    for k in _valid_keys(doc):\n        lines.append(f\"{k}. {str(doc[k]).strip()}\")\n    lines.append(\"คำตอบ:\")\n    return \"\\n\".join(lines)\n",
+      "doc_to_target": "def doc_to_target(doc):\n    return _valid_keys(doc).index(doc[\"answer\"].strip().lower())\n",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice_letter(doc):\n    return [k for k in _valid_keys(doc)]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text_letter at 0xf26eb61fa160>",
+        "doc_to_choice": "<function doc_to_choice_letter at 0xf26eb61fa200>",
+        "doc_to_target": "<function doc_to_target at 0xf26eb61fa020>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 2.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/thai_tasks/thai_exam_v2_ic.yaml"
+      }
+    },
+    "thai_exam_v2_onet": {
+      "task": "thai_exam_v2_onet",
+      "dataset_path": "scb10x/thai_exam",
+      "dataset_name": "onet",
+      "training_split": "train",
+      "test_split": "test",
+      "doc_to_text": "def doc_to_text_letter(doc):\n    lines = [f\"คำถาม: {doc['question'].strip()}\"]\n    for k in _valid_keys(doc):\n        lines.append(f\"{k}. {str(doc[k]).strip()}\")\n    lines.append(\"คำตอบ:\")\n    return \"\\n\".join(lines)\n",
+      "doc_to_target": "def doc_to_target(doc):\n    return _valid_keys(doc).index(doc[\"answer\"].strip().lower())\n",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice_letter(doc):\n    return [k for k in _valid_keys(doc)]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text_letter at 0xf26eb61fa160>",
+        "doc_to_choice": "<function doc_to_choice_letter at 0xf26eb61fa200>",
+        "doc_to_target": "<function doc_to_target at 0xf26eb61fa020>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 2.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/thai_tasks/thai_exam_v2_onet.yaml"
+      }
+    },
+    "thai_exam_v2_tgat": {
+      "task": "thai_exam_v2_tgat",
+      "dataset_path": "scb10x/thai_exam",
+      "dataset_name": "tgat",
+      "training_split": "train",
+      "test_split": "test",
+      "doc_to_text": "def doc_to_text_letter(doc):\n    lines = [f\"คำถาม: {doc['question'].strip()}\"]\n    for k in _valid_keys(doc):\n        lines.append(f\"{k}. {str(doc[k]).strip()}\")\n    lines.append(\"คำตอบ:\")\n    return \"\\n\".join(lines)\n",
+      "doc_to_target": "def doc_to_target(doc):\n    return _valid_keys(doc).index(doc[\"answer\"].strip().lower())\n",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice_letter(doc):\n    return [k for k in _valid_keys(doc)]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text_letter at 0xf26eb61fa160>",
+        "doc_to_choice": "<function doc_to_choice_letter at 0xf26eb61fa200>",
+        "doc_to_target": "<function doc_to_target at 0xf26eb61fa020>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 2.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/thai_tasks/thai_exam_v2_tgat.yaml"
+      }
+    },
+    "thai_exam_v2_tpat1": {
+      "task": "thai_exam_v2_tpat1",
+      "dataset_path": "scb10x/thai_exam",
+      "dataset_name": "tpat1",
+      "training_split": "train",
+      "test_split": "test",
+      "doc_to_text": "def doc_to_text_letter(doc):\n    lines = [f\"คำถาม: {doc['question'].strip()}\"]\n    for k in _valid_keys(doc):\n        lines.append(f\"{k}. {str(doc[k]).strip()}\")\n    lines.append(\"คำตอบ:\")\n    return \"\\n\".join(lines)\n",
+      "doc_to_target": "def doc_to_target(doc):\n    return _valid_keys(doc).index(doc[\"answer\"].strip().lower())\n",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice_letter(doc):\n    return [k for k in _valid_keys(doc)]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text_letter at 0xf26eb61fa160>",
+        "doc_to_choice": "<function doc_to_choice_letter at 0xf26eb61fa200>",
+        "doc_to_target": "<function doc_to_target at 0xf26eb61fa020>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 2.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/thai_tasks/thai_exam_v2_tpat1.yaml"
+      }
+    },
+    "xcopa_th": {
+      "task": "xcopa_th",
+      "dataset_path": "cambridgeltl/xcopa",
+      "dataset_name": "th",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "functools.partial(<function doc_to_text at 0xf26eb61f9080>, connector={'cause': 'เพราะ', 'effect': 'ดังนั้น'})",
+      "doc_to_target": "label",
+      "unsafe_code": false,
+      "doc_to_choice": "def doc_to_choice(doc):\n    return [convert_choice(doc[\"choice1\"]), convert_choice(doc[\"choice2\"])]\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "functools.partial(<function doc_to_text at 0xf26eb61f9080>, connector={'cause': 'เพราะ', 'effect': 'ดังนั้น'})",
+        "doc_to_choice": "<function doc_to_choice at 0xf26eb61f9120>",
+        "doc_to_target": "label",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/.venv-eval/lib/python3.12/site-packages/lm_eval/tasks/xcopa/default_th.yaml"
+      }
+    },
+    "xnli_th": {
+      "task": "xnli_th",
+      "dataset_path": "facebook/xnli",
+      "dataset_name": "th",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "",
+      "doc_to_target": "label",
+      "unsafe_code": false,
+      "doc_to_choice": "{{[premise+\", ถูกต้อง? ใช่, \"+hypothesis,premise+\", ถูกต้อง? ดังนั้น, \"+hypothesis,premise+\", ถูกต้อง? ไม่, \"+hypothesis]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "",
+        "doc_to_choice": "{{[premise+\", ถูกต้อง? ใช่, \"+hypothesis,premise+\", ถูกต้อง? ดังนั้น, \"+hypothesis,premise+\", ถูกต้อง? ไม่, \"+hypothesis]}}",
+        "doc_to_target": "label",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "model": "eval-model",
+        "base_url": "http://127.0.0.1:8001/v1/completions",
+        "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+        "num_concurrent": 8,
+        "max_retries": 3,
+        "tokenized_requests": true,
+        "max_length": 8192,
+        "config_source": "/home/agicafet/Documents/ThaiLLM_Quantization/.venv-eval/lib/python3.12/site-packages/lm_eval/tasks/xnli/xnli_th.yaml"
+      }
+    }
+  },
+  "versions": {
+    "belebele_tha_Thai": 0.0,
+    "thai_exam_v2": "2.0",
+    "thai_exam_v2_a_level": 2.0,
+    "thai_exam_v2_ic": 2.0,
+    "thai_exam_v2_onet": 2.0,
+    "thai_exam_v2_tgat": 2.0,
+    "thai_exam_v2_tpat1": 2.0,
+    "xcopa_th": 1.0,
+    "xnli_th": 1.0
+  },
+  "n-shot": {
+    "belebele_tha_Thai": 0,
+    "thai_exam_v2": 0,
+    "thai_exam_v2_a_level": 0,
+    "thai_exam_v2_ic": 0,
+    "thai_exam_v2_onet": 0,
+    "thai_exam_v2_tgat": 0,
+    "thai_exam_v2_tpat1": 0,
+    "xcopa_th": 0,
+    "xnli_th": 0
+  },
+  "higher_is_better": {
+    "belebele_tha_Thai": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "thai_exam_v2": {
+      "acc": true
+    },
+    "thai_exam_v2_a_level": {
+      "acc": true
+    },
+    "thai_exam_v2_ic": {
+      "acc": true
+    },
+    "thai_exam_v2_onet": {
+      "acc": true
+    },
+    "thai_exam_v2_tgat": {
+      "acc": true
+    },
+    "thai_exam_v2_tpat1": {
+      "acc": true
+    },
+    "xcopa_th": {
+      "acc": true
+    },
+    "xnli_th": {
+      "acc": true
+    }
+  },
+  "n-samples": {
+    "belebele_tha_Thai": {
+      "original": 900,
+      "effective": 900
+    },
+    "xnli_th": {
+      "original": 2490,
+      "effective": 2490
+    },
+    "xcopa_th": {
+      "original": 500,
+      "effective": 500
+    },
+    "thai_exam_v2_a_level": {
+      "original": 127,
+      "effective": 127
+    },
+    "thai_exam_v2_ic": {
+      "original": 95,
+      "effective": 95
+    },
+    "thai_exam_v2_onet": {
+      "original": 162,
+      "effective": 162
+    },
+    "thai_exam_v2_tgat": {
+      "original": 65,
+      "effective": 65
+    },
+    "thai_exam_v2_tpat1": {
+      "original": 116,
+      "effective": 116
+    }
+  },
+  "config": {
+    "model": "local-completions",
+    "model_args": {
+      "model": "eval-model",
+      "base_url": "http://127.0.0.1:8001/v1/completions",
+      "tokenizer": "typhoon-ai/typhoon2.5-qwen3-30b-a3b",
+      "num_concurrent": 8,
+      "max_retries": 3,
+      "tokenized_requests": true,
+      "max_length": 8192
+    },
+    "batch_size": "16",
+    "batch_sizes": [],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {},
+    "random_seed": 0,
+    "numpy_seed": 0,
+    "torch_seed": 0,
+    "fewshot_seed": 0
+  },
+  "git_hash": null,
+  "date": 1784067535.597805,
+  "pretty_env_info": "N/A (torch not installed)",
+  "transformers_version": "5.13.1",
+  "lm_eval_version": "0.4.12",
+  "upper_git_hash": null,
+  "tokenizer_pad_token": [
+    "<|endoftext|>",
+    "151643"
+  ],
+  "tokenizer_eos_token": [
+    "<|im_end|>",
+    "151645"
+  ],
+  "tokenizer_bos_token": [
+    null,
+    "None"
+  ],
+  "eot_token_id": 151645,
+  "max_length": 8191,
+  "task_hashes": {
+    "belebele_tha_Thai": "f7e8c4060d3adf017616d3599ca1314ed1655cbcbdb7f0fd97a720b44d91cad5",
+    "xnli_th": "3d82a95dda0510f70e2c4a57c64d298dbf595fa74f574dda941c4bc7f2ace6d0",
+    "xcopa_th": "d51e2d4aa0c1c7f15d3860747ae5eb1695993cdeb38596e4a99186f37e6e2847",
+    "thai_exam_v2_a_level": "6c2589b9b897bef6f0dba4fccf22a9663210fb285a152b7f18c0cc0124e58ee2",
+    "thai_exam_v2_ic": "73adb2c398d78f6b9979d99acf5e60f5310721361821b35b0a45bc7034f2802d",
+    "thai_exam_v2_onet": "e95a82e17b9e05bca92f4c6c61fc47cfe971384ae0a20c6cc4efce421e38f820",
+    "thai_exam_v2_tgat": "0fb8b3bbc9f3950f33389519bd33d005c9158506e10d82d19da84e84b659a9bb",
+    "thai_exam_v2_tpat1": "ae4e81ec07cfffb9a9e0fc9880de2b7277253b8f4859a5345ccb175a1fc6dd53"
+  },
+  "model_source": "local-completions",
+  "model_name": "eval-model",
+  "model_name_sanitized": "eval-model",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": null,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "1173.948678224995"
+}

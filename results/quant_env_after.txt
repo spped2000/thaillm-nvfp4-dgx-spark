@@ -1,0 +1,6 @@
+accelerate                               1.14.0
+datasets                                 5.0.0
+flashinfer-python                        0.6.11.post3+0e4b4948.nvinternal.26.5.post1.devel.cu132.51679275
+torch                                    2.12.0a0+5aff3928d8.nv26.5.50603568
+transformers                             4.57.6
+vllm                                     0.21.0+2325b6f0.nvinternal.26.5.post1.53039255

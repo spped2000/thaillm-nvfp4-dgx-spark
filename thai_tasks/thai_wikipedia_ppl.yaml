@@ -1,0 +1,18 @@
+task: thai_wikipedia_ppl
+dataset_path: wikimedia/wikipedia
+dataset_name: 20231101.th
+output_type: loglikelihood_rolling
+test_split: train
+process_docs: !function utils.process_docs_wiki
+doc_to_text: ""
+doc_to_target: "{{text}}"
+should_decontaminate: false
+metric_list:
+  - metric: byte_perplexity
+    aggregation: weighted_perplexity
+    higher_is_better: false
+  - metric: bits_per_byte
+    aggregation: bits_per_byte
+    higher_is_better: false
+metadata:
+  version: 1.0

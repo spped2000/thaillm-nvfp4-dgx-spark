@@ -1,0 +1,57 @@
+Using the latest cached version of the dataset since wikimedia/wikipedia couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration '20231101.th' at /home/agicafet/.cache/huggingface/datasets/wikimedia___wikipedia/20231101.th/0.0.0/b04c8d1ceb2f5cd4588862100d08de323dccfbaa (last modified on Tue Jul 14 17:30:18 2026).
+Using the latest cached version of the dataset since EleutherAI/wikitext_document_level couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'wikitext-2-raw-v1' at /home/agicafet/.cache/huggingface/datasets/EleutherAI___wikitext_document_level/wikitext-2-raw-v1/0.0.0/647234772b9554e208af6c826f23b99e3cac88c8 (last modified on Tue Jul 14 17:11:34 2026).
+gen th_factual_qa: 401 chars
+gen th_news: 343 chars
+gen th_legal: 336 chars
+gen th_medical: 369 chars
+gen th_education: 381 chars
+gen th_business: 351 chars
+gen th_travel: 368 chars
+gen th_math: 302 chars
+gen en_econ: 1064 chars
+gen en_science: 1019 chars
+gen code_python: 668 chars
+gen th_en_translate: 388 chars
+tf th 0: 1786 tokens
+tf th 1: 1387 tokens
+tf th 2: 1728 tokens
+tf th 3: 1678 tokens
+tf th 4: 1788 tokens
+tf th 5: 1592 tokens
+tf th 6: 1859 tokens
+tf th 7: 1471 tokens
+tf th 8: 1737 tokens
+tf th 9: 1613 tokens
+tf th 10: 1699 tokens
+tf th 11: 1615 tokens
+tf th 12: 1384 tokens
+tf th 13: 1483 tokens
+tf th 14: 1688 tokens
+tf th 15: 1361 tokens
+tf th 16: 1212 tokens
+tf th 17: 1873 tokens
+tf th 18: 1745 tokens
+tf th 19: 1745 tokens
+tf en 0: 747 tokens
+tf en 1: 645 tokens
+tf en 2: 722 tokens
+tf en 3: 648 tokens
+tf en 4: 733 tokens
+tf en 5: 704 tokens
+tf en 6: 633 tokens
+tf en 7: 756 tokens
+tf en 8: 686 tokens
+tf en 9: 650 tokens
+tf en 10: 651 tokens
+tf en 11: 675 tokens
+tf en 12: 730 tokens
+tf en 13: 674 tokens
+tf en 14: 645 tokens
+tf en 15: 783 tokens
+tf en 16: 744 tokens
+tf en 17: 688 tokens
+tf en 18: 706 tokens
+tf en 19: 648 tokens
+wrote /home/agicafet/Documents/ThaiLLM_Quantization/results/nvfp4/usecases.json (1.8 MB)

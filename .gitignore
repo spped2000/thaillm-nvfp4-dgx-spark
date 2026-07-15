@@ -1,0 +1,18 @@
+# secrets
+.env
+.cf_token
+
+# heavy / local-only artifacts
+models/
+wheels/
+.venv-eval/
+Model-Optimizer/
+site/
+
+# per-sample eval dumps (~350MB) — summary results_*.json are kept
+results/**/samples_*.jsonl
+
+# misc
+__pycache__/
+*.pyc
+nohup.out
