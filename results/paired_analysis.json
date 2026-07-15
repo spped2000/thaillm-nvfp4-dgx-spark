@@ -695,11 +695,12 @@
       "mcnemar_p": 0.7913664277791971
     },
     "ALL_MC": {
-      "n": 20351,
-      "bf16_only_right": 750,
-      "nvfp4_only_right": 584,
-      "delta_acc": -0.008156847329369565,
-      "mcnemar_p": 6.0943428352332965e-06
+      "n": 19786,
+      "bf16_only_right": 727,
+      "nvfp4_only_right": 567,
+      "delta_acc": -0.008086525826341858,
+      "mcnemar_p": 9.627080834767809e-06,
+      "note": "excludes thai_exam v1 (broken template, double-counts v2 questions)"
     }
   },
   "matched_limits": {

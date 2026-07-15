@@ -16,3 +16,10 @@ results/**/samples_*.jsonl
 __pycache__/
 *.pyc
 nohup.out
+
+# local-only (per user instruction: not published)
+results/article_th/
+results/audit/
+results/audit_report_th.md
+results/quantization_technical_summary.md
+hf_model_card_README.md

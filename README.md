@@ -22,22 +22,22 @@ A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggi
 | **ThaiExam** (letter MC, 565 q) | 0.6195 | 0.6142 | −0.5 pt, p=0.79 (n.s.) |
 | Belebele-TH | 0.7700 | 0.7656 | −0.4 pt (n.s.) |
 | MMLU 5-shot @50/subj | 0.8168 | 0.8028 | −1.4 pt, p=0.002 |
-| **All 20,351 paired MC questions** | — | — | **−0.82 pt**, p<10⁻⁴ |
+| **All 19,786 paired MC questions** | — | — | **−0.81 pt**, p<10⁻⁴ |
 | Thai Wikipedia bits/byte | 0.2680 | 0.2822 | +0.014 |
 | Thai top-1 token agreement | — | — | 92.0 % (32,424 positions) |
 
-**Conclusion: NVFP4 is deployment-ready for Thai workloads** — Thai capability is statistically unchanged (the small, real cost concentrates on English reasoning tails), throughput gain is 2.3–2.5×. The Thai-heavy calibration set (256 Thai Wikipedia + 256 English news docs) is the likely reason Thai survived fully. One human-review caveat: verbatim quotation (legal statutes) can slip at 4-bit — keep BF16 or retrieval grounding for citation-critical work.
+**Conclusion: NVFP4 is deployment-ready for Thai workloads** — Thai capability is statistically unchanged (the small, real cost concentrates on English reasoning tails), throughput gain is 2.3–2.5×. The half-Thai calibration set (256 Thai Wikipedia + 256 English news docs) is the likely reason Thai survived fully. One human-review caveat: verbatim quotation (legal statutes) can slip at 4-bit — keep BF16 or retrieval grounding for citation-critical work.
 
 ### Cross-model Thai context (same protocol, 7 models)
 
 | Model | Belebele-TH | ThaiExam | XNLI-TH | Thai bpb ↓ |
 |---|---|---|---|---|
-| ThaiLLM-30B **BF16** (base) | 0.770 | 0.620 | **0.471** | **0.273** |
+| ThaiLLM-30B **BF16** (base) | 0.770 | 0.619 | **0.471** | **0.273** |
 | ThaiLLM-30B **NVFP4** (base) | 0.766 | 0.614 | 0.458 | 0.286 |
 | Qwen3.6-27B NVFP4 (IT) | **0.876** | **0.658** | 0.478 | 0.296 |
-| SEA-LION v4.5-27B (IT) | 0.843 | 0.620 | 0.406 | 0.591 |
+| SEA-LION v4.5-27B (IT) | 0.843 | 0.619 | 0.406 | 0.591 |
 | Typhoon2.5-30B-A3B (IT) | 0.856 | 0.604 | 0.378 | 0.480 |
-| Qwen3.6-35B-A3B NVFP4 (IT) | 0.777 | 0.574 | 0.391 | 0.560 |
+| Qwen3.6-35B-A3B NVFP4 (IT) | 0.777 | 0.573 | 0.391 | 0.560 |
 | Qwen3-8B NVFP4 (IT) | 0.766 | 0.467 | 0.436 | 0.426 |
 
 *(References are instruction-tuned, scored raw-completion style — mildly conservative for them. Full caveats in the report.)*
@@ -46,7 +46,7 @@ A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggi
 
 - Identical vLLM flags both sides except `--quantization modelopt`; **KV cache BF16 on both** (quantized with `--kv_cache_qformat none`), prefix caching off, seed 0, byte-identical lm-eval invocations.
 - Every MC question answered by both models → **exact McNemar paired tests**, not loose two-sample comparisons.
-- Tokenizer files verified byte-identical; both server startup configs diffed.
+- Tokenizer files verified identical (byte-identical except `special_tokens_map.json`, which is re-serialized with identical semantics); both server startup configs diffed.
 - Full deviation ledger in [`results/report.md`](results/report.md) §1.
 
 ## Repository layout

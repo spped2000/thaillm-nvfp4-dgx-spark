@@ -161,12 +161,12 @@
 <section>
   <h2>1. Executive Summary</h2>
   <div class="summary-box">
-    <p><strong>The NVFP4-quantized ThaiLLM-30B is recommended for deployment in Thai-language workloads on DGX Spark.</strong> Quantization reduces the model from 61.1 GB to 18.1 GB (3.4×), increases decode throughput 2.3–2.5× (27 → 63 tokens/s single-stream), and reduces time-to-first-token by 2.3–2.7× — while Thai-language capability remains statistically indistinguishable from the BF16 original (ThaiExam 0.620 → 0.614, p = 0.79; no significant change across 3,890 paired Thai test items). A small, statistically confirmed cost of approximately 0.8 accuracy points — pooled over 20,351 paired questions — falls almost entirely on English reasoning benchmarks. Expert qualitative review found no systematic degradation in Thai generation; the single caution concerns verbatim quotation (e.g., legal statutes), for which the BF16 model or retrieval grounding is advised.</p>
+    <p><strong>The NVFP4-quantized ThaiLLM-30B is recommended for deployment in Thai-language workloads on DGX Spark.</strong> Quantization reduces the model from 61.1 GB to 18.1 GB (3.4×), increases decode throughput 2.3–2.5× (27 → 63 tokens/s single-stream), and reduces time-to-first-token by 2.0–2.7× — while Thai-language capability remains statistically indistinguishable from the BF16 original (ThaiExam 0.619 → 0.614, p = 0.79; no significant change across 3,890 paired Thai test items). A small, statistically confirmed cost of approximately 0.8 accuracy points — pooled over 19,786 paired questions (ThaiExam counted once, via the letter-based template) — falls almost entirely on English reasoning benchmarks. Expert qualitative review found no systematic degradation in Thai generation; the single caution concerns verbatim quotation (e.g., legal statutes), for which the BF16 model or retrieval grounding is advised.</p>
   </div>
   <div class="kpis">
     <div class="kpi hero"><span class="lab">Model size</span><div class="val">3.4×</div><span class="note2">smaller — 61.1 → 18.1 GB</span></div>
     <div class="kpi hero"><span class="lab">Decode throughput</span><div class="val">2.33×</div><span class="note2">faster — 27 → 63 tokens/s</span></div>
-    <div class="kpi calm"><span class="lab">ThaiExam change</span><div class="val">−0.5 pt</div><span class="note2">0.620 → 0.614 · p = 0.79 (not significant)</span></div>
+    <div class="kpi calm"><span class="lab">ThaiExam change</span><div class="val">−0.5 pt</div><span class="note2">0.619 → 0.614 · p = 0.79 (not significant)</span></div>
     <div class="kpi calm"><span class="lab">Thai token fidelity</span><div class="val">92.0%</div><span class="note2">identical next-token predictions (32,424 positions)</span></div>
   </div>
 </section>
@@ -184,14 +184,14 @@
     <summary>Table 1 — full values, standard errors, paired flips, and p-values</summary>
     <div class="figure" style="margin-top:10px"><div id="accTable"></div></div>
   </details>
-  <div class="figure" style="margin-top:16px"><p class="fig-title">Figure 2 · Accuracy change by category (NVFP4 − BF16), paired McNemar tests</p><p class="fig-sub">Across all 20,351 shared questions: BF16 uniquely correct on 750, NVFP4 uniquely correct on 584</p><div id="pooled"></div></div>
+  <div class="figure" style="margin-top:16px"><p class="fig-title">Figure 2 · Accuracy change by category (NVFP4 − BF16), paired McNemar tests</p><p class="fig-sub">Across 19,786 shared questions (ThaiExam counted once): BF16 uniquely correct on 727, NVFP4 uniquely correct on 567</p><div id="pooled"></div></div>
 </section>
 
 <section>
   <h2>3. Language Modeling and Token-Level Fidelity</h2>
   <p class="note">Bits-per-byte measures raw-text compression and is tokenizer-independent. The absolute information loss is nearly language-neutral (+0.014 Thai vs +0.016 English bits/byte). Teacher-forced agreement — whether both models predict the same next token given identical context — is the most sensitive fidelity probe available; <strong>Thai agreement exceeds English</strong>, consistent with the accuracy findings.</p>
   <div class="row2">
-    <div class="figure"><p class="fig-title">Figure 3 · Perplexity — bits per byte (lower is better)</p><p class="fig-sub">1,000 documents · 8,192-token rolling windows</p><div id="ppl"></div></div>
+    <div class="figure"><p class="fig-title">Figure 3 · Perplexity — bits per byte (lower is better)</p><p class="fig-sub">Thai: 1,000 docs · EN: full 62-doc test set · 8,192-token windows</p><div id="ppl"></div></div>
     <div class="figure"><p class="fig-title">Figure 4 · Teacher-forced top-1 agreement</p><p class="fig-sub">40 held-out passages · 46,272 scored positions</p><div id="fid"></div></div>
   </div>
 </section>
@@ -230,7 +230,7 @@
 
 <section>
   <h2>7. Method Summary and Limitations</h2>
-  <p class="lead">Quantization used <code>hf_ptq.py --qformat nvfp4 --kv_cache_qformat none</code> with a <strong>calibration set of 256 Thai Wikipedia and 256 English news documents</strong> — the Thai-heavy calibration is the most likely reason Thai capability survived fully, in line with published findings on calibration-language effects. Attention projections and all 128 experts per layer are quantized (W4A4); router gates and the output head remain BF16; the KV cache was deliberately left unquantized on both sides so that only weight/activation quantization is measured.</p>
+  <p class="lead">Quantization used <code>hf_ptq.py --qformat nvfp4 --kv_cache_qformat none</code> with a <strong>calibration set of 256 Thai Wikipedia and 256 English news documents</strong> — the half-Thai calibration is the most likely reason Thai capability survived fully, in line with published findings on calibration-language effects. Attention projections and all 128 experts per layer are quantized (W4A4); router gates and the output head remain BF16; the KV cache was deliberately left unquantized on both sides so that only weight/activation quantization is measured.</p>
   <p class="note"><strong>Limitations.</strong> (1) No large-scale human evaluation — the literature indicates automatic metrics can understate generative quality loss; our 12-domain expert review mitigates but does not eliminate this risk. (2) ThaiLLM-30B is a base model; conclusions should be re-verified after instruction tuning by re-running this suite (≈ 25 minutes to re-quantize, scripts provided). (3) MMLU was sampled at 50 items per subject; a single seed was used throughout. (4) Reference-model figures are capability snapshots, not controlled comparisons.</p>
 </section>
 
@@ -239,7 +239,7 @@
   <ol class="rec">
     <li><strong>Deploy NVFP4 for Thai serving on DGX Spark.</strong> Speed and memory gains are large; Thai quality loss is not statistically detectable. In production, adding <code>--kv-cache-dtype fp8</code> approximately doubles KV-cache capacity.</li>
     <li><strong>Retain BF16 for verbatim-quotation workloads</strong> (legal, regulatory), or pair NVFP4 with retrieval so citations come from documents rather than model weights.</li>
-    <li><strong>Fine-tune first, then re-quantize.</strong> The production sequence is instruction-tuning on the BF16 base, NVFP4 quantization of the tuned checkpoint with Thai-heavy calibration, then this evaluation suite as a release gate.</li>
+    <li><strong>Fine-tune first, then re-quantize.</strong> The production sequence is instruction-tuning on the BF16 base, NVFP4 quantization of the tuned checkpoint with half-Thai calibration, then this evaluation suite as a release gate.</li>
     <li><strong>Further speed is available post-tuning</strong> via speculative decoding (EAGLE/draft-model, ≈1.5–2× reported in comparable setups); SM121 kernels also continue to improve with each container release.</li>
   </ol>
   <p class="note"><strong>Planned next phases.</strong> (1) Draft-model speculative decoding — the Qwen3-30B-A3B base ships no MTP head (unlike the Qwen3.6-generation models behind community 97–120 tok/s figures), but a same-tokenizer drafter such as Qwen3-0.6B is expected to add ~1.3–1.6× decode speed losslessly (63 → ~80–100 tok/s). (2) Thai instruction SFT on the BF16 base, then re-quantization with this exact recipe and this suite as the release gate. (3) EAGLE-3 head training post-SFT (~1.5–2× additional). (4) FP8 KV cache in production serving — disabled here only to isolate weight quantization.</p>
@@ -288,7 +288,7 @@ const ACC = [
   {t:'ARC-Challenge',th:0,b:.5614, n:.5597, se:.0145, p:'—', sig:0, f:''},
 ];
 const POOL = [
-  {t:'All questions · n=20,351', d:-0.82, p:'<10⁻⁴', sig:1},
+  {t:'All questions · n=19,786', d:-0.81, p:'<10⁻⁴', sig:1},
   {t:'English · n=12,481', d:-0.62, p:'0.0003', sig:1},
   {t:'MMLU · n=2,850', d:-1.40, p:'0.0017', sig:1},
   {t:'Thai MC · n=3,890', d:-1.00, p:'0.13', sig:0},
@@ -308,12 +308,12 @@ const FOOT = [
   {t:'Load time (s)', b:365, n:109},
 ];
 const XM = [
-  {m:'ThaiLLM BF16 (base)', k:'b', te:.620, bb:.770, bpb:.273},
+  {m:'ThaiLLM BF16 (base)', k:'b', te:.619, bb:.770, bpb:.273},
   {m:'ThaiLLM NVFP4 (base)', k:'n', te:.614, bb:.766, bpb:.286},
   {m:'Qwen3.6-27B NVFP4', k:'c', te:.658, bb:.876, bpb:.296},
-  {m:'SEA-LION v4.5-27B', k:'c', te:.620, bb:.843, bpb:.591},
+  {m:'SEA-LION v4.5-27B', k:'c', te:.619, bb:.843, bpb:.591},
   {m:'Typhoon2.5-30B-A3B', k:'c', te:.604, bb:.856, bpb:.480},
-  {m:'Qwen3.6-35B-A3B NVFP4', k:'c', te:.574, bb:.777, bpb:.560},
+  {m:'Qwen3.6-35B-A3B NVFP4', k:'c', te:.573, bb:.777, bpb:.560},
   {m:'Qwen3-8B NVFP4', k:'c', te:.467, bb:.766, bpb:.426},
 ];
 const QUAL = [

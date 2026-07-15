@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-**ThaiLLM-30B quantized to NVFP4 is deployment-ready for Thai workloads on DGX Spark.** The quantized model is **3.4× smaller** (61.1 → 18.1 GB), decodes **2.3–2.5× faster** (27 → 63 tok/s single-stream), answers **2.3–2.7× sooner** (TTFT 326 → 140 ms on 1K prompts), and loads **3.3× faster** — while its **Thai capability is statistically indistinguishable from BF16**: ThaiExam 0.620 → 0.614 (p = 0.79), Belebele-TH 0.770 → 0.766, and no significant change across 3,890 paired Thai multiple-choice samples (p = 0.13). A small but statistically real cost exists on the *English* side (−0.6 to −1.4 points, MMLU p = 0.002); pooled over all 20,351 paired samples the total accuracy cost is **−0.8 points**. Token-level fidelity is high (92% identical next-token predictions on Thai text) and a Thai-fluent qualitative review of 12 domains found **no systematic degradation** — but flagged that verbatim-precision tasks (quoting statutes) can slip, so keep BF16 (or add retrieval) for legal-citation use cases. The likely reason Thai survived so well: **the calibration set was half Thai** — exactly what the multilingual-quantization literature prescribes.
+**ThaiLLM-30B quantized to NVFP4 is deployment-ready for Thai workloads on DGX Spark.** The quantized model is **3.4× smaller** (61.1 → 18.1 GB), decodes **2.3–2.5× faster** (27 → 63 tok/s single-stream), answers **2.0–2.7× sooner** (TTFT 326 → 140 ms on 1K prompts), and loads **3.3× faster** — while its **Thai capability is statistically indistinguishable from BF16**: ThaiExam 0.619 → 0.614 (p = 0.79), Belebele-TH 0.770 → 0.766, and no significant change across 3,890 paired Thai multiple-choice samples (p = 0.13). A small but statistically real cost exists on the *English* side (−0.6 to −1.4 points, MMLU p = 0.002); pooled over all 19,786 paired samples the total accuracy cost is **−0.8 points**. Token-level fidelity is high (92% identical next-token predictions on Thai text) and a Thai-fluent qualitative review of 12 domains found **no systematic degradation** — but flagged that verbatim-precision tasks (quoting statutes) can slip, so keep BF16 (or add retrieval) for legal-citation use cases. The likely reason Thai survived so well: **half the calibration documents were Thai** (≈41% of characters) — exactly what the multilingual-quantization literature prescribes.
 
 Recommended serving command (measured configuration):
 
@@ -81,15 +81,15 @@ docker run --rm -d --gpus all --ipc=host --network host \
 | HellaSwag (10,042) | 0.6003 / 0.7961ⁿ | 0.5941 / 0.7855ⁿ | −0.62 / −1.06ⁿ | **<0.001** | significant, small |
 | ARC-Challenge (1,172) | 0.5614 ±.015 | 0.5597 ±.015 | −0.17 | — | noise |
 | WinoGrande (1,267) | 0.7395 ±.012 | 0.7285 ±.013 | −1.10 | — | ≤0.9σ |
-| **ALL MC pooled (20,351)** | — | — | **−0.82** | **<10⁻⁴** | significant, small |
+| **ALL MC pooled (19,786)**† | — | — | **−0.81** | **<10⁻⁴** | significant, small |
 
-† exact McNemar test on paired per-question outcomes (`paired_analysis.json`). ⁿ = acc_norm.
+† exact McNemar test on paired per-question outcomes (`paired_analysis.json`). ⁿ = acc_norm. The pooled row excludes the broken ThaiExam-v1 template (chance-level for both models) to avoid double-counting the 565 exam questions already pooled via v2.
 
 ThaiExam v2 subsets (BF16 → NVFP4): a_level 0.654→0.622, ic 0.695→0.684, onet 0.586→0.574, **tgat 0.677→0.708 (+3.1)**, **tpat1 0.534→0.552 (+1.7)** — quantization noise moves both directions at subset scale.
 
 ### 3.2 What the paired statistics actually say
 
-Because both models answered the *same* questions, we can count flips directly: over all 20,351 MC questions, BF16 was uniquely right on 750 and NVFP4 uniquely right on 584 — a net 166-question (−0.82 pt) deficit that is decisively non-zero (p < 10⁻⁴) but **very small in magnitude and English-concentrated**:
+Because both models answered the *same* questions, we can count flips directly: over all 19,786 MC questions (ThaiExam counted once, via the letter-based v2 template), BF16 was uniquely right on 727 and NVFP4 uniquely right on 567 — a net 160-question (−0.81 pt) deficit that is decisively non-zero (p < 10⁻⁴) but **very small in magnitude and English-concentrated**:
 
 | Slice | n | Δacc | McNemar p |
 |---|---|---|---|
@@ -100,7 +100,7 @@ Because both models answered the *same* questions, we can count flips directly: 
 
 Only two individual tasks reach p < 0.05: HellaSwag (−0.62, powered by n = 10k) and `mmlu_moral_scenarios` (−12 pts at n = 50 — with 57 MMLU subjects tested, one such hit is expected by chance; it does not survive Bonferroni). **No Thai task shows significant degradation.**
 
-**Interpretation.** The multilingual-quantization literature (Marchisio et al., EMNLP 2024 — see `research_thaiQuant.md`) predicts non-Latin scripts degrade *more* than English (−1.9% vs −0.7% at W4). We observed the opposite ordering. Two mutually compatible explanations: (a) the **Thai-heavy calibration set** protected Thai activation ranges — the mechanism "Calibrating Beyond English" (arXiv:2601.18306) documents; (b) NVFP4's FP8 block-scales are structurally gentler than the GPTQ/NF4 formats in that literature (RedHat/NVIDIA report 97–99% recovery at ~30B scale, matching our 99.2% pooled recovery). The prediction that transfers cleanly: *hard reasoning degrades first* — our largest deltas are indeed 5-shot MMLU and HellaSwag tails, not Thai knowledge tasks.
+**Interpretation.** The multilingual-quantization literature (Marchisio et al., EMNLP 2024 — see `research_thaiQuant.md`) predicts non-Latin scripts degrade *more* than English (−1.9% vs −0.7% at W4). We observed the opposite ordering. Two mutually compatible explanations: (a) the **half-Thai calibration set** protected Thai activation ranges — the mechanism "Calibrating Beyond English" (arXiv:2601.18306) documents; (b) NVFP4's FP8 block-scales are structurally gentler than the GPTQ/NF4 formats in that literature (RedHat/NVIDIA report 97–99% recovery at ~30B scale, consistent with our pooled result (98.7% relative accuracy recovery: 0.6104/0.6185 over paired questions)). The prediction that transfers cleanly: *hard reasoning degrades first* — our largest deltas are indeed 5-shot MMLU and HellaSwag tails, not Thai knowledge tasks.
 
 ### 3.3 The template lesson (ThaiExam v1)
 
@@ -110,7 +110,7 @@ Scoring ThaiExam by full choice-text loglikelihood put **both** models at chance
 
 ## 4. Perplexity (raw language modeling)
 
-| Corpus (first 1,000 docs, 8k-token rolling windows) | BF16 | NVFP4 | Δ |
+| Corpus (Thai: first 1,000 docs; English: full 62-doc WikiText-2 test set; 8k-token rolling windows) | BF16 | NVFP4 | Δ |
 |---|---|---|---|
 | Thai Wikipedia — bits/byte | 0.2680 | 0.2822 | +0.0142 (+5.3% rel) |
 | Thai Wikipedia — byte-PPL | 1.204 | 1.216 | +1.0% |
@@ -145,7 +145,7 @@ Full review in `qualitative_review.md` / raw text in `usecase_side_by_side.md`. 
 
 ## 6. Performance & Footprint
 
-Measured with `vllm bench serve` (random dataset, `--ignore-eos`, seed 0, warmup discarded, median of 3):
+Measured with `vllm bench serve` (random dataset, `--ignore-eos`, seed 0, warmup discarded, median of 3). TTFT gains span 1.96–2.68× across the grid (the 1K-in/4-stream case is 1.96×):
 
 | Workload | Metric | BF16 | NVFP4 | NVFP4 advantage |
 |---|---|---|---|---|
@@ -154,7 +154,7 @@ Measured with `vllm bench serve` (random dataset, `--ignore-eos`, seed 0, warmup
 | | TPOT p50 | 34.6 ms | **14.9 ms** | 2.32× |
 | 1K in / 128 out, 4 streams | agg. tok/s | 59.6 | **145.4** | 2.44× |
 | 128 in / 1K out, 1 stream | decode tok/s | 29.1 | **67.2** | 2.31× |
-| | TTFT p50 | 183 ms | **70 ms** | 2.61× |
+| | TTFT p50 | 182 ms | **70 ms** | 2.61× |
 | 128 in / 1K out, 4 streams | agg. tok/s | 69.4 | **174.8** | 2.52× |
 
 | Footprint | BF16 | NVFP4 | Ratio |
@@ -175,12 +175,12 @@ Same tasks, same raw-completion loglikelihood protocol, same container, each mod
 
 | Model (precision, type) | Belebele-TH | XNLI-TH | XCOPA-TH | ThaiExam v2 | MMLU@10 | Thai bpb@200 ↓ |
 |---|---|---|---|---|---|---|
-| **ThaiLLM-30B BF16** (base) | 0.770 | **0.471** | **0.640** | 0.620 | 0.833 | **0.273** |
+| **ThaiLLM-30B BF16** (base) | 0.770 | **0.471** | **0.640** | 0.619 | 0.833 | **0.273** |
 | **ThaiLLM-30B NVFP4** (base) | 0.766 | 0.458 | 0.634 | 0.614 | 0.816 | 0.286 |
 | Typhoon2.5-30B-A3B BF16 (IT, same arch) | 0.856 | 0.378 | 0.620 | 0.604 | 0.833 | 0.480 |
-| SEA-LION v4.5-27B BF16 (IT, Qwen3.6 base) | 0.843 | 0.406 | 0.550 | 0.620 | **0.888** | 0.591 |
+| SEA-LION v4.5-27B BF16 (IT, Qwen3.6 base) | 0.843 | 0.406 | 0.550 | 0.619 | **0.888** | 0.591 |
 | **Qwen3.6-27B NVFP4** (IT, Unsloth quant) | **0.876** | 0.478 | 0.600 | **0.658** | 0.881 | 0.296 |
-| Qwen3.6-35B-A3B NVFP4 (IT, hybrid MoE) | 0.777 | 0.391 | 0.556 | 0.574 | 0.839 | 0.560 |
+| Qwen3.6-35B-A3B NVFP4 (IT, hybrid MoE) | 0.777 | 0.391 | 0.556 | 0.573 | 0.839 | 0.560 |
 | Qwen3-8B NVFP4 (IT, scale anchor) | 0.766 | 0.436 | 0.596 | 0.467 | 0.751 | 0.426 |
 
 *(ThaiLLM MMLU@10 and bpb@200 recomputed from logged per-sample data on exactly the same doc subsets the references saw.)*
@@ -189,7 +189,7 @@ Readings:
 
 1. **NVFP4-ThaiLLM keeps its family position everywhere** — the quantization deltas (rows 1–2) are far smaller than every between-model gap.
 2. **ThaiLLM is the best raw-Thai language model on the box** (bpb 0.273/0.286; Typhoon 0.480 despite identical architecture + Thai specialization — the instruct tax plus ThaiLLM's 31.5B-token Thai CPT show up clearly). This is exactly what a CPT base model is for: a Thai foundation to fine-tune.
-3. **Thai instruct specialists win comprehension-format tasks** (Belebele 0.84–0.86 vs 0.77): instruction tuning, not Thai knowledge, drives that gap — ThaiLLM ties/beats them on ThaiExam knowledge (0.620 vs 0.604/0.620).
+3. **Thai instruct specialists win comprehension-format tasks** (Belebele 0.84–0.86 vs 0.77): instruction tuning, not Thai knowledge, drives that gap — ThaiLLM ties/beats them on ThaiExam knowledge (an exact tie with SEA-LION at 350/565 = 0.619; Typhoon 0.604).
 4. **The strongest overall Thai performer is (newer-generation) Qwen3.6-27B — even 4-bit quantized** (ThaiExam 0.658, Belebele 0.876, bpb 0.296). For greenfield Thai deployments this is the benchmark to beat; for ThaiLLM's niche (Thai-sovereign base for domain SFT, permissive license, best raw-Thai modeling) it does not displace the project.
 5. The 8B anchor confirms task validity: scale gaps (−15 pts ThaiExam) dwarf quantization gaps (−0.5 pts).
 6. XNLI-TH's odd ordering (instruct models near chance at 0.38–0.41 vs ThaiLLM 0.47) is a known artifact of that task's minimal template punishing chat-tuned models — treat XNLI columns as within-family signals only.
@@ -213,7 +213,7 @@ Readings:
 |---|---|
 | Serving ThaiLLM for Thai chat/RAG prototypes on Spark | **Use the NVFP4 checkpoint** with the command in the summary; 2.3–2.5× speed, ⅓ memory, no measurable Thai loss. Add `--kv-cache-dtype fp8` in production for KV headroom. |
 | Legal/medical text requiring verbatim quotation | Keep BF16, or pair NVFP4 with retrieval so citations come from documents, not weights. |
-| Production assistant | SFT the BF16 base first (LLaMA-Factory, per model card), **quantize after SFT** with this exact recipe (Thai-heavy calibration; `--kv_cache_qformat none` for eval, `fp8` for the shipping artifact), re-run this suite as the release gate. |
+| Production assistant | SFT the BF16 base first (LLaMA-Factory, per model card), **quantize after SFT** with this exact recipe (half-Thai calibration; `--kv_cache_qformat none` for eval, `fp8` for the shipping artifact), re-run this suite as the release gate. |
 | More decode speed | Post-SFT: EAGLE-3/draft-model speculative decoding (~1.5–2× on top, per community MTP data); watch NGC container updates — SM12x kernels still improving. |
 | Conservative fallback | FP8 (~31 GB): near-lossless, but on SM121 MoE-expert FP8 runs via W8A16 fallback — expect ≈BF16-to-1.5× speed, not NVFP4's 2.3× (details in `research_alternatives.md`). |
 | Memory-constrained co-hosting | NVFP4's 18 GB + BF16-KV leaves ~85 GB free at our settings — enough to co-host a second model on the same Spark. |

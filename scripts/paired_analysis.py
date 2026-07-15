@@ -94,13 +94,19 @@ def main():
             "delta_acc": (n10 - n01) / n if n else None,
             "mcnemar_p": binom_two_sided_p(min(n01, n10), n01 + n10),
         }
-    # grand total across every MC sample
-    N01 = sum(v[0] for v in groups.values()); N10 = sum(v[1] for v in groups.values())
-    N = sum(v[2] for v in groups.values())
+    # grand total across every MC sample.
+    # thai_exam v1 (choice-text template) is EXCLUDED: it scores at chance for
+    # both models (broken template), and including it would double-count the
+    # same 565 exam questions already pooled via the letter-based v2 tasks.
+    pooled_groups = [g for g in groups if g != "thai_exam_v1(all)"]
+    N01 = sum(groups[g][0] for g in pooled_groups)
+    N10 = sum(groups[g][1] for g in pooled_groups)
+    N = sum(groups[g][2] for g in pooled_groups)
     group_stats["ALL_MC"] = {
         "n": N, "bf16_only_right": N01, "nvfp4_only_right": N10,
         "delta_acc": (N10 - N01) / N,
         "mcnemar_p": binom_two_sided_p(min(N01, N10), N01 + N10),
+        "note": "excludes thai_exam v1 (broken template, double-counts v2 questions)",
     }
 
     # matched-limit slices for cross-model comparability

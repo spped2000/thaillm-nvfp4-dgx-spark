@@ -105,7 +105,8 @@ def main():
     if meth.exists():
         lines.append(meth.read_text())
 
-    out = R / "report.md"
+    # NOTE: results/report.md is the hand-written deep report — never write there.
+    out = R / "tables.md"
     out.write_text("\n".join(lines) + "\n")
     print(f"wrote {out} ({len(lines)} lines)")
 

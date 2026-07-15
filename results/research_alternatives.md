@@ -1,5 +1,7 @@
 # Deployment Alternatives for ThaiLLM-30B (qwen3_moe) on DGX Spark GB10 — Research Findings
 
+> **CORRECTION (post-audit 2026-07-15):** an earlier verification note in this file claimed, citing NVIDIA's 26.05 release notes, that the container is vLLM 0.20.1/FlashInfer 0.6.10 and that the main report should be amended. That is wrong for the `.post1` respin: `pip freeze` inside `nvcr.io/nvidia/vllm:26.05.post1-py3` shows **vLLM 0.21.0+2325b6f0.nvinternal.26.5.post1 / FlashInfer 0.6.11.post3** — the main report is correct; NVIDIA's release notes lag the .post1 image.
+
 Verification note up front: the NGC `26.05` vLLM container ships **vLLM 0.20.1 on CUDA 13.2.1** per [NVIDIA's 26.05 release notes](https://docs.nvidia.com/deeplearning/frameworks/vllm-release-notes/rel-26-05.html) (flashinfer 0.6.10, transformers 5.6.0) — not 0.21 as commonly assumed; the `.post1` respin does not change the vLLM base. Adjust version claims in the report accordingly.
 
 ---
