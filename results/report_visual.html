@@ -455,3 +455,119 @@ xmPanel($('xm3'), 'bpb', 3, true);
     `<div class="qcell ${v}"><span class="who">${label[v]}</span>${t}</div>`).join('');
 })();
 </script>
+
+<style>
+  #langToggle { position: fixed; top: 14px; right: 16px; z-index: 60; display: flex;
+    border: 1px solid var(--hair); border-radius: 99px; overflow: hidden;
+    background: var(--panel); font-size: 13.5px; font-weight: 600; }
+  #langToggle button { border: 0; background: transparent; color: var(--ink2);
+    padding: 6px 14px; cursor: pointer; font: inherit; }
+  #langToggle button.on { background: var(--brand); color: #fff; }
+</style>
+<script>
+(function(){
+const secs = () => document.querySelectorAll('.wrap > section');
+const q = (s) => document.querySelector(s);
+function figs(i){ return secs()[i-1].querySelectorAll('.figure'); }
+
+const QUAL_TH = [
+ ['ถาม-ตอบข้อเท็จจริง (TH)','eq'],['ข่าว (TH)','eq'],['กฎหมาย ม.420 (TH)','b'],['การแพทย์ (TH)','eq'],
+ ['การศึกษา (TH)','eq'],['ธุรกิจ (TH)','eq'],['ท่องเที่ยว (TH)','eq'],['คณิตศาสตร์ (TH)','b'],
+ ['เศรษฐศาสตร์ (EN)','n'],['วิทยาศาสตร์ (EN)','eq'],['โค้ด Python','eq'],['การแปล (TH↔EN)','b']];
+const WHO_TH = {eq:'เท่ากัน', b:'BF16 ดีกว่า', n:'NVFP4 ดีกว่า'};
+
+function targets(){
+  const s = secs();
+  const t = [];
+  const add = (el, th) => { if (el) t.push([el, th]); };
+  add(q('.doc-kind'), 'รายงานการประเมินทางเทคนิค');
+  add(q('.doc-head h1'), 'ThaiLLM-30B: การควอนไทซ์แบบ NVFP4 บน NVIDIA DGX Spark');
+  add(q('.subtitle'), 'การเปรียบเทียบ BF16 กับ NVFP4 แบบควบคุม — ความแม่นยำ · ความเที่ยงทางภาษา · ประสิทธิภาพการอนุมาน · บริบทเทียบข้ามโมเดล');
+  add(q('.meta'), '<span><b>วันที่:</b> 15 กรกฎาคม 2026</span><span><b>แพลตฟอร์ม:</b> DGX Spark · GB10 (SM121) · unified 121 GB</span><span><b>โมเดล:</b> ThaiLLM/ThaiLLM-30B (Qwen3-MoE, base)</span><span><b>เครื่องมือควอนไทซ์:</b> TensorRT Model Optimizer 0.43.0</span><span><b>การเสิร์ฟ:</b> vLLM 0.21-NV (NGC 26.05.post1)</span><span><b>การประเมิน:</b> lm-eval 0.4.12 · seed 0 · โปรโตคอลจับคู่</span>');
+  add(s[0].querySelector('h2'), '1. บทสรุปผู้บริหาร');
+  add(s[0].querySelector('.summary-box p'), '<strong>ขอแนะนำให้ใช้ ThaiLLM-30B ฉบับ NVFP4 สำหรับงานภาษาไทยบน DGX Spark</strong> การควอนไทซ์ลดขนาดโมเดลจาก 61.1 GB เหลือ 18.1 GB (3.4 เท่า) เพิ่มความเร็ว decode 2.3–2.5 เท่า (27 → 63 โทเคน/วินาที แบบผู้ใช้เดียว) และลดเวลารอโทเคนแรกลง 2.0–2.7 เท่า — ขณะที่ความสามารถภาษาไทยไม่ต่างจากต้นฉบับ BF16 อย่างมีนัยสำคัญทางสถิติ (ThaiExam 0.619 → 0.614, p = 0.79; ไม่พบการเปลี่ยนแปลงที่มีนัยสำคัญใน 3,890 ข้อภาษาไทยแบบจับคู่) ต้นทุนที่ยืนยันได้ทางสถิติอยู่ที่ราว 0.8 คะแนน — รวมจากคำถามจับคู่ 19,786 ข้อ (นับ ThaiExam ครั้งเดียวผ่าน template ตัวอักษร) — และตกอยู่กับเบนช์มาร์กเชิงเหตุผลภาษาอังกฤษแทบทั้งหมด การรีวิวเชิงคุณภาพโดยผู้อ่านภาษาไทยไม่พบการเสื่อมคุณภาพเชิงระบบ ข้อควรระวังเดียวคือการอ้างข้อความแบบคำต่อคำ (เช่น ตัวบทกฎหมาย) ซึ่งแนะนำให้ใช้ BF16 หรือเสริม retrieval');
+  const kpi = s[0].querySelectorAll('.kpi');
+  const K = [['ขนาดโมเดล','เล็กลง — 61.1 → 18.1 GB'],['ความเร็ว DECODE','เร็วขึ้น — 27 → 63 โทเคน/วิ'],['การเปลี่ยนแปลง ThaiExam','0.619 → 0.614 · p = 0.79 (ไม่มีนัยสำคัญ)'],['ความเที่ยงโทเคนไทย','ทำนายโทเคนถัดไปตรงกัน (32,424 ตำแหน่ง)']];
+  kpi.forEach((el,i)=>{ add(el.querySelector('.lab'), K[i][0]); add(el.querySelector('.note2'), K[i][1]); });
+  add(s[1].querySelector('h2'), '2. การประเมินความแม่นยำ');
+  add(s[1].querySelector('.note'), 'ทั้งสองเช็คพอยต์ตอบ<strong>คำถามชุดเดียวกันทุกข้อ</strong>ภายใต้เงื่อนไขการเสิร์ฟที่เหมือนกันทุกประการ (seed 0, ให้คะแนนแบบ log-likelihood เชิงกำหนด, KV cache BF16 ทั้งคู่, ปิด prefix caching) ภาพที่ 1 แสดงแต่ละเบนช์มาร์กแบบจับคู่ เส้นหนวดคือ ±1 ค่าคลาดเคลื่อนมาตรฐาน นัยสำคัญตัดสินด้วย exact McNemar test บนผลลัพธ์แบบจับคู่ — <strong>ไม่มีเบนช์มาร์กภาษาไทยข้อใดเสื่อมลงอย่างมีนัยสำคัญทางสถิติ</strong> ส่วนที่ลดลงเล็กน้อยแต่ยืนยันได้อยู่ที่ MMLU และ HellaSwag (ภาษาอังกฤษ)');
+  add(s[1].querySelector('.legend'), '<span class="key"><span class="swatch" style="background:var(--bf16)"></span>BF16 (ต้นฉบับ)</span><span class="key"><span class="swatch" style="background:var(--nvfp4)"></span>NVFP4 (ควอนไทซ์)</span><span class="key"><span class="chip sig">มีนัยสำคัญ</span> p แบบจับคู่ &lt; 0.05</span>');
+  const f2 = figs(2);
+  add(f2[0].querySelector('.fig-title'), 'ภาพที่ 1 · ความแม่นยำรายเบนช์มาร์ก BF16 → NVFP4');
+  add(f2[0].querySelector('.fig-sub'), 'Zero-shot ยกเว้นที่ระบุ · ThaiExam ให้คะแนนด้วยตัวอักษรคำตอบ (โปรโตคอลตาม model card)');
+  add(s[1].querySelector('details summary'), 'ตารางที่ 1 — ค่าเต็ม ค่าคลาดเคลื่อนมาตรฐาน จำนวนข้อพลิกผล และค่า p');
+  add(f2[2].querySelector('.fig-title'), 'ภาพที่ 2 · การเปลี่ยนแปลงความแม่นยำตามหมวด (NVFP4 − BF16), McNemar แบบจับคู่');
+  add(f2[2].querySelector('.fig-sub'), 'จากคำถามที่ใช้ร่วมกัน 19,786 ข้อ (นับ ThaiExam ครั้งเดียว): BF16 ถูกฝ่ายเดียว 727 ข้อ · NVFP4 ถูกฝ่ายเดียว 567 ข้อ');
+  add(s[2].querySelector('h2'), '3. การสร้างแบบจำลองภาษาและความเที่ยงระดับโทเคน');
+  add(s[2].querySelector('.note'), 'Bits-per-byte วัดการบีบอัดข้อความดิบและไม่ขึ้นกับ tokenizer การสูญเสียสารสนเทศสัมบูรณ์แทบเป็นกลางทางภาษา (+0.014 ไทย vs +0.016 อังกฤษ bits/byte) ส่วนการวัดความตรงกันแบบ teacher-forced — ให้บริบทเดียวกันแล้วดูว่าทั้งสองโมเดลทำนายโทเคนถัดไปตรงกันหรือไม่ — เป็นตัววัดความเที่ยงที่ไวที่สุด และ<strong>ภาษาไทยตรงกันมากกว่าภาษาอังกฤษ</strong> สอดคล้องกับผลด้านความแม่นยำ');
+  const f3 = figs(3);
+  add(f3[0].querySelector('.fig-title'), 'ภาพที่ 3 · Perplexity — bits ต่อ byte (ต่ำ = ดี)');
+  add(f3[0].querySelector('.fig-sub'), 'ไทย: 1,000 เอกสารแรก · อังกฤษ: ชุดทดสอบ WikiText-2 ครบ 62 เอกสาร · หน้าต่าง 8,192 โทเคน');
+  add(f3[1].querySelector('.fig-title'), 'ภาพที่ 4 · ความตรงกันของโทเคนอันดับ 1 (teacher-forced)');
+  add(f3[1].querySelector('.fig-sub'), 'บทความ held-out 40 ชิ้น · 46,272 ตำแหน่ง');
+  add(s[3].querySelector('h2'), '4. ประสิทธิภาพการอนุมาน');
+  add(s[3].querySelector('.note'), 'วัดด้วย <code>vllm bench serve</code> (ชุดข้อมูล random, ความยาว output คงที่, seed 0, มัธยฐานจาก 3 รอบหลังทิ้งรอบ warm-up) คอนเทนเนอร์เลือกเคอร์เนล FlashInfer-CUTLASS NVFP4 แบบ native บน SM121 และไม่ใช้ speculative decoding — การ decode บนแพลตฟอร์มนี้ถูกจำกัดด้วย memory bandwidth ดังนั้นความเร็วที่เพิ่ม 2.3 เท่าจึงตามมาจากการบีบ weights 3.4 เท่าโดยตรง (ช่วง TTFT ทั้งกริดคือ 1.96–2.68 เท่า)');
+  const f4 = figs(4);
+  add(f4[0].querySelector('.fig-title'), 'ภาพที่ 5 · Throughput ขาออก — โทเคน/วินาที (สูง = ดี)');
+  add(f4[1].querySelector('.fig-title'), 'ภาพที่ 6 · เวลารอโทเคนแรก — ms, มัธยฐาน (ต่ำ = ดี)');
+  add(f4[2].querySelector('.fig-title'), 'ภาพที่ 7 · การใช้ทรัพยากร');
+  add(s[4].querySelector('h2'), '5. บริบทเทียบข้ามโมเดล — 7 โมเดลบนเครื่องเดียว');
+  add(s[4].querySelector('.note'), 'รันชุดทดสอบภาษาไทยเดียวกันกับอีก 5 โมเดลที่มีในเครื่อง ภายใต้โปรโตคอลเดียวกัน (แต่ละโมเดลใช้ tokenizer ของตัวเอง; โมเดลอ้างอิงทั้งห้าเป็นแบบ instruction-tuned และให้คะแนนโดยไม่ใส่ chat template ซึ่งเสียเปรียบเล็กน้อย) ข้อสังเกตสำคัญ: <strong>ผลต่างจากการควอนไทซ์ (น้ำเงิน → ส้ม) เล็กกว่าผลต่างระหว่างโมเดลมาก</strong> และ ThaiLLM ยังเป็นโมเดล raw-Thai ที่แข็งแรงที่สุดบนเครื่อง ขณะที่ Qwen3.6-27B เจนใหม่กว่านำในงานข้อสอบและ reading comprehension');
+  add(s[4].querySelector('.legend'), '<span class="key"><span class="swatch" style="background:var(--bf16)"></span>ThaiLLM BF16</span><span class="key"><span class="swatch" style="background:var(--nvfp4)"></span>ThaiLLM NVFP4</span><span class="key"><span class="swatch" style="background:var(--ctx)"></span>โมเดลอ้างอิง (instruction-tuned)</span>');
+  const f5 = figs(5);
+  add(f5[0].querySelector('.fig-title'), 'ภาพที่ 8a · ThaiExam');
+  add(f5[1].querySelector('.fig-title'), 'ภาพที่ 8b · Belebele-TH');
+  add(f5[2].querySelector('.fig-title'), 'ภาพที่ 8c · bits/byte ภาษาไทย (ต่ำ = ดี)');
+  add(f5[2].querySelector('.fig-sub'), 'โมเดล instruct มี "ภาษี instruction tuning" ใน raw-text');
+  add(s[5].querySelector('h2'), '6. การประเมินเชิงคุณภาพ');
+  add(s[5].querySelector('.note'), 'สร้างข้อความจาก 12 โจทย์ครอบคลุมหลายโดเมน (ข่าว กฎหมาย การแพทย์ การศึกษา ธุรกิจ ท่องเที่ยว คณิตศาสตร์ ถาม-ตอบ การแปล ภาษาไทย; เศรษฐศาสตร์และวิทยาศาสตร์ภาษาอังกฤษ; Python) ด้วย greedy decoding ทั้งสองโมเดล แล้วให้ผู้อ่านภาษาไทยคล่องประเมิน ผลคือ <strong>เท่ากัน 8 · BF16 ดีกว่า 3 · NVFP4 ดีกว่า 1</strong> — อักขรวิธีไทยสมบูรณ์ทั้งคู่ อาการวนซ้ำเกิดพอ ๆ กันทั้งสองฝั่ง (เป็นธรรมชาติของ base model + greedy ไม่ใช่ผลของการควอนไทซ์) และข้อเท็จจริงที่ทดสอบถูกต้องทั้งคู่ทุกข้อ');
+  add(s[5].querySelector('blockquote'), 'จุดถดถอยเดียวที่มีความหมายคือ<b>ความแม่นยำแบบคำต่อคำ</b>: โมเดล NVFP4 ถอดความมาตรา 420 แห่งประมวลกฎหมายแพ่งและพาณิชย์เพี้ยนไป ("บุคคลภายนอก" แทนที่จะเป็น "บุคคลอื่น") ขณะที่ BF16 ยกตัวบทได้ตรงเป๊ะ — งานที่ต้องอ้างอิงตัวบท/ข้อความแบบคำต่อคำ ควรใช้ BF16 หรือเสริม retrieval grounding');
+  add(s[6].querySelector('h2'), '7. สรุปวิธีการและข้อจำกัด');
+  add(s[6].querySelector('.lead'), 'การควอนไทซ์ใช้ <code>hf_ptq.py --qformat nvfp4 --kv_cache_qformat none</code> ด้วย<strong>ชุด calibration 256 เอกสาร Wikipedia ภาษาไทย + 256 ข่าวภาษาอังกฤษ</strong> — การใส่ภาษาไทยครึ่งหนึ่งนี้น่าจะเป็นเหตุผลหลักที่ความสามารถภาษาไทยรอดอย่างสมบูรณ์ สอดคล้องกับงานวิจัยเรื่องผลของภาษาที่ใช้ calibrate ทั้ง attention และ experts ทั้ง 128 ตัวต่อชั้นถูกควอนไทซ์ (W4A4) ส่วน router gates และ output head คงไว้ BF16 และตั้งใจไม่ควอนไทซ์ KV cache ทั้งสองฝั่งเพื่อให้วัดผลของ weight/activation quantization ล้วน ๆ');
+  add(s[6].querySelector('.note'), '<strong>ข้อจำกัด</strong> (1) ไม่มี human evaluation ขนาดใหญ่ — งานวิจัยชี้ว่าเมตริกอัตโนมัติอาจประเมินการเสื่อมคุณภาพเชิง generative ต่ำกว่าจริง การรีวิว 12 โดเมนช่วยลดแต่ไม่ปิดความเสี่ยงนี้ (2) ThaiLLM-30B เป็น base model — ควรตรวจซ้ำหลัง instruction tuning โดยรันชุดทดสอบนี้อีกครั้ง (ควอนไทซ์ใหม่ ~25 นาที มีสคริปต์ให้แล้ว) (3) MMLU สุ่ม 50 ข้อ/วิชา และใช้ seed เดียวตลอด (4) ตัวเลขโมเดลอ้างอิงเป็น snapshot เชิงความสามารถ ไม่ใช่การเปรียบเทียบแบบควบคุม');
+  add(s[7].querySelector('h2'), '8. บทสรุปและข้อเสนอแนะ');
+  const rec = s[7].querySelectorAll('ol.rec li');
+  const R = [
+   '<strong>ใช้ NVFP4 สำหรับการเสิร์ฟภาษาไทยบน DGX Spark</strong> ได้ความเร็วและหน่วยความจำมหาศาล ส่วนการสูญเสียคุณภาพภาษาไทยตรวจไม่พบทางสถิติ — ใน production เพิ่ม <code>--kv-cache-dtype fp8</code> จะได้ความจุ KV เพิ่มราวเท่าตัว',
+   '<strong>คง BF16 ไว้สำหรับงานอ้างตัวบทแบบคำต่อคำ</strong> (กฎหมาย/กำกับดูแล) หรือใช้ NVFP4 คู่กับ retrieval ให้การอ้างอิงมาจากเอกสารแทนน้ำหนักโมเดล',
+   '<strong>Fine-tune ก่อน แล้วค่อยควอนไทซ์ใหม่</strong> ลำดับที่ถูกคือ instruction tuning บน BF16 → ควอนไทซ์เช็คพอยต์ที่จูนแล้วด้วย calibration ผสมไทย → ใช้ชุดประเมินนี้เป็น release gate',
+   '<strong>ความเร็วเพิ่มได้อีกหลังจูน</strong>ด้วย speculative decoding (EAGLE/draft-model ~1.5–2 เท่าจากรายงานในสภาพแวดล้อมใกล้เคียง) และเคอร์เนล SM121 ยังพัฒนาต่อเนื่องทุกรุ่นคอนเทนเนอร์'];
+  rec.forEach((el,i)=>add(el, R[i]));
+  add(s[7].querySelector('.note'), '<strong>แผนเฟสถัดไป</strong> (1) Draft-model speculative decoding — ฐาน Qwen3-30B-A3B ไม่มี MTP head (ต่างจากเจน Qwen3.6 ที่อยู่เบื้องหลังเลขชุมชน 97–120 โทเคน/วิ) แต่ใช้ตัวร่าง tokenizer เดียวกันอย่าง Qwen3-0.6B ได้ คาดว่าเพิ่ม ~1.3–1.6 เท่าแบบ lossless (63 → ~80–100 โทเคน/วิ) (2) SFT ภาษาไทยบนฐาน BF16 แล้วควอนไทซ์ซ้ำด้วยสูตรเดิม ใช้ชุดนี้เป็น release gate (3) เทรน EAGLE-3 head หลัง SFT (~1.5–2 เท่าเพิ่มเติม) (4) FP8 KV cache ใน production — ที่ปิดไว้ในการศึกษานี้ก็เพื่อแยกผลของ weight quantization เท่านั้น');
+  return t;
+}
+
+let EN_CACHE = null;
+function renderQual(lang){
+  const el = q('#qual'); if(!el) return;
+  if(lang==='th'){
+    el.innerHTML = QUAL_TH.map(([t,v])=>`<div class="qcell ${v}"><span class="who">${WHO_TH[v]}</span>${t}</div>`).join('');
+  } else if(EN_CACHE && EN_CACHE.qual){ el.innerHTML = EN_CACHE.qual; }
+}
+function setLang(lang){
+  const list = targets();
+  if(lang==='th'){
+    if(!EN_CACHE){ EN_CACHE = {els:new Map(), qual:q('#qual')?q('#qual').innerHTML:null};
+      list.forEach(([el])=>EN_CACHE.els.set(el, el.innerHTML)); }
+    list.forEach(([el,th])=>{ el.innerHTML = th; });
+  } else if(EN_CACHE){
+    EN_CACHE.els.forEach((html,el)=>{ el.innerHTML = html; });
+  }
+  renderQual(lang);
+  try{ localStorage.setItem('thaillm_lang', lang); }catch(e){}
+  document.querySelectorAll('#langToggle button').forEach(b=>b.classList.toggle('on', b.dataset.l===lang));
+}
+const bar = document.createElement('div');
+bar.id = 'langToggle';
+bar.innerHTML = '<button data-l="en">EN</button><button data-l="th">ไทย</button>';
+document.body.appendChild(bar);
+bar.addEventListener('click', e=>{ if(e.target.dataset.l) setLang(e.target.dataset.l); });
+let initial = 'en';
+try{
+  const p = new URLSearchParams(location.search).get('lang');
+  initial = p || localStorage.getItem('thaillm_lang') ||
+    ((navigator.language||'').toLowerCase().startsWith('th') ? 'th' : 'en');
+}catch(e){}
+setLang(initial === 'th' ? 'th' : 'en');
+})();
+</script>
