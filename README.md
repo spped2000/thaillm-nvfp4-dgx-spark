@@ -7,7 +7,7 @@
 
 A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggingface.co/ThaiLLM/ThaiLLM-30B) (Qwen3-MoE, Thai/English base model) quantized to **NVFP4** with NVIDIA TensorRT Model Optimizer and compared against BF16 under a strict fairness protocol on a single **DGX Spark (GB10, 121 GB unified memory)** — accuracy (Thai + English, paired statistics), perplexity, token-level fidelity, qualitative Thai review, serving performance, and a 7-model Thai benchmark context.
 
-**📦 Quantized model:** [NatdhanaiPython/ThaiLLM-30B-NVFP4](https://huggingface.co/NatdhanaiPython/ThaiLLM-30B-NVFP4) ·
+**📦 Quantized model:** [AGIcafet/ThaiLLM-30B-NVFP4](https://huggingface.co/AGIcafet/ThaiLLM-30B-NVFP4) ·
 **📊 Interactive report:** [thaillm.agicafet.com](https://thaillm.agicafet.com) ·
 **📄 Deep report:** [`results/report.md`](results/report.md)
 
@@ -85,7 +85,7 @@ python scripts/paired_analysis.py && python scripts/analyze_fidelity.py && pytho
 Serving the published checkpoint directly:
 
 ```bash
-vllm serve NatdhanaiPython/ThaiLLM-30B-NVFP4 --quantization modelopt \
+vllm serve AGIcafet/ThaiLLM-30B-NVFP4 --quantization modelopt \
   --gpu-memory-utilization 0.70 --attention-backend flashinfer
 ```
 
