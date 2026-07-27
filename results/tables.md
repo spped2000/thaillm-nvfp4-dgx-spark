@@ -72,18 +72,18 @@
 | mmlu_us_foreign_policy | acc | 0.9600 | 0.9000 | -0.0600 | 0.0280 | **signif.** |
 | mmlu_virology | acc | 0.6000 | 0.5800 | -0.0200 | 0.0700 | noise |
 | mmlu_world_religions | acc | 0.8800 | 0.9000 | 0.0200 | 0.0464 | noise |
-| thai_exam | acc | 0.2549 | 0.2442 | -0.0106 | 0.0184 | noise |
-| thai_exam | acc_norm | 0.3115 | 0.3062 | -0.0053 | 0.0194 | noise |
-| thai_exam_a_level | acc | 0.2283 | 0.2205 | -0.0079 | 0.0374 | noise |
-| thai_exam_a_level | acc_norm | 0.2677 | 0.2913 | 0.0236 | 0.0394 | noise |
-| thai_exam_ic | acc | 0.2000 | 0.2105 | 0.0105 | 0.0413 | noise |
-| thai_exam_ic | acc_norm | 0.2421 | 0.2211 | -0.0211 | 0.0442 | noise |
-| thai_exam_onet | acc | 0.2840 | 0.2531 | -0.0309 | 0.0355 | noise |
-| thai_exam_onet | acc_norm | 0.3148 | 0.2963 | -0.0185 | 0.0366 | noise |
-| thai_exam_tgat | acc | 0.2615 | 0.2462 | -0.0154 | 0.0549 | noise |
-| thai_exam_tgat | acc_norm | 0.4154 | 0.3846 | -0.0308 | 0.0616 | noise |
-| thai_exam_tpat1 | acc | 0.2845 | 0.2845 | 0.0000 | 0.0421 | noise |
-| thai_exam_tpat1 | acc_norm | 0.3534 | 0.3621 | 0.0086 | 0.0446 | noise |
+| ~~thai_exam~~ | acc | 0.2549 | 0.2442 | -0.0106 | 0.0184 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam~~ | acc_norm | 0.3115 | 0.3062 | -0.0053 | 0.0194 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_a_level~~ | acc | 0.2283 | 0.2205 | -0.0079 | 0.0374 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_a_level~~ | acc_norm | 0.2677 | 0.2913 | 0.0236 | 0.0394 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_ic~~ | acc | 0.2000 | 0.2105 | 0.0105 | 0.0413 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_ic~~ | acc_norm | 0.2421 | 0.2211 | -0.0211 | 0.0442 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_onet~~ | acc | 0.2840 | 0.2531 | -0.0309 | 0.0355 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_onet~~ | acc_norm | 0.3148 | 0.2963 | -0.0185 | 0.0366 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_tgat~~ | acc | 0.2615 | 0.2462 | -0.0154 | 0.0549 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_tgat~~ | acc_norm | 0.4154 | 0.3846 | -0.0308 | 0.0616 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_tpat1~~ | acc | 0.2845 | 0.2845 | 0.0000 | 0.0421 | **INVALID TEMPLATE — do not cite** |
+| ~~thai_exam_tpat1~~ | acc_norm | 0.3534 | 0.3621 | 0.0086 | 0.0446 | **INVALID TEMPLATE — do not cite** |
 | thai_exam_v2 | acc | 0.6195 | 0.6142 | -0.0053 | 0.0204 | noise |
 | thai_exam_v2_a_level | acc | 0.6535 | 0.6220 | -0.0315 | 0.0424 | noise |
 | thai_exam_v2_ic | acc | 0.6947 | 0.6842 | -0.0105 | 0.0475 | noise |
@@ -98,6 +98,9 @@
 | winogrande | acc | 0.7395 | 0.7285 | -0.0110 | 0.0123 | noise |
 | xcopa_th | acc | 0.6400 | 0.6340 | -0.0060 | 0.0215 | noise |
 | xnli_th | acc | 0.4707 | 0.4578 | -0.0129 | 0.0100 | ~1-2σ |
+
+> **Struck-through `thai_exam*` rows are the retired v1 template** (choice-text loglikelihood). It scores **both** models at chance (0.255 / 0.244) because exam distractors are too long and too parallel for continuation scoring — it measures the template, not the model. The letter-based **`thai_exam_v2`** rows match the model card's protocol and are the only ThaiExam numbers that may be cited. v1 is retained here solely as the A/B evidence for that claim, and is excluded from all pooled statistics so the 565 exam questions are not double-counted.
+
 
 ## Performance (vllm bench serve, random dataset, ignore-eos, median of 3)
 
@@ -127,8 +130,8 @@
 - **Hardware:** NVIDIA DGX Spark (GB10, SM121, aarch64), 121 GB unified memory, CUDA 13.
 - **Serving:** both models served from `nvcr.io/nvidia/vllm:26.05.post1-py3` (vLLM 0.21.0-NV build) in fresh `--rm` containers, identical flags: `--max-model-len 8192 --gpu-memory-utilization 0.70 --max-num-seqs 4 --max-num-batched-tokens 8192 --kv-cache-dtype auto --seed 0 --attention-backend flashinfer --no-enable-prefix-caching`. NVFP4 side additionally: `--quantization modelopt --moe-backend <frozen at Phase 1.5>` (MoE-backend asymmetry vs BF16 is inherent to quantized-kernel serving; recorded in server logs).
 - **Quantization:** TensorRT Model Optimizer 0.43.0 (`hf_ptq.py`, tag 0.43.0), `--qformat nvfp4`, **`--kv_cache_qformat none`** (KV cache stays BF16 on both sides so only weight/activation quantization is measured; deviates from playbook default fp8 KV deliberately). Calibration: 512 samples × 512 tokens — 256 Thai Wikipedia (20231101.th) + 256 CNN/DailyMail, seeded (0). Router gates (`mlp.gate`) and `lm_head` excluded per modelopt defaults. Quantization ran in a disposable container where transformers was moved 5.6.0→4.57.6 (modelopt 0.43.0 pins `<5.0`); torch/vllm/flashinfer untouched; serve containers never received pip installs.
-- **Accuracy:** lm-eval 0.4.12 via `local-completions` against the live server, byte-identical invocations except output dir: `num_concurrent=8, tokenized_requests=True, max_length=8192, seed 0`. Tasks: belebele_tha_Thai, xnli_th, xcopa_th, thai_exam (custom YAMLs over scb10x/thai_exam, 5 subsets, choice-text loglikelihood, acc_norm reported), hellaswag, arc_challenge, winogrande (all 0-shot); mmlu 5-shot `--limit 50`/subject (deterministic first-50, identical docs both runs); wikitext + custom thai_wikipedia_ppl (`--limit 1000`, byte_perplexity/bits_per_byte — word-level PPL meaningless for Thai script). xnli_th/xcopa_th dataset paths patched to namespaced repos (facebook/xnli, cambridgeltl/xcopa) for datasets 5.0 compat.
+- **Accuracy:** lm-eval 0.4.12 via `local-completions` against the live server, byte-identical invocations except output dir: `num_concurrent=8, tokenized_requests=True, max_length=8192, seed 0`. Tasks: belebele_tha_Thai, xnli_th, xcopa_th, thai_exam_v2 (custom YAMLs over scb10x/thai_exam, 5 subsets, letter-based multiple choice per the model-card protocol, acc reported; the earlier choice-text v1 template scores at chance for both models and is retained only as a secondary A/B datapoint), hellaswag, arc_challenge, winogrande (all 0-shot); mmlu 5-shot `--limit 50`/subject (deterministic first-50, identical docs both runs); wikitext (full 62-doc test set) + custom thai_wikipedia_ppl (first 1,000 docs; byte_perplexity/bits_per_byte — word-level PPL meaningless for Thai script). xnli_th/xcopa_th dataset paths patched to namespaced repos (facebook/xnli, cambridgeltl/xcopa) for datasets 5.0 compat.
 - **Performance:** `vllm bench serve`, random dataset, `--ignore-eos` (forces identical output token counts), seed 0, grid (in,out,concurrency,prompts) = (1024,128,1,16), (1024,128,4,64), (128,1024,1,8), (128,1024,4,32); 1 discarded warmup + 3 scored repeats, median reported; 180 s cooldown after accuracy suite, 30 s between repeats.
 - **Interpretation:** |Δacc| within ~1 stderr = noise. Same gpu-memory fraction gives NVFP4 a larger KV pool — a genuine deployment benefit, but not binding at max-num-seqs 4 / 8k ctx.
-- **Tokenizer parity:** sha256 of tokenizer files verified identical between source and quantized checkpoint (`tokenizer_hashes_source.txt`).
+- **Tokenizer parity:** tokenizer files verified identical between source and quantized checkpoint (byte-identical except `special_tokens_map.json`, re-serialized with identical semantics; hashes in `tokenizer_hashes_*.txt`).
 

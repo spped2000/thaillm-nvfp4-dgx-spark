@@ -67,6 +67,17 @@ def fmt(x, nd=4):
     return f"{x:.{nd}f}" if isinstance(x, float) else str(x)
 
 
+
+def is_broken_template(task: str) -> bool:
+    """True for the retired ThaiExam **v1** tasks (choice-text loglikelihood).
+
+    v1 scores both BF16 and NVFP4 at chance, so every v1 delta is a comparison of
+    two noise sources. `thai_exam_v2*` (letter-based, matches the model card's
+    protocol) is the valid family and must NOT match here.
+    """
+    return task.startswith("thai_exam") and not task.startswith("thai_exam_v2")
+
+
 def main():
     acc = {tag: collect_accuracy(tag) for tag in ["bf16", "nvfp4"]}
     perf = {tag: collect_perf(tag) for tag in ["bf16", "nvfp4"]}
@@ -78,6 +89,7 @@ def main():
               "|---|---|---|---|---|---|---|"]
     for task in sorted(set(acc["bf16"]) | set(acc["nvfp4"])):
         b, n = acc["bf16"].get(task, {}), acc["nvfp4"].get(task, {})
+        broken = is_broken_template(task)
         for metric in ["acc", "acc_norm", "word_perplexity", "byte_perplexity", "bits_per_byte"]:
             if metric in b or metric in n:
                 bv, nv = b.get(metric), n.get(metric)
@@ -86,9 +98,25 @@ def main():
                 note = ""
                 if delta is not None and se:
                     note = "noise" if abs(delta) <= se else ("**signif.**" if abs(delta) > 2 * se else "~1-2σ")
+                if broken:
+                    # Both models score at chance here, so "noise" is true but deeply
+                    # misleading: it reads as "quantization did no harm" when in fact the
+                    # task measured nothing. Say so on the row itself — a reader scanning
+                    # the table must not have to find the footnote to avoid the wrong
+                    # conclusion.
+                    note = "**INVALID TEMPLATE — do not cite**"
                 lines.append(
-                    f"| {task} | {metric} | {fmt(bv)} | {fmt(nv)} | "
+                    f"| {'~~' + task + '~~' if broken else task} | {metric} | {fmt(bv)} | {fmt(nv)} | "
                     f"{fmt(delta) if delta is not None else '—'} | {fmt(se) if se else '—'} | {note} |")
+
+    lines += ["",
+              "> **Struck-through `thai_exam*` rows are the retired v1 template** (choice-text "
+              "loglikelihood). It scores **both** models at chance (0.255 / 0.244) because exam "
+              "distractors are too long and too parallel for continuation scoring — it measures the "
+              "template, not the model. The letter-based **`thai_exam_v2`** rows match the model "
+              "card's protocol and are the only ThaiExam numbers that may be cited. v1 is retained "
+              "here solely as the A/B evidence for that claim, and is excluded from all pooled "
+              "statistics so the 565 exam questions are not double-counted.", ""]
 
     lines += ["", "## Performance (vllm bench serve, random dataset, ignore-eos, median of 3)", "",
               "| Config | Metric | BF16 | NVFP4 | Ratio (NVFP4/BF16) |", "|---|---|---|---|---|"]
