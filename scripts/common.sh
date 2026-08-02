@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Shared config for the BF16-vs-NVFP4 comparison pipeline.
 export P=/home/agicafet/Documents/ThaiLLM_Quantization
-export IMG=nvcr.io/nvidia/vllm:26.05.post1-py3
+# IMG/PORT overridable: the study pins NGC 26.05, but compressed-tensors NVFP4
+# checkpoints (e.g. the 72B) need stock v0.25.1 — pass IMG=... to override.
+export IMG=${IMG:-nvcr.io/nvidia/vllm:26.05.post1-py3}
 export HFC=$HOME/.cache/huggingface
-export PORT=8001
+export PORT=${PORT:-8001}
 export BF16_MODEL=ThaiLLM/ThaiLLM-30B
 export NVFP4_MODEL=/work/models/ThaiLLM-30B-NVFP4
 export VENV=$P/.venv-eval

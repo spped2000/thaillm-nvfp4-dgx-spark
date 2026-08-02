@@ -11,6 +11,9 @@ NAME=${1:?usage: run_reference.sh <name> <model> [extra vllm args]}
 MODEL=${2:?}
 shift 2
 EXTRA="$*"
+# For HF ids one string serves both roles; for a local dir they differ:
+# MODEL must be the CONTAINER path (/work/models/...), TOKENIZER the HOST path.
+TOKENIZER=${TOKENIZER:-$MODEL}
 OUT=$P/results/ref_$NAME
 mkdir -p "$OUT"
 
@@ -32,7 +35,7 @@ echo "up in $(( $(date +%s) - start ))s"
 
 export HF_HUB_OFFLINE=1
 LM_EVAL=$VENV/bin/lm_eval
-MODEL_ARGS="model=eval-model,base_url=http://127.0.0.1:$PORT/v1/completions,tokenizer=$MODEL,num_concurrent=8,max_retries=3,tokenized_requests=True,max_length=8192"
+MODEL_ARGS="model=eval-model,base_url=http://127.0.0.1:$PORT/v1/completions,tokenizer=$TOKENIZER,num_concurrent=8,max_retries=3,tokenized_requests=True,max_length=8192"
 
 $LM_EVAL --model local-completions --model_args "$MODEL_ARGS" \
   --tasks belebele_tha_Thai,xnli_th,xcopa_th,thai_exam_v2 \
