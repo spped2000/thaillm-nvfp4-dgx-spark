@@ -1,0 +1,34 @@
+{
+    "name": "openthaigpt-1.6-72b-instruct-NVFP4@code_switching",
+    "dataset_name": "code_switching",
+    "dataset_pretty_name": "Code-Switching-Thai-English",
+    "dataset_description": "Thai-English code switching evaluation benchmark using WangchanThaiInstruct dataset. Tests the model's ability to understand and generate mixed Thai-English text, with responses expected to be primarily in Thai.",
+    "model_name": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "score": 0.992,
+    "metrics": [
+        {
+            "name": "mean_accuracy",
+            "num": 500,
+            "score": 0.992,
+            "macro_score": 0.992,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 500,
+                    "score": 0.992,
+                    "macro_score": 0.992,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 0.992,
+                            "num": 500
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A"
+}

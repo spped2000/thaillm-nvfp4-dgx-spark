@@ -1,0 +1,130 @@
+2026-08-02 02:56:26 - evalscope - INFO: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'batch_size': 2, 'max_tokens': 8192, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}
+2026-08-02 02:56:27 - evalscope - INFO: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_025626/configs/task_config_b01ba4.yaml
+2026-08-02 02:56:27 - evalscope - INFO: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "ifeval-th"
+    ],
+    "dataset_args": {
+        "ifeval-th": {
+            "name": "ifeval-th",
+            "dataset_id": "scb10x/ifeval-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "train",
+            "prompt_template": "คุณคือผู้ช่วยอัจฉริยะที่ต้องปฏิบัติตามคำสั่งอย่างระมัดระวังและแม่นยำ\n\n{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "IFEval-Thai",
+            "description": "IFEval Thai is a benchmark for evaluating instruction-following language models in Thai language, focusing on their ability to understand and respond to various prompts.",
+            "tags": [
+                "InstructionFollowing"
+            ],
+            "filters": null,
+            "metric_list": [
+                "prompt_level_strict",
+                "inst_level_strict",
+                "prompt_level_loose",
+                "inst_level_loose"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface"
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "batch_size": 2,
+        "max_tokens": 8192,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 215,
+    "eval_batch_size": 2,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_025626",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}
+2026-08-02 03:34:34 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 1/5: APITimeoutError - Request timed out.
+2026-08-02 03:34:34 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 5 seconds before retry
+2026-08-02 03:56:47 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 1/5: APITimeoutError - Request timed out.
+2026-08-02 03:56:47 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 5 seconds before retry
+2026-08-02 04:04:40 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 2/5: APITimeoutError - Request timed out.
+2026-08-02 04:04:40 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 10 seconds before retry
+2026-08-02 04:34:52 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 3/5: APITimeoutError - Request timed out.
+2026-08-02 04:34:52 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 15 seconds before retry
+2026-08-02 04:35:07 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 05:05:09 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 4/5: APITimeoutError - Request timed out.
+2026-08-02 05:05:09 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 20 seconds before retry
+2026-08-02 05:05:29 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 05:20:19 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 1/5: APITimeoutError - Request timed out.
+2026-08-02 05:20:19 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 5 seconds before retry
+2026-08-02 05:35:30 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 5/5: APITimeoutError - Request timed out.
+2026-08-02 05:35:30 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 25 seconds before retry
+2026-08-02 05:35:55 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 05:35:55 - evalscope.models.openai_compatible_wrapper - ERROR: All 5 attempts failed
+2026-08-02 05:50:26 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 2/5: APITimeoutError - Request timed out.
+2026-08-02 05:50:26 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 10 seconds before retry
+2026-08-02 06:20:37 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 3/5: APITimeoutError - Request timed out.
+2026-08-02 06:20:37 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 15 seconds before retry
+2026-08-02 06:20:52 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 06:50:54 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 4/5: APITimeoutError - Request timed out.
+2026-08-02 06:50:54 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 20 seconds before retry
+2026-08-02 06:51:14 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 06:52:41 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 1/5: APITimeoutError - Request timed out.
+2026-08-02 06:52:41 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 5 seconds before retry
+2026-08-02 07:21:15 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 5/5: APITimeoutError - Request timed out.
+2026-08-02 07:21:15 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 25 seconds before retry
+2026-08-02 07:21:40 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 07:21:40 - evalscope.models.openai_compatible_wrapper - ERROR: All 5 attempts failed
+2026-08-02 07:22:47 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 2/5: APITimeoutError - Request timed out.
+2026-08-02 07:22:47 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 10 seconds before retry
+2026-08-02 07:52:59 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 3/5: APITimeoutError - Request timed out.
+2026-08-02 07:52:59 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 15 seconds before retry
+2026-08-02 07:53:14 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 07:56:49 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 1/5: APITimeoutError - Request timed out.
+2026-08-02 07:56:49 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 5 seconds before retry
+2026-08-02 08:23:15 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 4/5: APITimeoutError - Request timed out.
+2026-08-02 08:23:15 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 20 seconds before retry
+2026-08-02 08:23:35 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 08:26:55 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 2/5: APITimeoutError - Request timed out.
+2026-08-02 08:26:55 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 10 seconds before retry
+2026-08-02 08:53:37 - evalscope.models.openai_compatible_wrapper - WARNING: Attempt 5/5: APITimeoutError - Request timed out.
+2026-08-02 08:53:37 - evalscope.models.openai_compatible_wrapper - INFO: Connection issue detected, waiting 25 seconds before retry
+2026-08-02 08:54:02 - evalscope.models.openai_compatible_wrapper - INFO: Reducing max_tokens to 4096 to reduce load
+2026-08-02 08:54:02 - evalscope.models.openai_compatible_wrapper - ERROR: All 5 attempts failed

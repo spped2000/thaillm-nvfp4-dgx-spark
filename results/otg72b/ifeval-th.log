@@ -1,0 +1,566 @@
+2026-08-02 09:02:44 - evalscope - [32mINFO[0m: Args: Task config is provided with CommandLine type.[0m
+2026-08-02 09:02:44 - evalscope - [33mWARNING[0m: Deprecated: The `timeout` parameter is deprecated and will be removed in v1.1.0. Use `generation_config.timeout` instead.[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:542: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_json(
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-02 09:02:44 - evalscope - [32mINFO[0m: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 2400.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-02 09:02:44 - evalscope - [32mINFO[0m: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_090244/configs/task_config_93429d.yaml[0m
+2026-08-02 09:02:44 - evalscope - [32mINFO[0m: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "ifeval-th"
+    ],
+    "dataset_args": {
+        "ifeval-th": {
+            "name": "ifeval-th",
+            "dataset_id": "scb10x/ifeval-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "train",
+            "prompt_template": "คุณคือผู้ช่วยอัจฉริยะที่ต้องปฏิบัติตามคำสั่งอย่างระมัดระวังและแม่นยำ\n\n{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "IFEval-Thai",
+            "description": "IFEval Thai is a benchmark for evaluating instruction-following language models in Thai language, focusing on their ability to understand and respond to various prompts.",
+            "tags": [
+                "InstructionFollowing"
+            ],
+            "filters": null,
+            "metric_list": [
+                "prompt_level_strict",
+                "inst_level_strict",
+                "prompt_level_loose",
+                "inst_level_loose"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface"
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 2400.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 215,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_090244",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 2400.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}[0m
+Processing records:   0%|          | 0/215 [00:00<?, ?it/s]Processing records: 100%|██████████| 215/215 [00:00<00:00, 353083.54it/s]
+Predicting[ifeval-th@default]:   0%|          | 0/215 [00:00<?, ?it/s]Predicting[ifeval-th@default]:   0%|          | 1/215 [00:22<1:21:49, 22.94s/it]Predicting[ifeval-th@default]:   1%|          | 2/215 [01:38<3:12:01, 54.09s/it]Predicting[ifeval-th@default]:   1%|▏         | 3/215 [01:43<1:50:57, 31.41s/it]Predicting[ifeval-th@default]:   2%|▏         | 4/215 [02:15<1:52:08, 31.89s/it]Predicting[ifeval-th@default]:   2%|▏         | 5/215 [02:16<1:12:42, 20.78s/it]Predicting[ifeval-th@default]:   3%|▎         | 6/215 [03:08<1:49:04, 31.31s/it]Predicting[ifeval-th@default]:   3%|▎         | 7/215 [03:21<1:27:26, 25.22s/it]Predicting[ifeval-th@default]:   4%|▎         | 8/215 [03:24<1:02:54, 18.24s/it]Predicting[ifeval-th@default]:   4%|▍         | 9/215 [03:45<1:04:57, 18.92s/it]Predicting[ifeval-th@default]:   5%|▍         | 10/215 [03:47<47:29, 13.90s/it] Predicting[ifeval-th@default]:   6%|▌         | 12/215 [04:03<37:16, 11.02s/it]Predicting[ifeval-th@default]:   6%|▌         | 13/215 [04:29<50:18, 14.94s/it]Predicting[ifeval-th@default]:   7%|▋         | 14/215 [04:44<49:41, 14.83s/it]Predicting[ifeval-th@default]:   7%|▋         | 15/215 [04:47<39:06, 11.73s/it]Predicting[ifeval-th@default]:   7%|▋         | 16/215 [05:25<1:02:37, 18.88s/it]Predicting[ifeval-th@default]:   8%|▊         | 17/215 [05:40<58:46, 17.81s/it]  Predicting[ifeval-th@default]:   8%|▊         | 18/215 [05:52<53:03, 16.16s/it]Predicting[ifeval-th@default]:   9%|▉         | 19/215 [06:05<49:47, 15.24s/it]Predicting[ifeval-th@default]:   9%|▉         | 20/215 [06:22<51:10, 15.74s/it]Predicting[ifeval-th@default]:  10%|▉         | 21/215 [06:59<1:11:28, 22.11s/it]Predicting[ifeval-th@default]:  10%|█         | 22/215 [07:26<1:15:34, 23.49s/it]Predicting[ifeval-th@default]:  11%|█         | 23/215 [07:50<1:15:39, 23.64s/it]Predicting[ifeval-th@default]:  11%|█         | 24/215 [08:37<1:37:15, 30.55s/it]Predicting[ifeval-th@default]:  12%|█▏        | 25/215 [09:14<1:43:08, 32.57s/it]Predicting[ifeval-th@default]:  12%|█▏        | 26/215 [09:41<1:37:13, 30.86s/it]Predicting[ifeval-th@default]:  13%|█▎        | 27/215 [10:24<1:48:24, 34.60s/it]Predicting[ifeval-th@default]:  13%|█▎        | 28/215 [10:25<1:16:19, 24.49s/it]Predicting[ifeval-th@default]:  13%|█▎        | 29/215 [10:28<55:39, 17.95s/it]  Predicting[ifeval-th@default]:  14%|█▍        | 30/215 [11:09<1:17:14, 25.05s/it]Predicting[ifeval-th@default]:  14%|█▍        | 31/215 [11:28<1:10:52, 23.11s/it]Predicting[ifeval-th@default]:  15%|█▍        | 32/215 [11:57<1:16:23, 25.05s/it]Predicting[ifeval-th@default]:  15%|█▌        | 33/215 [12:08<1:02:45, 20.69s/it]Predicting[ifeval-th@default]:  16%|█▌        | 34/215 [12:21<55:51, 18.52s/it]  Predicting[ifeval-th@default]:  16%|█▋        | 35/215 [12:40<55:51, 18.62s/it]Predicting[ifeval-th@default]:  17%|█▋        | 36/215 [13:00<56:18, 18.87s/it]Predicting[ifeval-th@default]:  17%|█▋        | 37/215 [14:13<1:44:25, 35.20s/it]Predicting[ifeval-th@default]:  18%|█▊        | 38/215 [14:28<1:26:23, 29.29s/it]Predicting[ifeval-th@default]:  18%|█▊        | 39/215 [14:58<1:26:01, 29.32s/it]Predicting[ifeval-th@default]:  19%|█▊        | 40/215 [15:15<1:14:53, 25.67s/it]Predicting[ifeval-th@default]:  19%|█▉        | 41/215 [15:41<1:14:31, 25.70s/it]Predicting[ifeval-th@default]:  20%|█▉        | 42/215 [15:43<53:31, 18.56s/it]  Predicting[ifeval-th@default]:  20%|██        | 43/215 [16:27<1:14:59, 26.16s/it]Predicting[ifeval-th@default]:  20%|██        | 44/215 [17:52<2:05:30, 44.04s/it]Predicting[ifeval-th@default]:  21%|██        | 45/215 [17:54<1:28:27, 31.22s/it]Predicting[ifeval-th@default]:  21%|██▏       | 46/215 [18:11<1:16:20, 27.11s/it]Predicting[ifeval-th@default]:  22%|██▏       | 47/215 [18:39<1:16:39, 27.38s/it]Predicting[ifeval-th@default]:  22%|██▏       | 48/215 [18:42<55:46, 20.04s/it]  Predicting[ifeval-th@default]:  23%|██▎       | 49/215 [19:57<1:40:52, 36.46s/it]Predicting[ifeval-th@default]:  23%|██▎       | 50/215 [20:41<1:46:10, 38.61s/it]Predicting[ifeval-th@default]:  24%|██▎       | 51/215 [21:09<1:37:28, 35.66s/it]Predicting[ifeval-th@default]:  24%|██▍       | 52/215 [21:21<1:17:09, 28.40s/it]Predicting[ifeval-th@default]:  25%|██▍       | 53/215 [21:38<1:07:57, 25.17s/it]Predicting[ifeval-th@default]:  25%|██▌       | 54/215 [21:50<56:40, 21.12s/it]  Predicting[ifeval-th@default]:  26%|██▌       | 55/215 [21:53<41:43, 15.64s/it]Predicting[ifeval-th@default]:  26%|██▌       | 56/215 [22:01<35:40, 13.46s/it]Predicting[ifeval-th@default]:  27%|██▋       | 57/215 [22:08<30:17, 11.50s/it]Predicting[ifeval-th@default]:  27%|██▋       | 58/215 [22:20<30:21, 11.60s/it]Predicting[ifeval-th@default]:  27%|██▋       | 59/215 [22:34<32:21, 12.44s/it]Predicting[ifeval-th@default]:  28%|██▊       | 60/215 [23:02<43:54, 17.00s/it]Predicting[ifeval-th@default]:  28%|██▊       | 61/215 [23:08<34:56, 13.61s/it]Predicting[ifeval-th@default]:  29%|██▉       | 62/215 [23:22<35:20, 13.86s/it]Predicting[ifeval-th@default]:  29%|██▉       | 63/215 [23:28<28:49, 11.38s/it]Predicting[ifeval-th@default]:  30%|██▉       | 64/215 [23:38<27:42, 11.01s/it]Predicting[ifeval-th@default]:  30%|███       | 65/215 [23:40<20:50,  8.34s/it]Predicting[ifeval-th@default]:  31%|███       | 66/215 [24:09<36:18, 14.62s/it]Predicting[ifeval-th@default]:  31%|███       | 67/215 [24:35<44:16, 17.95s/it]Predicting[ifeval-th@default]:  32%|███▏      | 68/215 [25:01<50:00, 20.41s/it]Predicting[ifeval-th@default]:  32%|███▏      | 69/215 [25:12<42:40, 17.54s/it]Predicting[ifeval-th@default]:  33%|███▎      | 70/215 [25:17<33:04, 13.68s/it]Predicting[ifeval-th@default]:  33%|███▎      | 71/215 [25:24<28:24, 11.84s/it]Predicting[ifeval-th@default]:  33%|███▎      | 72/215 [25:42<32:24, 13.60s/it]Predicting[ifeval-th@default]:  34%|███▍      | 73/215 [25:49<27:45, 11.73s/it]Predicting[ifeval-th@default]:  34%|███▍      | 74/215 [26:08<32:30, 13.83s/it]Predicting[ifeval-th@default]:  35%|███▍      | 75/215 [26:11<24:44, 10.61s/it]Predicting[ifeval-th@default]:  35%|███▌      | 76/215 [26:15<19:52,  8.58s/it]Predicting[ifeval-th@default]:  36%|███▌      | 77/215 [27:16<55:49, 24.27s/it]Predicting[ifeval-th@default]:  36%|███▋      | 78/215 [27:33<50:41, 22.20s/it]Predicting[ifeval-th@default]:  37%|███▋      | 79/215 [27:44<42:18, 18.67s/it]Predicting[ifeval-th@default]:  37%|███▋      | 80/215 [28:44<1:09:59, 31.10s/it]Predicting[ifeval-th@default]:  38%|███▊      | 81/215 [29:15<1:09:20, 31.05s/it]Predicting[ifeval-th@default]:  38%|███▊      | 82/215 [29:58<1:17:12, 34.83s/it]Predicting[ifeval-th@default]:  39%|███▊      | 83/215 [30:58<1:33:13, 42.38s/it]Predicting[ifeval-th@default]:  39%|███▉      | 84/215 [31:05<1:08:57, 31.59s/it]Predicting[ifeval-th@default]:  40%|███▉      | 85/215 [31:11<51:38, 23.84s/it]  Predicting[ifeval-th@default]:  40%|████      | 86/215 [31:12<36:41, 17.06s/it]Predicting[ifeval-th@default]:  40%|████      | 87/215 [31:33<38:53, 18.23s/it]Predicting[ifeval-th@default]:  41%|████      | 88/215 [32:01<44:54, 21.21s/it]Predicting[ifeval-th@default]:  41%|████▏     | 89/215 [32:32<50:47, 24.18s/it]Predicting[ifeval-th@default]:  42%|████▏     | 90/215 [32:40<40:18, 19.35s/it]Predicting[ifeval-th@default]:  42%|████▏     | 91/215 [34:44<1:44:42, 50.67s/it]Predicting[ifeval-th@default]:  43%|████▎     | 92/215 [34:45<1:13:14, 35.72s/it]Predicting[ifeval-th@default]:  43%|████▎     | 93/215 [35:03<1:01:48, 30.40s/it]Predicting[ifeval-th@default]:  44%|████▎     | 94/215 [35:17<51:16, 25.42s/it]  Predicting[ifeval-th@default]:  44%|████▍     | 95/215 [35:25<40:27, 20.23s/it]Predicting[ifeval-th@default]:  45%|████▍     | 96/215 [35:27<29:34, 14.91s/it]Predicting[ifeval-th@default]:  45%|████▌     | 97/215 [36:17<49:39, 25.25s/it]Predicting[ifeval-th@default]:  46%|████▌     | 98/215 [36:23<38:07, 19.55s/it]Predicting[ifeval-th@default]:  46%|████▌     | 99/215 [36:53<43:42, 22.61s/it]Predicting[ifeval-th@default]:  47%|████▋     | 100/215 [38:18<1:19:45, 41.62s/it]Predicting[ifeval-th@default]:  47%|████▋     | 101/215 [38:21<56:33, 29.77s/it]  Predicting[ifeval-th@default]:  47%|████▋     | 102/215 [38:27<43:03, 22.86s/it]Predicting[ifeval-th@default]:  48%|████▊     | 103/215 [39:13<55:11, 29.57s/it]Predicting[ifeval-th@default]:  48%|████▊     | 104/215 [39:56<1:02:19, 33.69s/it]Predicting[ifeval-th@default]:  49%|████▉     | 105/215 [40:09<50:19, 27.45s/it]  Predicting[ifeval-th@default]:  49%|████▉     | 106/215 [40:19<40:42, 22.41s/it]Predicting[ifeval-th@default]:  50%|████▉     | 107/215 [40:44<41:42, 23.17s/it]Predicting[ifeval-th@default]:  50%|█████     | 108/215 [41:39<57:55, 32.48s/it]Predicting[ifeval-th@default]:  51%|█████     | 109/215 [41:41<41:41, 23.60s/it]Predicting[ifeval-th@default]:  51%|█████     | 110/215 [41:47<31:35, 18.05s/it]Predicting[ifeval-th@default]:  52%|█████▏    | 111/215 [42:01<29:30, 17.02s/it]Predicting[ifeval-th@default]:  52%|█████▏    | 112/215 [42:12<25:49, 15.04s/it]Predicting[ifeval-th@default]:  53%|█████▎    | 113/215 [42:31<27:52, 16.40s/it]Predicting[ifeval-th@default]:  53%|█████▎    | 114/215 [42:36<21:41, 12.88s/it]Predicting[ifeval-th@default]:  53%|█████▎    | 115/215 [44:03<58:36, 35.17s/it]Predicting[ifeval-th@default]:  54%|█████▍    | 116/215 [44:10<44:05, 26.72s/it]Predicting[ifeval-th@default]:  54%|█████▍    | 117/215 [44:14<32:17, 19.77s/it]Predicting[ifeval-th@default]:  55%|█████▍    | 118/215 [44:37<33:33, 20.76s/it]Predicting[ifeval-th@default]:  55%|█████▌    | 119/215 [44:53<31:06, 19.44s/it]Predicting[ifeval-th@default]:  56%|█████▌    | 120/215 [44:54<21:57, 13.86s/it]Predicting[ifeval-th@default]:  56%|█████▋    | 121/215 [45:45<39:26, 25.17s/it]Predicting[ifeval-th@default]:  57%|█████▋    | 122/215 [46:55<59:35, 38.45s/it]Predicting[ifeval-th@default]:  57%|█████▋    | 123/215 [48:02<1:12:06, 47.03s/it]Predicting[ifeval-th@default]:  58%|█████▊    | 124/215 [49:08<1:20:05, 52.81s/it]Predicting[ifeval-th@default]:  58%|█████▊    | 125/215 [49:18<59:47, 39.86s/it]  Predicting[ifeval-th@default]:  59%|█████▊    | 126/215 [49:47<54:24, 36.67s/it]Predicting[ifeval-th@default]:  59%|█████▉    | 127/215 [49:51<39:35, 27.00s/it]Predicting[ifeval-th@default]:  60%|█████▉    | 128/215 [50:12<36:18, 25.04s/it]Predicting[ifeval-th@default]:  60%|██████    | 129/215 [50:30<32:48, 22.89s/it]Predicting[ifeval-th@default]:  60%|██████    | 130/215 [50:30<22:59, 16.23s/it]Predicting[ifeval-th@default]:  61%|██████    | 131/215 [51:00<28:10, 20.13s/it]Predicting[ifeval-th@default]:  61%|██████▏   | 132/215 [51:57<43:25, 31.39s/it]Predicting[ifeval-th@default]:  62%|██████▏   | 133/215 [52:01<31:36, 23.13s/it]Predicting[ifeval-th@default]:  62%|██████▏   | 134/215 [54:11<1:14:13, 54.98s/it]Predicting[ifeval-th@default]:  63%|██████▎   | 135/215 [55:16<1:17:25, 58.07s/it]Predicting[ifeval-th@default]:  63%|██████▎   | 136/215 [56:20<1:18:57, 59.97s/it]Predicting[ifeval-th@default]:  64%|██████▎   | 137/215 [56:24<56:04, 43.14s/it]  Predicting[ifeval-th@default]:  64%|██████▍   | 138/215 [56:31<41:17, 32.17s/it]Predicting[ifeval-th@default]:  65%|██████▍   | 139/215 [56:53<36:57, 29.17s/it]Predicting[ifeval-th@default]:  65%|██████▌   | 140/215 [56:55<26:09, 20.92s/it]Predicting[ifeval-th@default]:  66%|██████▌   | 141/215 [56:57<19:07, 15.50s/it]Predicting[ifeval-th@default]:  66%|██████▌   | 142/215 [57:07<16:41, 13.72s/it]Predicting[ifeval-th@default]:  67%|██████▋   | 143/215 [57:10<12:47, 10.65s/it]Predicting[ifeval-th@default]:  67%|██████▋   | 144/215 [57:16<10:55,  9.23s/it]Predicting[ifeval-th@default]:  67%|██████▋   | 145/215 [57:17<07:45,  6.66s/it]Predicting[ifeval-th@default]:  68%|██████▊   | 146/215 [58:04<21:32, 18.73s/it]Predicting[ifeval-th@default]:  68%|██████▊   | 147/215 [58:09<16:44, 14.77s/it]Predicting[ifeval-th@default]:  69%|██████▉   | 148/215 [58:20<14:58, 13.42s/it]Predicting[ifeval-th@default]:  69%|██████▉   | 149/215 [58:25<11:57, 10.87s/it]Predicting[ifeval-th@default]:  70%|██████▉   | 150/215 [58:25<08:26,  7.80s/it]Predicting[ifeval-th@default]:  70%|███████   | 151/215 [58:28<06:37,  6.21s/it]Predicting[ifeval-th@default]:  71%|███████   | 152/215 [58:33<06:14,  5.94s/it]Predicting[ifeval-th@default]:  71%|███████   | 153/215 [58:49<09:18,  9.01s/it]Predicting[ifeval-th@default]:  72%|███████▏  | 154/215 [58:50<06:47,  6.69s/it]Predicting[ifeval-th@default]:  72%|███████▏  | 155/215 [58:52<05:10,  5.18s/it]Predicting[ifeval-th@default]:  73%|███████▎  | 156/215 [58:55<04:21,  4.44s/it]Predicting[ifeval-th@default]:  73%|███████▎  | 157/215 [59:29<12:59, 13.44s/it]Predicting[ifeval-th@default]:  73%|███████▎  | 158/215 [1:00:55<33:19, 35.08s/it]Predicting[ifeval-th@default]:  74%|███████▍  | 159/215 [1:01:09<26:45, 28.67s/it]Predicting[ifeval-th@default]:  74%|███████▍  | 160/215 [1:01:19<21:20, 23.28s/it]Predicting[ifeval-th@default]:  75%|███████▍  | 161/215 [1:01:44<21:18, 23.68s/it]Predicting[ifeval-th@default]:  75%|███████▌  | 162/215 [1:01:59<18:45, 21.24s/it]Predicting[ifeval-th@default]:  76%|███████▌  | 163/215 [1:02:09<15:18, 17.67s/it]Predicting[ifeval-th@default]:  76%|███████▋  | 164/215 [1:02:15<12:07, 14.27s/it]Predicting[ifeval-th@default]:  77%|███████▋  | 165/215 [1:02:23<10:15, 12.31s/it]Predicting[ifeval-th@default]:  77%|███████▋  | 166/215 [1:02:33<09:34, 11.73s/it]Predicting[ifeval-th@default]:  78%|███████▊  | 167/215 [1:03:43<23:16, 29.10s/it]Predicting[ifeval-th@default]:  78%|███████▊  | 168/215 [1:03:48<17:04, 21.79s/it]Predicting[ifeval-th@default]:  79%|███████▊  | 169/215 [1:04:06<15:58, 20.83s/it]Predicting[ifeval-th@default]:  79%|███████▉  | 170/215 [1:04:55<21:48, 29.09s/it]Predicting[ifeval-th@default]:  80%|███████▉  | 171/215 [1:05:06<17:20, 23.64s/it]Predicting[ifeval-th@default]:  80%|████████  | 172/215 [1:05:08<12:18, 17.18s/it]Predicting[ifeval-th@default]:  80%|████████  | 173/215 [1:05:21<11:20, 16.19s/it]Predicting[ifeval-th@default]:  81%|████████  | 174/215 [1:05:41<11:46, 17.23s/it]Predicting[ifeval-th@default]:  81%|████████▏ | 175/215 [1:06:33<18:26, 27.65s/it]Predicting[ifeval-th@default]:  82%|████████▏ | 176/215 [1:06:58<17:22, 26.74s/it]Predicting[ifeval-th@default]:  82%|████████▏ | 177/215 [1:07:16<15:14, 24.08s/it]Predicting[ifeval-th@default]:  83%|████████▎ | 178/215 [1:07:21<11:18, 18.33s/it]Predicting[ifeval-th@default]:  83%|████████▎ | 179/215 [1:07:23<08:06, 13.51s/it]Predicting[ifeval-th@default]:  84%|████████▎ | 180/215 [1:07:31<06:52, 11.80s/it]Predicting[ifeval-th@default]:  85%|████████▍ | 182/215 [1:07:33<03:47,  6.89s/it]Predicting[ifeval-th@default]:  85%|████████▌ | 183/215 [1:07:48<04:46,  8.95s/it]Predicting[ifeval-th@default]:  86%|████████▌ | 184/215 [1:08:15<07:06, 13.75s/it]Predicting[ifeval-th@default]:  86%|████████▌ | 185/215 [1:08:24<06:08, 12.28s/it]Predicting[ifeval-th@default]:  87%|████████▋ | 186/215 [1:08:28<04:48,  9.93s/it]Predicting[ifeval-th@default]:  87%|████████▋ | 187/215 [1:08:49<06:09, 13.19s/it]Predicting[ifeval-th@default]:  87%|████████▋ | 188/215 [1:09:06<06:28, 14.37s/it]Predicting[ifeval-th@default]:  88%|████████▊ | 189/215 [1:09:25<06:49, 15.76s/it]Predicting[ifeval-th@default]:  88%|████████▊ | 190/215 [1:09:28<04:57, 11.90s/it]Predicting[ifeval-th@default]:  89%|████████▉ | 191/215 [1:09:44<05:17, 13.21s/it]Predicting[ifeval-th@default]:  89%|████████▉ | 192/215 [1:09:55<04:45, 12.43s/it]Predicting[ifeval-th@default]:  90%|████████▉ | 193/215 [1:10:01<03:52, 10.56s/it]Predicting[ifeval-th@default]:  90%|█████████ | 194/215 [1:10:12<03:44, 10.68s/it]Predicting[ifeval-th@default]:  91%|█████████ | 195/215 [1:10:19<03:11,  9.56s/it]Predicting[ifeval-th@default]:  91%|█████████ | 196/215 [1:10:48<04:54, 15.48s/it]Predicting[ifeval-th@default]:  92%|█████████▏| 197/215 [1:11:00<04:17, 14.32s/it]Predicting[ifeval-th@default]:  92%|█████████▏| 198/215 [1:11:19<04:25, 15.64s/it]Predicting[ifeval-th@default]:  93%|█████████▎| 199/215 [1:11:27<03:36, 13.52s/it]Predicting[ifeval-th@default]:  93%|█████████▎| 200/215 [1:11:30<02:34, 10.32s/it]Predicting[ifeval-th@default]:  93%|█████████▎| 201/215 [1:11:48<02:54, 12.47s/it]Predicting[ifeval-th@default]:  94%|█████████▍| 202/215 [1:12:03<02:55, 13.48s/it]Predicting[ifeval-th@default]:  94%|█████████▍| 203/215 [1:12:06<02:02, 10.18s/it]Predicting[ifeval-th@default]:  95%|█████████▍| 204/215 [1:12:06<01:19,  7.26s/it]Predicting[ifeval-th@default]:  95%|█████████▌| 205/215 [1:12:08<00:54,  5.45s/it]Predicting[ifeval-th@default]:  96%|█████████▌| 206/215 [1:12:08<00:35,  3.95s/it]Predicting[ifeval-th@default]:  96%|█████████▋| 207/215 [1:12:09<00:24,  3.01s/it]Predicting[ifeval-th@default]:  97%|█████████▋| 208/215 [1:12:09<00:15,  2.24s/it]Predicting[ifeval-th@default]:  97%|█████████▋| 209/215 [1:12:10<00:10,  1.70s/it]Predicting[ifeval-th@default]:  98%|█████████▊| 210/215 [1:12:11<00:07,  1.44s/it]Predicting[ifeval-th@default]:  98%|█████████▊| 211/215 [1:12:11<00:04,  1.14s/it]Predicting[ifeval-th@default]:  99%|█████████▊| 212/215 [1:12:11<00:02,  1.08it/s]Predicting[ifeval-th@default]:  99%|█████████▉| 213/215 [1:12:12<00:01,  1.12it/s]Predicting[ifeval-th@default]: 100%|█████████▉| 214/215 [1:12:13<00:00,  1.34it/s]Predicting[ifeval-th@default]: 100%|██████████| 215/215 [1:12:20<00:00,  2.86s/it]Predicting[ifeval-th@default]: 100%|██████████| 215/215 [1:12:20<00:00, 20.19s/it]
+Reviewing[ifeval-th@default]:   0%|          | 0/215 [00:00<?, ?it/s]Reviewing[ifeval-th@default]:   0%|          | 1/215 [00:01<03:36,  1.01s/it]Reviewing[ifeval-th@default]:  10%|▉         | 21/215 [00:01<00:08, 22.25it/s]2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+2026-08-02 10:15:01 - evalscope - [33mWARNING[0m: Error in instruction following evaluation: 
+**********************************************************************
+  Resource 'punkt_tab' not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  >>> import nltk
+  >>> nltk.download('punkt_tab')
+
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load 'tokenizers/punkt_tab/english/'
+
+  Searched in:
+    - '/home/agicafet/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/share/nltk_data'
+    - '/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+[0m
+Reviewing[ifeval-th@default]: 100%|██████████| 215/215 [00:01<00:00, 165.21it/s]
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: 
+ifeval-th report table:
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| Model                              | Dataset   | Metric                   | Subset   |   Num |   Score | Cat.0   |
++====================================+===========+==========================+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_prompt_level_strict | default  |     0 | 69.3023 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_prompt_level_loose  | default  |     0 | 70.2326 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_inst_level_strict   | default  |     0 | 75.6589 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_inst_level_loose    | default  |     0 | 76.5116 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+ 
+[0m
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: Skipping report analysis (`analysis_report=False`).[0m
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: Dump report to: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_090238/reports/openthaigpt-1.6-72b-instruct-NVFP4/ifeval-th.json 
+[0m
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: Overall report table: 
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| Model                              | Dataset   | Metric                   | Subset   |   Num |   Score | Cat.0   |
++====================================+===========+==========================+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_prompt_level_strict | default  |     0 | 69.3023 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_prompt_level_loose  | default  |     0 | 70.2326 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_inst_level_strict   | default  |     0 | 75.6589 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+
+| openthaigpt-1.6-72b-instruct-NVFP4 | ifeval-th | mean_inst_level_loose    | default  |     0 | 76.5116 | default |
++------------------------------------+-----------+--------------------------+----------+-------+---------+---------+ 
+[0m
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: Finished evaluation for openthaigpt-1.6-72b-instruct-NVFP4 on ['ifeval-th'][0m
+2026-08-02 10:15:01 - evalscope - [32mINFO[0m: Output directory: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/ifeval-th/20260802_090238[0m
