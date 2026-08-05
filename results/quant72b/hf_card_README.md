@@ -66,14 +66,91 @@ the whole quantization ran on the same single DGX Spark that serves it.
 exported numerically broken NVFP4 — dequant cosine 0.76 vs BF16 — and was
 abandoned; the finding is documented in the AGICAFET-LABS/thai-vllm hub.)
 
+## Measured Thai accuracy (this NVFP4 checkpoint, 2026-08-02)
+
+Two independent harnesses on one DGX Spark GB10, single protocol per harness,
+all artifacts in [the study repo](https://github.com/spped2000/thaillm-nvfp4-dgx-spark):
+
+| Generative (chinda-eval/EvalScope, chat API) | score | n |
+|---|---|---|
+| OpenThaiEval | **0.767** | 1,232 |
+| IFEval-TH (instruction-level strict) | **0.757** | 215 |
+| HellaSwag-TH | 0.590 | 300 |
+| Code-switching (Thai language purity) | **0.992** | 500 |
+| Thai tool-calling conformance (hermes) | 8/8 | 12 cases |
+| MATH500-TH (measured 2026-08-05) | 0.492 | 500 |
+| LiveCodeBench-TH Pass@1 (2026-08-05) | 0.545 | 111 |
+| AIME24-TH (2026-08-05) | 0.133 | 30 |
+
+| Log-likelihood (lm-eval, completions API) | score |
+|---|---|
+| Belebele-TH | **0.879** |
+| ThaiExam v2 (letter MC, 565 q) | 0.643 |
+| XCOPA-TH | 0.638 |
+| XNLI-TH | 0.473 |
+| MMLU (5-shot, first 10/subject) | 0.868 |
+| Thai Wikipedia bits/byte (200 docs, lower better) | 0.323 |
+
+OpenThaiEval 0.767 and Belebele-TH 0.879 are the highest scores measured on
+this machine across 8 Thai-capable models under the same protocols.
+
+## BF16 vs this NVFP4 — direct Thai comparison
+
+The base model's numbers are the developer's own published card values (BF16,
+their runner); the NVFP4 column is our measurement of this checkpoint
+(chinda-eval/EvalScope, DGX Spark GB10, 2026-08-02). **Different harnesses** —
+treat small gaps as harness+precision combined, not as quantization loss alone.
+
+| Benchmark | OpenThaiGPT 1.6 72b (BF16, developer) | **This NVFP4 (ours)** |
+|---|---|---|
+| OpenThaiEval | 78.7 | **76.7** (n=1,232) |
+| Language accuracy / Thai purity* | 98.2 | **99.2*** (n=500) |
+| AIME24-TH | 6.67 | **13.33** (4/30 — tiny n, treat as ≥ anchor) |
+| MATH500-TH | 43.2 | **49.20** (n=500) |
+| LiveCodeBench-TH | 32.43 | **54.47** Pass@1 (n=111 — subset/release may differ from the card's) |
+| IFEval-TH (inst strict) | not published | **75.7** (n=215) |
+| Belebele-TH (lm-eval) | not published | **87.9** |
+| HellaSwag-TH | not published | **59.0** (n=300) |
+| Thai tool calling (hermes) | not published | **8/8** |
+
+\* different tests with the same intent: the developer's "Language Accuracy"
+vs our WangchanThaiInstruct code-switching purity — close in spirit, not the
+same dataset, so compare loosely.
+
+## Developer's published benchmarks (BF16 original — full table)
+
+Reproduced verbatim from the
+[developer's model card](https://huggingface.co/openthaigpt/openthaigpt-1.6-72b-instruct)
+(technical report: [arXiv:2504.01789](https://arxiv.org/abs/2504.01789)).
+These are **self-reported numbers for the BF16 original on the developer's own
+runner** — not measurements of this NVFP4 checkpoint. The only overlapping
+benchmark is OpenThaiEval: their BF16 78.7 vs our NVFP4 76.7 (chinda-eval) —
+that gap mixes harness and precision effects, which cannot be separated on a
+machine the BF16 model does not fit.
+
+| **Benchmarks**        | **OpenThaiGPT 1.6 72b** | **OpenThaiGPT 1.5 7b** | **OpenThaiGPT 1.5 14b** | **OpenThaiGPT 1.5 72b** | **Typhoon2 Qwen2.5 7b** | **Typhoon2 Llama3.1 8b** | **Typhoon2 Llama3.1 70b** | **NECTEC Pathumma LLM Text 1.0.0 7b** |
+|-----------------------|-------------------------|------------------------|-------------------------|-------------------------|-------------------------|--------------------------|---------------------------|------------------------------------|
+| **AIME24-TH**         | 6.67                    | 0                      | 0                       | 6.67                    | 3.33                    | 3.33                     | **13.33**                     | 0                                  |
+| **AIME24**            | **23.33**                   | 6.67                   | 10                      | **23.33**                   | 6.67                    | 3.33                     | 10                        | 0                                  |
+| **MATH500-TH**        | 43.2                    | 24.2                   | 26.2                    | 62                      | 51.8                    | 31                       | **55.8**                      | 21.8                               |
+| **MATH500**           | **82**                      | 40.4                   | 47.4                    | 83.2                    | 65.4                    | 49.6                     | 67.4                      | 42.8                               |
+| **LiveCodeBench-TH**  | **32.43**                   | 22.52                  | 21.62                   | 12.61                   | 9.91                    | 8.11                     | 27.03                     | 0                                  |
+| **LiveCodeBench**     | **54.21**                   | 31.12                  | 37.96                   | 46.38                   | 0.98                    | 5.87                     | 37.38                     | 0                                  |
+| **OpenThaiEval**      | **78.7**                    | 64.5                   | 71.26                   | 77.16                   | 64.76                   | 56.63                    | 72.54                     | 65.27                              |
+| **Language Accuracy** | 98.2                    | 97.6                   | 98.4                    | 99.4                    | 99.4                    | 98.6                     | **99.8**                      | 98.6                               |
+| **AVERAGE**           | **52.34**            | 35.88                  | 39.11                   | 51.34                   | 37.78                   | 32.06                    | 47.91                     | 28.56                              |
+
 ## Honest limitations
 
-- **No paired BF16-vs-NVFP4 accuracy comparison exists for this model on our
+- **No paired BF16-vs-NVFP4 comparison exists for this model on our
   hardware** — the BF16 original cannot load on the machine we own, which is
-  the entire reason this checkpoint exists. Treat accuracy as unvalidated
-  until independent numbers appear. (Our 30B experiment with the identical
-  calibration recipe measured a -0.8pt overall MC delta, Thai n.s. — that is
-  evidence about the *recipe*, not about *this model*.)
+  the entire reason this checkpoint exists. The numbers above are absolute
+  scores of THIS checkpoint; quantization loss cannot be isolated. The
+  developer's own BF16 OpenThaiEval is 78.7 (their runner) vs our 76.7
+  (chinda-eval) — harness and precision effects are entangled in that gap.
+  (Our 30B experiment with the identical calibration recipe measured a
+  -0.8pt overall MC delta, Thai n.s. — evidence about the *recipe*, not
+  about *this model*.)
 - Activations are quantized (W4A4); on pre-Blackwell GPUs vLLM falls back to
   Marlin W4A16 kernels — a different numeric path we have not measured.
 - The original model's **Qwen LICENSE** applies unchanged (see `LICENSE`):

@@ -1,0 +1,123 @@
+2026-08-05 12:27:53 - evalscope - [32mINFO[0m: Args: Task config is provided with CommandLine type.[0m
+2026-08-05 12:27:53 - evalscope - [33mWARNING[0m: Deprecated: The `timeout` parameter is deprecated and will be removed in v1.1.0. Use `generation_config.timeout` instead.[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:542: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_json(
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-05 12:27:53 - evalscope - [32mINFO[0m: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 2400.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-05 12:27:53 - evalscope - [32mINFO[0m: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753/configs/task_config_1b44c8.yaml[0m
+2026-08-05 12:27:53 - evalscope - [32mINFO[0m: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "live_code_bench-th"
+    ],
+    "dataset_args": {
+        "live_code_bench-th": {
+            "name": "live_code_bench-th",
+            "dataset_id": "iapp/code_generation_lite-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "Generate an executable Python function generated from the given prompt. Return the function body without invoking it at the final solution. Provide ONLY ONE code block with your complete solution. Do not include multiple code blocks or explanations. {question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "Live-Code-Bench-Thai",
+            "description": "Thai version of LiveCodeBench for code generation. Tests the model's ability to generate correct Python code from Thai problem descriptions.",
+            "tags": [
+                "Coding",
+                "Reasoning"
+            ],
+            "filters": null,
+            "metric_list": [
+                "Pass@1"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface",
+                "trust_remote_code": true,
+                "timeout": 10,
+                "debug": false
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 2400.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 2400.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}[0m
+2026-08-05 12:27:53 - evalscope - [32mINFO[0m: Loading dataset iapp/code_generation_lite-th from huggingface > subset: default > split: test ...[0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-05 12:27:56,342 - huggingface_hub.utils._http - WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating test split:   0%|          | 0/111 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 111/111 [00:01<00:00, 77.52 examples/s]Generating test split: 100%|██████████| 111/111 [00:01<00:00, 74.52 examples/s]
+Saving the dataset (0/2 shards):   0%|          | 0/111 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):  50%|█████     | 56/111 [00:00<00:00, 282.96 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 56/111 [00:00<00:00, 282.96 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 111/111 [00:00<00:00, 282.96 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 111/111 [00:00<00:00, 437.08 examples/s]
+Processing records:   0%|          | 0/111 [00:00<?, ?it/s]Processing records: 100%|██████████| 111/111 [00:00<00:00, 77945.38it/s]
+Predicting[live_code_bench-th@default]:   0%|          | 0/111 [00:00<?, ?it/s]Predicting[live_code_bench-th@default]:   1%|          | 1/111 [00:09<16:42,  9.12s/it]Predicting[live_code_bench-th@default]:   2%|▏         | 2/111 [00:15<13:34,  7.48s/it]Predicting[live_code_bench-th@default]:   3%|▎         | 3/111 [00:43<30:09, 16.75s/it]Predicting[live_code_bench-th@default]:   4%|▎         | 4/111 [00:45<19:59, 11.21s/it]Predicting[live_code_bench-th@default]:   5%|▍         | 5/111 [00:50<15:47,  8.94s/it]Predicting[live_code_bench-th@default]:   5%|▌         | 6/111 [00:54<12:35,  7.19s/it]Predicting[live_code_bench-th@default]:   6%|▋         | 7/111 [01:02<12:52,  7.42s/it]Predicting[live_code_bench-th@default]:   7%|▋         | 8/111 [01:13<14:45,  8.60s/it]Predicting[live_code_bench-th@default]:   8%|▊         | 9/111 [01:18<12:47,  7.52s/it]Predicting[live_code_bench-th@default]:   9%|▉         | 10/111 [01:26<12:51,  7.64s/it]Predicting[live_code_bench-th@default]:  10%|▉         | 11/111 [01:33<12:28,  7.48s/it]Predicting[live_code_bench-th@default]:  11%|█         | 12/111 [01:44<13:50,  8.39s/it]Predicting[live_code_bench-th@default]:  12%|█▏        | 13/111 [01:45<09:54,  6.07s/it]Predicting[live_code_bench-th@default]:  13%|█▎        | 14/111 [01:58<13:36,  8.42s/it]Predicting[live_code_bench-th@default]:  14%|█▎        | 15/111 [02:00<10:15,  6.41s/it]Predicting[live_code_bench-th@default]:  14%|█▍        | 16/111 [02:13<13:03,  8.25s/it]Predicting[live_code_bench-th@default]:  15%|█▌        | 17/111 [02:21<12:54,  8.24s/it]Predicting[live_code_bench-th@default]:  16%|█▌        | 18/111 [02:21<09:01,  5.82s/it]Predicting[live_code_bench-th@default]:  17%|█▋        | 19/111 [02:35<12:26,  8.11s/it]Predicting[live_code_bench-th@default]:  18%|█▊        | 20/111 [02:49<14:59,  9.89s/it]Predicting[live_code_bench-th@default]:  19%|█▉        | 21/111 [02:49<10:45,  7.17s/it]Predicting[live_code_bench-th@default]:  20%|█▉        | 22/111 [03:13<17:49, 12.02s/it]Predicting[live_code_bench-th@default]:  21%|██        | 23/111 [03:21<15:53, 10.83s/it]Predicting[live_code_bench-th@default]:  22%|██▏       | 24/111 [03:23<12:07,  8.37s/it]Predicting[live_code_bench-th@default]:  23%|██▎       | 25/111 [03:29<10:45,  7.51s/it]Predicting[live_code_bench-th@default]:  23%|██▎       | 26/111 [03:36<10:18,  7.28s/it]Predicting[live_code_bench-th@default]:  24%|██▍       | 27/111 [03:44<10:32,  7.52s/it]Predicting[live_code_bench-th@default]:  25%|██▌       | 28/111 [03:51<10:07,  7.32s/it]Predicting[live_code_bench-th@default]:  27%|██▋       | 30/111 [04:03<09:12,  6.82s/it]Predicting[live_code_bench-th@default]:  28%|██▊       | 31/111 [04:10<09:04,  6.81s/it]Predicting[live_code_bench-th@default]:  29%|██▉       | 32/111 [04:16<08:52,  6.73s/it]Predicting[live_code_bench-th@default]:  30%|██▉       | 33/111 [04:22<08:22,  6.44s/it]Predicting[live_code_bench-th@default]:  31%|███       | 34/111 [04:30<08:55,  6.96s/it]Predicting[live_code_bench-th@default]:  32%|███▏      | 35/111 [04:41<10:04,  7.95s/it]Predicting[live_code_bench-th@default]:  32%|███▏      | 36/111 [04:43<07:48,  6.25s/it]Predicting[live_code_bench-th@default]:  33%|███▎      | 37/111 [05:04<13:10, 10.69s/it]Predicting[live_code_bench-th@default]:  34%|███▍      | 38/111 [05:11<11:46,  9.68s/it]Predicting[live_code_bench-th@default]:  35%|███▌      | 39/111 [05:16<09:55,  8.27s/it]Predicting[live_code_bench-th@default]:  36%|███▌      | 40/111 [05:22<08:57,  7.58s/it]Predicting[live_code_bench-th@default]:  37%|███▋      | 41/111 [05:34<10:05,  8.65s/it]Predicting[live_code_bench-th@default]:  38%|███▊      | 42/111 [05:38<08:26,  7.34s/it]Predicting[live_code_bench-th@default]:  39%|███▊      | 43/111 [05:46<08:36,  7.59s/it]Predicting[live_code_bench-th@default]:  40%|███▉      | 44/111 [05:52<07:56,  7.11s/it]Predicting[live_code_bench-th@default]:  41%|████      | 45/111 [05:54<06:06,  5.55s/it]Predicting[live_code_bench-th@default]:  41%|████▏     | 46/111 [06:05<07:54,  7.30s/it]Predicting[live_code_bench-th@default]:  42%|████▏     | 47/111 [06:09<06:47,  6.37s/it]Predicting[live_code_bench-th@default]:  43%|████▎     | 48/111 [06:15<06:28,  6.17s/it]Predicting[live_code_bench-th@default]:  44%|████▍     | 49/111 [06:24<07:03,  6.83s/it]Predicting[live_code_bench-th@default]:  45%|████▌     | 50/111 [06:38<09:18,  9.15s/it]Predicting[live_code_bench-th@default]:  46%|████▌     | 51/111 [06:38<06:28,  6.47s/it]Predicting[live_code_bench-th@default]:  47%|████▋     | 52/111 [06:48<07:20,  7.47s/it]Predicting[live_code_bench-th@default]:  48%|████▊     | 53/111 [06:59<08:10,  8.45s/it]Predicting[live_code_bench-th@default]:  49%|████▊     | 54/111 [07:00<05:54,  6.21s/it]Predicting[live_code_bench-th@default]:  50%|████▉     | 55/111 [07:03<05:02,  5.40s/it]Predicting[live_code_bench-th@default]:  50%|█████     | 56/111 [07:16<07:04,  7.71s/it]Predicting[live_code_bench-th@default]:  51%|█████▏    | 57/111 [07:19<05:37,  6.25s/it]Predicting[live_code_bench-th@default]:  52%|█████▏    | 58/111 [07:25<05:29,  6.21s/it]Predicting[live_code_bench-th@default]:  53%|█████▎    | 59/111 [07:35<06:09,  7.10s/it]Predicting[live_code_bench-th@default]:  54%|█████▍    | 60/111 [07:39<05:18,  6.24s/it]Predicting[live_code_bench-th@default]:  55%|█████▍    | 61/111 [07:49<06:16,  7.53s/it]Predicting[live_code_bench-th@default]:  56%|█████▌    | 62/111 [07:51<04:46,  5.84s/it]Predicting[live_code_bench-th@default]:  57%|█████▋    | 63/111 [07:57<04:34,  5.73s/it]Predicting[live_code_bench-th@default]:  58%|█████▊    | 64/111 [08:10<06:14,  7.97s/it]Predicting[live_code_bench-th@default]:  59%|█████▊    | 65/111 [08:18<06:07,  7.98s/it]Predicting[live_code_bench-th@default]:  59%|█████▉    | 66/111 [08:20<04:34,  6.09s/it]Predicting[live_code_bench-th@default]:  60%|██████    | 67/111 [08:32<05:55,  8.08s/it]Predicting[live_code_bench-th@default]:  61%|██████▏   | 68/111 [08:45<06:45,  9.42s/it]Predicting[live_code_bench-th@default]:  62%|██████▏   | 69/111 [08:48<05:12,  7.44s/it]Predicting[live_code_bench-th@default]:  63%|██████▎   | 70/111 [08:53<04:34,  6.69s/it]Predicting[live_code_bench-th@default]:  64%|██████▍   | 71/111 [09:00<04:40,  7.00s/it]Predicting[live_code_bench-th@default]:  65%|██████▍   | 72/111 [09:15<06:06,  9.40s/it]Predicting[live_code_bench-th@default]:  66%|██████▌   | 73/111 [09:24<05:51,  9.25s/it]Predicting[live_code_bench-th@default]:  67%|██████▋   | 74/111 [09:28<04:37,  7.49s/it]Predicting[live_code_bench-th@default]:  68%|██████▊   | 75/111 [09:28<03:13,  5.39s/it]Predicting[live_code_bench-th@default]:  68%|██████▊   | 76/111 [09:47<05:31,  9.47s/it]Predicting[live_code_bench-th@default]:  69%|██████▉   | 77/111 [09:49<04:08,  7.30s/it]Predicting[live_code_bench-th@default]:  70%|███████   | 78/111 [09:51<03:08,  5.70s/it]Predicting[live_code_bench-th@default]:  71%|███████   | 79/111 [10:03<04:01,  7.56s/it]Predicting[live_code_bench-th@default]:  72%|███████▏  | 80/111 [10:07<03:16,  6.33s/it]Predicting[live_code_bench-th@default]:  73%|███████▎  | 81/111 [10:18<03:52,  7.75s/it]Predicting[live_code_bench-th@default]:  74%|███████▍  | 82/111 [10:25<03:41,  7.63s/it]Predicting[live_code_bench-th@default]:  75%|███████▍  | 83/111 [10:31<03:21,  7.20s/it]Predicting[live_code_bench-th@default]:  76%|███████▌  | 84/111 [10:40<03:23,  7.55s/it]Predicting[live_code_bench-th@default]:  77%|███████▋  | 85/111 [10:44<02:52,  6.65s/it]Predicting[live_code_bench-th@default]:  77%|███████▋  | 86/111 [10:47<02:20,  5.62s/it]Predicting[live_code_bench-th@default]:  78%|███████▊  | 87/111 [10:57<02:39,  6.66s/it]Predicting[live_code_bench-th@default]:  79%|███████▉  | 88/111 [10:57<01:48,  4.72s/it]Predicting[live_code_bench-th@default]:  80%|████████  | 89/111 [11:04<02:01,  5.54s/it]Predicting[live_code_bench-th@default]:  81%|████████  | 90/111 [11:06<01:30,  4.32s/it]Predicting[live_code_bench-th@default]:  82%|████████▏ | 91/111 [11:20<02:27,  7.39s/it]Predicting[live_code_bench-th@default]:  83%|████████▎ | 92/111 [11:23<01:56,  6.13s/it]Predicting[live_code_bench-th@default]:  84%|████████▍ | 93/111 [11:24<01:18,  4.35s/it]Predicting[live_code_bench-th@default]:  85%|████████▍ | 94/111 [11:30<01:26,  5.07s/it]Predicting[live_code_bench-th@default]:  86%|████████▌ | 95/111 [11:31<00:59,  3.71s/it]Predicting[live_code_bench-th@default]:  86%|████████▋ | 96/111 [11:50<02:02,  8.18s/it]Predicting[live_code_bench-th@default]:  87%|████████▋ | 97/111 [11:51<01:24,  6.06s/it]Predicting[live_code_bench-th@default]:  88%|████████▊ | 98/111 [12:03<01:43,  7.92s/it]Predicting[live_code_bench-th@default]:  89%|████████▉ | 99/111 [12:08<01:23,  6.95s/it]Predicting[live_code_bench-th@default]:  90%|█████████ | 100/111 [12:08<00:56,  5.12s/it]Predicting[live_code_bench-th@default]:  91%|█████████ | 101/111 [12:12<00:47,  4.71s/it]Predicting[live_code_bench-th@default]:  92%|█████████▏| 102/111 [12:17<00:42,  4.70s/it]Predicting[live_code_bench-th@default]:  93%|█████████▎| 103/111 [12:31<00:59,  7.45s/it]Predicting[live_code_bench-th@default]:  94%|█████████▎| 104/111 [12:31<00:37,  5.37s/it]Predicting[live_code_bench-th@default]:  95%|█████████▍| 105/111 [12:34<00:27,  4.56s/it]Predicting[live_code_bench-th@default]:  95%|█████████▌| 106/111 [12:38<00:22,  4.51s/it]Predicting[live_code_bench-th@default]:  96%|█████████▋| 107/111 [12:53<00:29,  7.44s/it]Predicting[live_code_bench-th@default]:  97%|█████████▋| 108/111 [13:13<00:34, 11.39s/it]Predicting[live_code_bench-th@default]:  98%|█████████▊| 109/111 [13:14<00:16,  8.34s/it]Predicting[live_code_bench-th@default]:  99%|█████████▉| 110/111 [13:15<00:06,  6.15s/it]Predicting[live_code_bench-th@default]: 100%|██████████| 111/111 [13:21<00:00,  6.00s/it]Predicting[live_code_bench-th@default]: 100%|██████████| 111/111 [13:21<00:00,  7.22s/it]
+Reviewing[live_code_bench-th@default]:   0%|          | 0/111 [00:00<?, ?it/s]Reviewing[live_code_bench-th@default]:   2%|▏         | 2/111 [00:00<00:05, 19.95it/s]Reviewing[live_code_bench-th@default]:   5%|▍         | 5/111 [00:00<00:04, 21.78it/s]Reviewing[live_code_bench-th@default]:   8%|▊         | 9/111 [00:00<00:03, 29.00it/s]Reviewing[live_code_bench-th@default]:  11%|█         | 12/111 [00:04<00:58,  1.69it/s]Reviewing[live_code_bench-th@default]:  14%|█▍        | 16/111 [00:04<00:33,  2.81it/s]Reviewing[live_code_bench-th@default]:  19%|█▉        | 21/111 [00:05<00:19,  4.68it/s]Reviewing[live_code_bench-th@default]:  23%|██▎       | 25/111 [00:05<00:13,  6.52it/s]Reviewing[live_code_bench-th@default]:  26%|██▌       | 29/111 [00:05<00:09,  8.47it/s]Reviewing[live_code_bench-th@default]:  31%|███       | 34/111 [00:05<00:06, 12.11it/s]Reviewing[live_code_bench-th@default]:  34%|███▍      | 38/111 [00:05<00:04, 15.09it/s]Reviewing[live_code_bench-th@default]:  39%|███▊      | 43/111 [00:05<00:03, 19.64it/s]Reviewing[live_code_bench-th@default]:  43%|████▎     | 48/111 [00:05<00:02, 24.18it/s]Reviewing[live_code_bench-th@default]:  48%|████▊     | 53/111 [00:05<00:02, 28.75it/s]Reviewing[live_code_bench-th@default]:  52%|█████▏    | 58/111 [00:06<00:01, 28.12it/s]Reviewing[live_code_bench-th@default]:  56%|█████▌    | 62/111 [00:06<00:01, 26.85it/s]Reviewing[live_code_bench-th@default]:  59%|█████▉    | 66/111 [00:06<00:01, 25.55it/s]Reviewing[live_code_bench-th@default]:  63%|██████▎   | 70/111 [00:06<00:01, 27.47it/s]Reviewing[live_code_bench-th@default]:  67%|██████▋   | 74/111 [00:06<00:01, 26.32it/s]Reviewing[live_code_bench-th@default]:  69%|██████▉   | 77/111 [00:06<00:01, 25.70it/s]Reviewing[live_code_bench-th@default]:  73%|███████▎  | 81/111 [00:06<00:01, 27.20it/s]Reviewing[live_code_bench-th@default]:  76%|███████▌  | 84/111 [00:07<00:01, 26.03it/s]Reviewing[live_code_bench-th@default]:  78%|███████▊  | 87/111 [00:07<00:00, 24.49it/s]Reviewing[live_code_bench-th@default]:  81%|████████  | 90/111 [00:07<00:00, 22.66it/s]Reviewing[live_code_bench-th@default]:  84%|████████▍ | 93/111 [00:07<00:00, 23.75it/s]Reviewing[live_code_bench-th@default]:  87%|████████▋ | 97/111 [00:07<00:00, 25.59it/s]Reviewing[live_code_bench-th@default]:  91%|█████████ | 101/111 [00:07<00:00, 27.03it/s]Reviewing[live_code_bench-th@default]:  94%|█████████▎| 104/111 [00:07<00:00, 26.08it/s]Reviewing[live_code_bench-th@default]:  96%|█████████▋| 107/111 [00:08<00:00, 24.97it/s]Reviewing[live_code_bench-th@default]:  99%|█████████▉| 110/111 [00:18<00:00, 24.97it/s]Reviewing[live_code_bench-th@default]: 100%|██████████| 111/111 [00:28<00:00,  1.77s/it]Reviewing[live_code_bench-th@default]: 100%|██████████| 111/111 [00:28<00:00,  3.90it/s]
+2026-08-05 12:42:05 - evalscope - [32mINFO[0m: 
+live_code_bench-th report table:
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+
+| Model                              | Dataset            | Metric      | Subset   |   Num |   Score | Cat.0   |
++====================================+====================+=============+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | live_code_bench-th | mean_Pass@1 | default  |   111 |  0.5447 | default |
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+ 
+[0m
+2026-08-05 12:42:05 - evalscope - [32mINFO[0m: Skipping report analysis (`analysis_report=False`).[0m
+2026-08-05 12:42:05 - evalscope - [32mINFO[0m: Dump report to: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753/reports/openthaigpt-1.6-72b-instruct-NVFP4/live_code_bench-th.json 
+[0m
+2026-08-05 12:42:05 - evalscope - [32mINFO[0m: Overall report table: 
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+
+| Model                              | Dataset            | Metric      | Subset   |   Num |   Score | Cat.0   |
++====================================+====================+=============+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | live_code_bench-th | mean_Pass@1 | default  |   111 |  0.5447 | default |
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+ 
+[0m
+2026-08-05 12:42:06 - evalscope - [32mINFO[0m: Finished evaluation for openthaigpt-1.6-72b-instruct-NVFP4 on ['live_code_bench-th'][0m
+2026-08-05 12:42:06 - evalscope - [32mINFO[0m: Output directory: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753[0m

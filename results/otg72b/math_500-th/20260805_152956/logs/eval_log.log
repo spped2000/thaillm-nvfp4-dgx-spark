@@ -1,0 +1,85 @@
+2026-08-05 15:29:56 - evalscope - INFO: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 2400.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}
+2026-08-05 15:29:57 - evalscope - INFO: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/math_500-th/20260805_152956/configs/task_config_104e88.yaml
+2026-08-05 15:29:57 - evalscope - INFO: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "math_500-th"
+    ],
+    "dataset_args": {
+        "math_500-th": {
+            "name": "math_500-th",
+            "dataset_id": "iapp/math-500-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "{question}\nกรุณาแสดงวิธีคิดแบบขั้นตอนอย่างละเอียด และใส่คำตอบสุดท้ายให้ชัดเจนใน \\boxed{{}}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "MATH-500-Thai",
+            "description": "MATH-500 Thai is a benchmark for evaluating mathematical reasoning capabilities in Thai language. It consists of 500 diverse math problems designed to test a model's ability to solve complex mathematical problems in Thai.",
+            "tags": [
+                "Math",
+                "Reasoning"
+            ],
+            "filters": null,
+            "metric_list": [
+                {
+                    "acc": {
+                        "numeric": true
+                    }
+                }
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface"
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 2400.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 500,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/math_500-th/20260805_152956",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 2400.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}

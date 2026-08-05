@@ -18,11 +18,15 @@ OUT=$P/results/ref_$NAME
 mkdir -p "$OUT"
 
 docker rm -f eval-vllm >/dev/null 2>&1 || true
+# --entrypoint bash: the stock vllm/vllm-openai image's entrypoint IS `vllm
+# serve`, so passing `bash -c ...` as CMD crash-loops instantly (and --rm eats
+# the evidence). NGC's nvidia_entrypoint.sh just banners+execs, so overriding
+# it is behavior-neutral there too.
 docker run --rm -d --name eval-vllm --gpus all --ipc=host --network host \
   --ulimit memlock=-1 --ulimit stack=67108864 \
   -v "$HFC:/root/.cache/huggingface" -v "$P:/work" \
-  -e HF_HUB_OFFLINE=1 "$IMG" \
-  bash -c "vllm serve $MODEL $COMMON_SERVE_FLAGS --trust-remote-code $EXTRA 2>&1 | tee /work/results/ref_$NAME/server.log"
+  -e HF_HUB_OFFLINE=1 --entrypoint bash "$IMG" \
+  -c "vllm serve $MODEL $COMMON_SERVE_FLAGS --trust-remote-code $EXTRA 2>&1 | tee /work/results/ref_$NAME/server.log"
 
 echo "waiting for server ($NAME) ..."
 start=$(date +%s)

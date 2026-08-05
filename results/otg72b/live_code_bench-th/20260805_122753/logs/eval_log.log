@@ -1,0 +1,105 @@
+2026-08-05 12:27:53 - evalscope - INFO: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 2400.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}
+2026-08-05 12:27:53 - evalscope - INFO: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753/configs/task_config_1b44c8.yaml
+2026-08-05 12:27:53 - evalscope - INFO: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "live_code_bench-th"
+    ],
+    "dataset_args": {
+        "live_code_bench-th": {
+            "name": "live_code_bench-th",
+            "dataset_id": "iapp/code_generation_lite-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "Generate an executable Python function generated from the given prompt. Return the function body without invoking it at the final solution. Provide ONLY ONE code block with your complete solution. Do not include multiple code blocks or explanations. {question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "Live-Code-Bench-Thai",
+            "description": "Thai version of LiveCodeBench for code generation. Tests the model's ability to generate correct Python code from Thai problem descriptions.",
+            "tags": [
+                "Coding",
+                "Reasoning"
+            ],
+            "filters": null,
+            "metric_list": [
+                "Pass@1"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface",
+                "trust_remote_code": true,
+                "timeout": 10,
+                "debug": false
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 2400.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 2400.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}
+2026-08-05 12:27:53 - evalscope - INFO: Loading dataset iapp/code_generation_lite-th from huggingface > subset: default > split: test ...
+2026-08-05 12:42:05 - evalscope - INFO: 
+live_code_bench-th report table:
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+
+| Model                              | Dataset            | Metric      | Subset   |   Num |   Score | Cat.0   |
++====================================+====================+=============+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | live_code_bench-th | mean_Pass@1 | default  |   111 |  0.5447 | default |
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+ 
+
+2026-08-05 12:42:05 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-08-05 12:42:05 - evalscope - INFO: Dump report to: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753/reports/openthaigpt-1.6-72b-instruct-NVFP4/live_code_bench-th.json 
+
+2026-08-05 12:42:05 - evalscope - INFO: Overall report table: 
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+
+| Model                              | Dataset            | Metric      | Subset   |   Num |   Score | Cat.0   |
++====================================+====================+=============+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | live_code_bench-th | mean_Pass@1 | default  |   111 |  0.5447 | default |
++------------------------------------+--------------------+-------------+----------+-------+---------+---------+ 
+
+2026-08-05 12:42:06 - evalscope - INFO: Finished evaluation for openthaigpt-1.6-72b-instruct-NVFP4 on ['live_code_bench-th']
+2026-08-05 12:42:06 - evalscope - INFO: Output directory: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/live_code_bench-th/20260805_122753

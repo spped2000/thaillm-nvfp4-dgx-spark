@@ -1,0 +1,124 @@
+2026-08-05 11:48:29 - evalscope - [32mINFO[0m: Args: Task config is provided with CommandLine type.[0m
+2026-08-05 11:48:29 - evalscope - [33mWARNING[0m: Deprecated: The `timeout` parameter is deprecated and will be removed in v1.1.0. Use `generation_config.timeout` instead.[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:542: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_json(
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-05 11:48:29 - evalscope - [32mINFO[0m: Creating model openthaigpt-1.6-72b-instruct-NVFP4 with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 2400.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}[0m
+/home/agicafet/Documents/ThaiLLM_Quantization/.venv-chinda/lib/python3.12/site-packages/pydantic/main.py:475: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `int` - serialized value may not be as expected [field_name='timeout', input_value=2400.0, input_type=float])
+  return self.__pydantic_serializer__.to_python(
+2026-08-05 11:48:30 - evalscope - [32mINFO[0m: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/aime24-th/20260805_114829/configs/task_config_d20c37.yaml[0m
+2026-08-05 11:48:30 - evalscope - [32mINFO[0m: {
+    "model": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_id": "openthaigpt-1.6-72b-instruct-NVFP4",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "aime24-th"
+    ],
+    "dataset_args": {
+        "aime24-th": {
+            "name": "aime24-th",
+            "dataset_id": "iapp/aime_2024-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "train",
+            "prompt_template": "{question}\nกรุณาแสดงวิธีคิดแบบขั้นตอนอย่างละเอียด และใส่คำตอบสุดท้ายให้ชัดเจนใน \\boxed{{}}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "AIME-2024-Thai",
+            "description": "The AIME 2024 Thai benchmark is a translation of the American Invitational Mathematics Examination problems. This benchmark tests a model's ability to solve challenging mathematics problems in Thai language by generating step-by-step solutions and providing the correct final answer.",
+            "tags": [
+                "Math",
+                "Reasoning"
+            ],
+            "filters": null,
+            "metric_list": [
+                {
+                    "acc": {
+                        "numeric": true
+                    }
+                }
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface"
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 2400.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/aime24-th/20260805_114829",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 2400.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}[0m
+2026-08-05 11:48:31 - evalscope - [32mINFO[0m: Loading dataset iapp/aime_2024-th from huggingface > subset: default > split: train ...[0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-05 11:48:31,876 - huggingface_hub.utils._http - WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/30 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 30/30 [00:00<00:00, 1397.64 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/30 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 30/30 [00:00<00:00, 18567.08 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 30/30 [00:00<00:00, 17952.51 examples/s]
+Processing records:   0%|          | 0/30 [00:00<?, ?it/s]Processing records: 100%|██████████| 30/30 [00:00<00:00, 375609.31it/s]
+Predicting[aime24-th@default]:   0%|          | 0/30 [00:00<?, ?it/s]Predicting[aime24-th@default]:   3%|▎         | 1/30 [02:56<1:25:22, 176.63s/it]Predicting[aime24-th@default]:   7%|▋         | 2/30 [03:02<35:30, 76.09s/it]   Predicting[aime24-th@default]:  10%|█         | 3/30 [04:12<32:56, 73.21s/it]Predicting[aime24-th@default]:  13%|█▎        | 4/30 [04:47<25:14, 58.26s/it]Predicting[aime24-th@default]:  17%|█▋        | 5/30 [06:07<27:32, 66.11s/it]Predicting[aime24-th@default]:  20%|██        | 6/30 [07:13<26:25, 66.05s/it]Predicting[aime24-th@default]:  23%|██▎       | 7/30 [08:53<29:32, 77.08s/it]Predicting[aime24-th@default]:  27%|██▋       | 8/30 [10:01<27:12, 74.20s/it]Predicting[aime24-th@default]:  30%|███       | 9/30 [10:43<22:26, 64.11s/it]Predicting[aime24-th@default]:  33%|███▎      | 10/30 [12:02<22:57, 68.90s/it]Predicting[aime24-th@default]:  37%|███▋      | 11/30 [12:51<19:52, 62.75s/it]Predicting[aime24-th@default]:  40%|████      | 12/30 [16:35<33:30, 111.70s/it]Predicting[aime24-th@default]:  43%|████▎     | 13/30 [17:15<25:29, 89.97s/it] Predicting[aime24-th@default]:  47%|████▋     | 14/30 [18:25<22:25, 84.12s/it]Predicting[aime24-th@default]:  50%|█████     | 15/30 [18:50<16:32, 66.14s/it]Predicting[aime24-th@default]:  53%|█████▎    | 16/30 [19:38<14:11, 60.81s/it]Predicting[aime24-th@default]:  57%|█████▋    | 17/30 [20:31<12:40, 58.52s/it]Predicting[aime24-th@default]:  60%|██████    | 18/30 [22:00<13:32, 67.68s/it]Predicting[aime24-th@default]:  63%|██████▎   | 19/30 [22:58<11:52, 64.77s/it]Predicting[aime24-th@default]:  67%|██████▋   | 20/30 [23:05<07:51, 47.16s/it]Predicting[aime24-th@default]:  70%|███████   | 21/30 [24:51<09:43, 64.86s/it]Predicting[aime24-th@default]:  73%|███████▎  | 22/30 [25:08<06:45, 50.64s/it]Predicting[aime24-th@default]:  77%|███████▋  | 23/30 [26:27<06:54, 59.24s/it]Predicting[aime24-th@default]:  80%|████████  | 24/30 [26:51<04:52, 48.68s/it]Predicting[aime24-th@default]:  83%|████████▎ | 25/30 [28:29<05:17, 63.46s/it]Predicting[aime24-th@default]:  87%|████████▋ | 26/30 [31:44<06:50, 102.71s/it]Predicting[aime24-th@default]:  90%|█████████ | 27/30 [31:55<03:45, 75.29s/it] Predicting[aime24-th@default]:  93%|█████████▎| 28/30 [35:23<03:50, 115.17s/it]Predicting[aime24-th@default]:  97%|█████████▋| 29/30 [37:32<01:59, 119.19s/it]Predicting[aime24-th@default]: 100%|██████████| 30/30 [39:16<00:00, 114.72s/it]Predicting[aime24-th@default]: 100%|██████████| 30/30 [39:16<00:00, 78.55s/it] 
+Reviewing[aime24-th@default]:   0%|          | 0/30 [00:00<?, ?it/s]Reviewing[aime24-th@default]:   3%|▎         | 1/30 [00:00<00:14,  2.07it/s]Reviewing[aime24-th@default]: 100%|██████████| 30/30 [00:00<00:00, 61.46it/s]
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: 
+aime24-th report table:
++------------------------------------+-----------+----------+----------+-------+---------+---------+
+| Model                              | Dataset   | Metric   | Subset   |   Num |   Score | Cat.0   |
++====================================+===========+==========+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | aime24-th | mean_acc | default  |    30 |  0.1333 | default |
++------------------------------------+-----------+----------+----------+-------+---------+---------+ 
+[0m
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: Skipping report analysis (`analysis_report=False`).[0m
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: Dump report to: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/aime24-th/20260805_114829/reports/openthaigpt-1.6-72b-instruct-NVFP4/aime24-th.json 
+[0m
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: Overall report table: 
++------------------------------------+-----------+----------+----------+-------+---------+---------+
+| Model                              | Dataset   | Metric   | Subset   |   Num |   Score | Cat.0   |
++====================================+===========+==========+==========+=======+=========+=========+
+| openthaigpt-1.6-72b-instruct-NVFP4 | aime24-th | mean_acc | default  |    30 |  0.1333 | default |
++------------------------------------+-----------+----------+----------+-------+---------+---------+ 
+[0m
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: Finished evaluation for openthaigpt-1.6-72b-instruct-NVFP4 on ['aime24-th'][0m
+2026-08-05 12:27:52 - evalscope - [32mINFO[0m: Output directory: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg72b/aime24-th/20260805_114829[0m
