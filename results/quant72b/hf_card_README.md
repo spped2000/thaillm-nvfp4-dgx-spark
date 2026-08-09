@@ -79,7 +79,7 @@ all artifacts in [the study repo](https://github.com/spped2000/thaillm-nvfp4-dgx
 | Code-switching (Thai language purity) | **0.992** | 500 |
 | Thai tool-calling conformance (hermes) | 8/8 | 12 cases |
 | MATH500-TH (measured 2026-08-05) | 0.492 | 500 |
-| LiveCodeBench-TH Pass@1 (2026-08-05) | 0.545 | 111 |
+| LiveCodeBench-TH strict / partial-credit (2026-08-05) | 0.450 / 0.545 | 111 |
 | AIME24-TH (2026-08-05) | 0.133 | 30 |
 
 | Log-likelihood (lm-eval, completions API) | score |
@@ -105,9 +105,9 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 |---|---|---|
 | OpenThaiEval | 78.7 | **76.7** (n=1,232) |
 | Language accuracy / Thai purity* | 98.2 | **99.2*** (n=500) |
-| AIME24-TH | 6.67 | **13.33** (4/30 — tiny n, treat as ≥ anchor) |
-| MATH500-TH | 43.2 | **49.20** (n=500) |
-| LiveCodeBench-TH | 32.43 | **54.47** Pass@1 (n=111 — subset/release may differ from the card's) |
+| AIME24-TH | 6.67 (2/30) | 13.33 (4/30 — statistically indistinguishable, Fisher p=0.67) |
+| MATH500-TH | 43.2 (216/500) | **49.20** (246/500, same 500 items — gap NOT significant, p=0.066) |
+| LiveCodeBench-TH | 32.43 (=36/111, all-or-nothing) | **45.05 strict** (50/111 all public tests passed) — see scoring note* |
 | IFEval-TH (inst strict) | not published | **75.7** (n=215) |
 | Belebele-TH (lm-eval) | not published | **87.9** |
 | HellaSwag-TH | not published | **59.0** (n=300) |
@@ -116,6 +116,17 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 \* different tests with the same intent: the developer's "Language Accuracy"
 vs our WangchanThaiInstruct code-switching purity — close in spirit, not the
 same dataset, so compare loosely.
+
+\* **LCB-TH scoring note (audited 2026-08-05):** both sides use the identical
+111-problem `iapp/code_generation_lite-th` set (the card's 32.43 is exactly
+36/111). But the chinda-eval Thai adapter scores only the ~2.5 PUBLIC sample
+tests per problem (it silently drops the 2,337 encoded hidden tests) and
+awards per-problem partial credit. We therefore report the stricter
+all-public-tests-passed rate **45.05** (50/111) as the headline; the adapter's
+raw partial-credit mean was 54.47. Even 45.05 is easier than the card's
+protocol if their harness executed hidden tests — treat the comparison as
+indicative only. Our MATH500/AIME numbers use the same grader family the
+developer's own chinda-eval scripts use.
 
 ## Developer's published benchmarks (BF16 original — full table)
 
