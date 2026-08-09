@@ -79,7 +79,7 @@ all artifacts in [the study repo](https://github.com/spped2000/thaillm-nvfp4-dgx
 | Code-switching (Thai language purity) | **0.992** | 500 |
 | Thai tool-calling conformance (hermes) | 8/8 | 12 cases |
 | MATH500-TH (measured 2026-08-05) | 0.492 | 500 |
-| LiveCodeBench-TH strict / partial-credit (2026-08-05) | 0.450 / 0.545 | 111 |
+| LiveCodeBench-TH all-tests strict (2026-08-05, fixed adapter) | 0.351 | 111 |
 | AIME24-TH (2026-08-05) | 0.133 | 30 |
 
 | Log-likelihood (lm-eval, completions API) | score |
@@ -107,7 +107,7 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 | Language accuracy / Thai purity* | 98.2 | **99.2*** (n=500) |
 | AIME24-TH | 6.67 (2/30) | 13.33 (4/30 — statistically indistinguishable, Fisher p=0.67) |
 | MATH500-TH | 43.2 (216/500) | **49.20** (246/500, same 500 items — gap NOT significant, p=0.066) |
-| LiveCodeBench-TH | 32.43 (=36/111, all-or-nothing) | **45.05 strict** (50/111 all public tests passed) — see scoring note* |
+| LiveCodeBench-TH | 32.43 (=36/111, all-or-nothing) | **35.14** (39/111, ALL 2,448 tests incl. hidden, all-or-nothing — statistically indistinguishable from the card) |
 | IFEval-TH (inst strict) | not published | **75.7** (n=215) |
 | Belebele-TH (lm-eval) | not published | **87.9** |
 | HellaSwag-TH | not published | **59.0** (n=300) |
@@ -117,16 +117,17 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 vs our WangchanThaiInstruct code-switching purity — close in spirit, not the
 same dataset, so compare loosely.
 
-\* **LCB-TH scoring note (audited 2026-08-05):** both sides use the identical
+\* **LCB-TH scoring audit trail (2026-08-05):** both sides use the identical
 111-problem `iapp/code_generation_lite-th` set (the card's 32.43 is exactly
-36/111). But the chinda-eval Thai adapter scores only the ~2.5 PUBLIC sample
-tests per problem (it silently drops the 2,337 encoded hidden tests) and
-awards per-problem partial credit. We therefore report the stricter
-all-public-tests-passed rate **45.05** (50/111) as the headline; the adapter's
-raw partial-credit mean was 54.47. Even 45.05 is easier than the card's
-protocol if their harness executed hidden tests — treat the comparison as
-indicative only. Our MATH500/AIME numbers use the same grader family the
-developer's own chinda-eval scripts use.
+36/111). The stock chinda-eval Thai adapter silently drops the 2,337 encoded
+hidden tests and awards per-problem partial credit, which inflated our first
+reading to 54.47. We fixed the adapter (hidden-test decode, all-or-nothing
+scoring, strict output equality — fixes being offered upstream) and re-scored
+the SAME frozen greedy generations against all 2,448 tests: **35.14** — the
+number in the table, now genuinely on the card's scale. The intermediate
+values (54.47 partial-credit/public-only; 45.05 strict/public-only) are kept
+in the artifacts as the audit record. This is the expected physics: a
+quantized model scores ≈ its BF16 original, never dramatically above it.
 
 ## Developer's published benchmarks (BF16 original — full table)
 
