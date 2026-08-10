@@ -6,12 +6,15 @@ set -euo pipefail
 source "$(dirname "$0")/common.sh"
 
 TAG=${1:?usage: run_suite.sh <bf16|nvfp4>}
-OUT=$P/results/$TAG
+OUT=$GATE_ROOT/$TAG
 mkdir -p "$OUT"
 
 export HF_HUB_OFFLINE=1
 LM_EVAL=$VENV/bin/lm_eval
-MODEL_ARGS="model=eval-model,base_url=http://127.0.0.1:$PORT/v1/completions,tokenizer=ThaiLLM/ThaiLLM-30B,num_concurrent=8,max_retries=3,tokenized_requests=True,max_length=8192"
+# TOKENIZER: host path or HF id of the pair's own tokenizer. Sending another
+# model's token ids with tokenized_requests=True is silent wrong numbers.
+TOKENIZER=${TOKENIZER:-ThaiLLM/ThaiLLM-30B}
+MODEL_ARGS="model=eval-model,base_url=http://127.0.0.1:$PORT/v1/completions,tokenizer=$TOKENIZER,num_concurrent=8,max_retries=3,tokenized_requests=True,max_length=8192"
 
 echo "=== [$TAG] 0-shot multiple-choice suite ==="
 $LM_EVAL --model local-completions --model_args "$MODEL_ARGS" \

@@ -6,11 +6,14 @@ set -euo pipefail
 source "$(dirname "$0")/common.sh"
 
 TAG=${1:?usage: run_perf.sh <bf16|nvfp4>}
-OUT=$P/results/$TAG/perf
+OUT=$GATE_ROOT/$TAG/perf
 mkdir -p "$OUT"
 
+# PERF_TOKENIZER runs INSIDE the container (docker exec) — use a /work path
+# or HF id, never a host path.
+PERF_TOKENIZER=${PERF_TOKENIZER:-ThaiLLM/ThaiLLM-30B}
 BENCH_BASE="vllm bench serve --backend openai --base-url http://127.0.0.1:$PORT \
-  --model eval-model --tokenizer ThaiLLM/ThaiLLM-30B --dataset-name random \
+  --model eval-model --tokenizer $PERF_TOKENIZER --dataset-name random \
   --request-rate inf --ignore-eos --seed 0 \
   --percentile-metrics ttft,tpot,itl,e2el --metric-percentiles 50,90,99"
 

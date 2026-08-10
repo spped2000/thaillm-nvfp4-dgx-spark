@@ -41,7 +41,10 @@ model = AutoModelForCausalLM.from_pretrained(
     max_memory={0: GPU_MEM, "cpu": CPU_MEM},
     offload_folder=OFFLOAD,
 )
-print("hf_device_map tiers:", sorted({str(v) for v in model.hf_device_map.values()}))
+# hf_device_map is absent when the whole model fit on one device (small
+# models / big caps) — that IS the no-disk-tier signal, print it as such.
+tiers = sorted({str(v) for v in getattr(model, "hf_device_map", {}).values()}) or ["single-device"]
+print("hf_device_map tiers:", tiers)
 
 recipe = QuantizationModifier(
     targets="Linear",

@@ -16,8 +16,9 @@ import requests
 
 TAG = sys.argv[1]
 P = Path(__file__).resolve().parent.parent
-OUT = P / "results" / TAG / "usecases.json"
-URL = "http://127.0.0.1:8001/v1/completions"
+import os as _os
+OUT = Path(_os.environ.get("GATE_ROOT", P / "results")) / TAG / "usecases.json"
+URL = f"http://127.0.0.1:{_os.environ.get('PORT', '8001')}/v1/completions"
 MODEL = "eval-model"
 
 PROMPTS = {

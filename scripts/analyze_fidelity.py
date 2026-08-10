@@ -7,7 +7,8 @@ import json
 from pathlib import Path
 
 P = Path(__file__).resolve().parent.parent
-R = P / "results"
+import os as _os
+R = Path(_os.environ["GATE_ROOT"]) if _os.environ.get("GATE_ROOT") else P / "results"
 
 
 def load(tag):

@@ -1,0 +1,103 @@
+{
+    "name": "eval-model@ifeval-th",
+    "dataset_name": "ifeval-th",
+    "dataset_pretty_name": "IFEval-Thai",
+    "dataset_description": "IFEval Thai is a benchmark for evaluating instruction-following language models in Thai language, focusing on their ability to understand and respond to various prompts.",
+    "model_name": "eval-model",
+    "score": 0.0,
+    "metrics": [
+        {
+            "name": "mean_prompt_level_strict",
+            "num": 0,
+            "score": 0.0,
+            "macro_score": 0.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 0,
+                    "score": 0.0,
+                    "macro_score": 62.7907,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 62.7907,
+                            "num": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_prompt_level_loose",
+            "num": 0,
+            "score": 0.0,
+            "macro_score": 0.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 0,
+                    "score": 0.0,
+                    "macro_score": 64.6512,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 64.6512,
+                            "num": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_inst_level_strict",
+            "num": 0,
+            "score": 0.0,
+            "macro_score": 0.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 0,
+                    "score": 0.0,
+                    "macro_score": 69.3023,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 69.3023,
+                            "num": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_inst_level_loose",
+            "num": 0,
+            "score": 0.0,
+            "macro_score": 0.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 0,
+                    "score": 0.0,
+                    "macro_score": 70.8527,
+                    "subsets": [
+                        {
+                            "name": "default",
+                            "score": 70.8527,
+                            "num": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A"
+}

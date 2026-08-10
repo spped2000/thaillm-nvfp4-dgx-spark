@@ -1,0 +1,13 @@
+[PASS] auto      search_province_combining_marks    tool=search_documents thai_ok=True hazards=[]
+[PASS] auto      search_sara_am_and_tone            tool=search_documents thai_ok=True hazards=[]
+[PASS] auto      appointment_thai_name_date         tool=create_appointment thai_ok=True hazards=[]
+[PASS] auto      appointment_northern_hospital      tool=create_appointment thai_ok=True hazards=[]
+[PASS] required  search_province_combining_marks    tool=search_documents thai_ok=True hazards=[]
+[PASS] required  search_sara_am_and_tone            tool=search_documents thai_ok=True hazards=[]
+[PASS] required  appointment_thai_name_date         tool=create_appointment thai_ok=True hazards=[]
+[PASS] required  appointment_northern_hospital      tool=create_appointment thai_ok=True hazards=[]
+
+=== SUMMARY (Thai tool-calling conformance) ===
+mode        calls  tool_ok  json_ok  thai_ok  hazard  errors
+auto         4/4        4        4        4       0  -
+required     4/4        4        4        4       0  -

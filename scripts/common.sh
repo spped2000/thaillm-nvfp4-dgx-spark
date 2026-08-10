@@ -6,8 +6,12 @@ export P=/home/agicafet/Documents/ThaiLLM_Quantization
 export IMG=${IMG:-nvcr.io/nvidia/vllm:26.05.post1-py3}
 export HFC=$HOME/.cache/huggingface
 export PORT=${PORT:-8001}
-export BF16_MODEL=ThaiLLM/ThaiLLM-30B
-export NVFP4_MODEL=/work/models/ThaiLLM-30B-NVFP4
+# Overridable since the otg7b paired gate (2026-08-10); defaults preserve the
+# July ThaiLLM-30B study behaviour. GATE_ROOT redirects ALL gate outputs so a
+# new pair can never overwrite the published 30B artifacts under results/.
+export BF16_MODEL=${BF16_MODEL:-ThaiLLM/ThaiLLM-30B}
+export NVFP4_MODEL=${NVFP4_MODEL:-/work/models/ThaiLLM-30B-NVFP4}
+export GATE_ROOT=${GATE_ROOT:-$P/results}
 export VENV=$P/.venv-eval
 
 # Identical serving flags for both models (fairness contract).

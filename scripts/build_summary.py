@@ -6,7 +6,25 @@ import statistics
 from pathlib import Path
 
 P = Path(__file__).resolve().parent.parent
-R = P / "results"
+import os as _os
+R = Path(_os.environ["GATE_ROOT"]) if _os.environ.get("GATE_ROOT") else P / "results"
+
+
+def footprint():
+    if not _os.environ.get("GATE_ROOT"):
+        return {"bf16": {"disk_gb": 61.06, "load_s": 365.1, "weights_gib": 56.88},
+                "nvfp4": {"disk_gb": 18.12, "load_s": 109.3, "weights_gib": 16.85}}
+    out = {}
+    for tag in ("bf16", "nvfp4"):
+        load = None
+        f = R / tag / "load_seconds.txt"
+        if f.exists():
+            load = float(f.read_text().strip())
+        disk = _os.environ.get(f"FOOTPRINT_{tag.upper()}_DISK_GB")
+        out[tag] = {"disk_gb": float(disk) if disk else None,
+                    "load_s": load, "weights_gib": None}
+    return out
+
 
 
 def latest_results(path):
@@ -81,10 +99,11 @@ def main():
         "paired": json.load(open(R / "paired_analysis.json")),
         "fidelity": json.load(open(R / "fidelity.json")),
         "perf": perf(),
-        "footprint": {
-            "bf16": {"disk_gb": 61.06, "load_s": 365.1, "weights_gib": 56.88},
-            "nvfp4": {"disk_gb": 18.12, "load_s": 109.3, "weights_gib": 16.85},
-        },
+        # Legacy constants are the July ThaiLLM-30B measurements and apply ONLY
+        # to the default results/ root. Under GATE_ROOT they would silently
+        # publish another model's footprint - so there they come from
+        # <tag>/load_seconds.txt + FOOTPRINT_<TAG>_DISK_GB env, else null.
+        "footprint": footprint(),
         "references": references(),
     }
     (R / "summary_data.json").write_text(json.dumps(summary, indent=2))

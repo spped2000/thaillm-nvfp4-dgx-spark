@@ -1,0 +1,105 @@
+2026-08-10 21:19:25 - evalscope - INFO: Creating model eval-model with eval_type=openai_api base_url=http://127.0.0.1:8014/v1/chat/completions, config={'timeout': 1200.0, 'batch_size': 4, 'max_tokens': 4096, 'temperature': 0.0, 'extra_body': {'chat_template_kwargs': {'enable_thinking': False}}}, model_args={}
+2026-08-10 21:19:26 - evalscope - INFO: Dump task config to /home/agicafet/Documents/ThaiLLM_Quantization/results/otg7b_gate/gen_nvfp4/aime24-th/20260810_211925/configs/task_config_463f40.yaml
+2026-08-10 21:19:26 - evalscope - INFO: {
+    "model": "eval-model",
+    "model_id": "eval-model",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "aime24-th"
+    ],
+    "dataset_args": {
+        "aime24-th": {
+            "name": "aime24-th",
+            "dataset_id": "iapp/aime_2024-th",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "train",
+            "prompt_template": "{question}\nกรุณาแสดงวิธีคิดแบบขั้นตอนอย่างละเอียด และใส่คำตอบสุดท้ายให้ชัดเจนใน \\boxed{{}}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "AIME-2024-Thai",
+            "description": "The AIME 2024 Thai benchmark is a translation of the American Invitational Mathematics Examination problems. This benchmark tests a model's ability to solve challenging mathematics problems in Thai language by generating step-by-step solutions and providing the correct final answer.",
+            "tags": [
+                "Math",
+                "Reasoning"
+            ],
+            "filters": null,
+            "metric_list": [
+                {
+                    "acc": {
+                        "numeric": true
+                    }
+                }
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "extra_params": {
+                "dataset_hub": "huggingface"
+            }
+        }
+    },
+    "dataset_dir": "/home/agicafet/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "generation_config": {
+        "timeout": 1200.0,
+        "batch_size": 4,
+        "max_tokens": 4096,
+        "temperature": 0.0,
+        "extra_body": {
+            "chat_template_kwargs": {
+                "enable_thinking": false
+            }
+        }
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 4,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/agicafet/Documents/ThaiLLM_Quantization/results/otg7b_gate/gen_nvfp4/aime24-th/20260810_211925",
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8014/v1/chat/completions",
+    "timeout": 1200.0,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false
+}
+2026-08-10 21:24:43 - evalscope - INFO: 
+aime24-th report table:
++------------+-----------+----------+----------+-------+---------+---------+
+| Model      | Dataset   | Metric   | Subset   |   Num |   Score | Cat.0   |
++============+===========+==========+==========+=======+=========+=========+
+| eval-model | aime24-th | mean_acc | default  |    30 |  0.0333 | default |
++------------+-----------+----------+----------+-------+---------+---------+ 
+
+2026-08-10 21:24:43 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-08-10 21:24:43 - evalscope - INFO: Dump report to: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg7b_gate/gen_nvfp4/aime24-th/20260810_211925/reports/eval-model/aime24-th.json 
+
+2026-08-10 21:24:43 - evalscope - INFO: Overall report table: 
++------------+-----------+----------+----------+-------+---------+---------+
+| Model      | Dataset   | Metric   | Subset   |   Num |   Score | Cat.0   |
++============+===========+==========+==========+=======+=========+=========+
+| eval-model | aime24-th | mean_acc | default  |    30 |  0.0333 | default |
++------------+-----------+----------+----------+-------+---------+---------+ 
+
+2026-08-10 21:24:43 - evalscope - INFO: Finished evaluation for eval-model on ['aime24-th']
+2026-08-10 21:24:43 - evalscope - INFO: Output directory: /home/agicafet/Documents/ThaiLLM_Quantization/results/otg7b_gate/gen_nvfp4/aime24-th/20260810_211925

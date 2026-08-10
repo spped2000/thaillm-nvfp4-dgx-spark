@@ -1,0 +1,718 @@
+{
+  "per_task": {
+    "arc_challenge": {
+      "n": 1172,
+      "both_right": 531,
+      "both_wrong": 484,
+      "bf16_only_right": 89,
+      "nvfp4_only_right": 68,
+      "delta_acc": -0.017918088737201365,
+      "mcnemar_p": 0.11015726076112858
+    },
+    "belebele_tha_Thai": {
+      "n": 900,
+      "both_right": 658,
+      "both_wrong": 162,
+      "bf16_only_right": 49,
+      "nvfp4_only_right": 31,
+      "delta_acc": -0.02,
+      "mcnemar_p": 0.05666442634512015
+    },
+    "hellaswag": {
+      "n": 10042,
+      "both_right": 5780,
+      "both_wrong": 3887,
+      "bf16_only_right": 249,
+      "nvfp4_only_right": 126,
+      "delta_acc": -0.012248556064528978,
+      "mcnemar_p": 2.065258016563824e-10
+    },
+    "mmlu_abstract_algebra": {
+      "n": 50,
+      "both_right": 27,
+      "both_wrong": 17,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6875000000000014
+    },
+    "mmlu_anatomy": {
+      "n": 50,
+      "both_right": 33,
+      "both_wrong": 17,
+      "bf16_only_right": 0,
+      "nvfp4_only_right": 0,
+      "delta_acc": 0.0,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_astronomy": {
+      "n": 50,
+      "both_right": 43,
+      "both_wrong": 4,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_business_ethics": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 5,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_clinical_knowledge": {
+      "n": 50,
+      "both_right": 34,
+      "both_wrong": 12,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "mmlu_college_biology": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 8,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_college_chemistry": {
+      "n": 50,
+      "both_right": 18,
+      "both_wrong": 23,
+      "bf16_only_right": 6,
+      "nvfp4_only_right": 3,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.5078124999999986
+    },
+    "mmlu_college_computer_science": {
+      "n": 50,
+      "both_right": 29,
+      "both_wrong": 16,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_college_mathematics": {
+      "n": 50,
+      "both_right": 18,
+      "both_wrong": 26,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6875000000000014
+    },
+    "mmlu_college_medicine": {
+      "n": 50,
+      "both_right": 31,
+      "both_wrong": 14,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 3,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_college_physics": {
+      "n": 50,
+      "both_right": 21,
+      "both_wrong": 21,
+      "bf16_only_right": 6,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.08,
+      "mcnemar_p": 0.2890624999999995
+    },
+    "mmlu_computer_security": {
+      "n": 50,
+      "both_right": 41,
+      "both_wrong": 6,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_conceptual_physics": {
+      "n": 50,
+      "both_right": 34,
+      "both_wrong": 8,
+      "bf16_only_right": 8,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.16,
+      "mcnemar_p": 0.007812500000000002
+    },
+    "mmlu_econometrics": {
+      "n": 50,
+      "both_right": 31,
+      "both_wrong": 15,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "mmlu_electrical_engineering": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 9,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_elementary_mathematics": {
+      "n": 50,
+      "both_right": 33,
+      "both_wrong": 12,
+      "bf16_only_right": 5,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.1,
+      "mcnemar_p": 0.0625
+    },
+    "mmlu_formal_logic": {
+      "n": 50,
+      "both_right": 26,
+      "both_wrong": 17,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 3,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_global_facts": {
+      "n": 50,
+      "both_right": 16,
+      "both_wrong": 23,
+      "bf16_only_right": 7,
+      "nvfp4_only_right": 4,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.5488281250000007
+    },
+    "mmlu_high_school_biology": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 9,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.5
+    },
+    "mmlu_high_school_chemistry": {
+      "n": 50,
+      "both_right": 29,
+      "both_wrong": 17,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "mmlu_high_school_computer_science": {
+      "n": 50,
+      "both_right": 44,
+      "both_wrong": 3,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_high_school_european_history": {
+      "n": 50,
+      "both_right": 38,
+      "both_wrong": 9,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_high_school_geography": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 6,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "mmlu_high_school_government_and_politics": {
+      "n": 50,
+      "both_right": 46,
+      "both_wrong": 2,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 1,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999998
+    },
+    "mmlu_high_school_macroeconomics": {
+      "n": 50,
+      "both_right": 33,
+      "both_wrong": 10,
+      "bf16_only_right": 5,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.453125
+    },
+    "mmlu_high_school_mathematics": {
+      "n": 50,
+      "both_right": 25,
+      "both_wrong": 22,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_high_school_microeconomics": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 7,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_high_school_physics": {
+      "n": 50,
+      "both_right": 25,
+      "both_wrong": 18,
+      "bf16_only_right": 5,
+      "nvfp4_only_right": 2,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.453125
+    },
+    "mmlu_high_school_psychology": {
+      "n": 50,
+      "both_right": 45,
+      "both_wrong": 3,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 1,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999998
+    },
+    "mmlu_high_school_statistics": {
+      "n": 50,
+      "both_right": 32,
+      "both_wrong": 14,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.08,
+      "mcnemar_p": 0.125
+    },
+    "mmlu_high_school_us_history": {
+      "n": 50,
+      "both_right": 45,
+      "both_wrong": 3,
+      "bf16_only_right": 0,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.04,
+      "mcnemar_p": 0.5
+    },
+    "mmlu_high_school_world_history": {
+      "n": 50,
+      "both_right": 44,
+      "both_wrong": 4,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 1,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999998
+    },
+    "mmlu_human_aging": {
+      "n": 50,
+      "both_right": 38,
+      "both_wrong": 9,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_human_sexuality": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 8,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 1,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999998
+    },
+    "mmlu_international_law": {
+      "n": 50,
+      "both_right": 44,
+      "both_wrong": 6,
+      "bf16_only_right": 0,
+      "nvfp4_only_right": 0,
+      "delta_acc": 0.0,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_jurisprudence": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 9,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.5
+    },
+    "mmlu_logical_fallacies": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 7,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "mmlu_machine_learning": {
+      "n": 50,
+      "both_right": 27,
+      "both_wrong": 17,
+      "bf16_only_right": 6,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.12,
+      "mcnemar_p": 0.031250000000000014
+    },
+    "mmlu_management": {
+      "n": 50,
+      "both_right": 45,
+      "both_wrong": 3,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.5
+    },
+    "mmlu_marketing": {
+      "n": 50,
+      "both_right": 45,
+      "both_wrong": 3,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 1,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999998
+    },
+    "mmlu_medical_genetics": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 7,
+      "bf16_only_right": 0,
+      "nvfp4_only_right": 4,
+      "delta_acc": 0.08,
+      "mcnemar_p": 0.125
+    },
+    "mmlu_miscellaneous": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 8,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.25000000000000006
+    },
+    "mmlu_moral_disputes": {
+      "n": 50,
+      "both_right": 34,
+      "both_wrong": 12,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "mmlu_moral_scenarios": {
+      "n": 50,
+      "both_right": 22,
+      "both_wrong": 17,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 7,
+      "delta_acc": 0.06,
+      "mcnemar_p": 0.5488281250000007
+    },
+    "mmlu_nutrition": {
+      "n": 50,
+      "both_right": 41,
+      "both_wrong": 4,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 3,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_philosophy": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 6,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.08,
+      "mcnemar_p": 0.125
+    },
+    "mmlu_prehistory": {
+      "n": 50,
+      "both_right": 39,
+      "both_wrong": 7,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "mmlu_professional_accounting": {
+      "n": 50,
+      "both_right": 22,
+      "both_wrong": 20,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 4,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999987
+    },
+    "mmlu_professional_law": {
+      "n": 50,
+      "both_right": 26,
+      "both_wrong": 21,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_professional_medicine": {
+      "n": 50,
+      "both_right": 36,
+      "both_wrong": 10,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "mmlu_professional_psychology": {
+      "n": 50,
+      "both_right": 38,
+      "both_wrong": 9,
+      "bf16_only_right": 3,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.25000000000000006
+    },
+    "mmlu_public_relations": {
+      "n": 50,
+      "both_right": 30,
+      "both_wrong": 15,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.06,
+      "mcnemar_p": 0.37500000000000044
+    },
+    "mmlu_security_studies": {
+      "n": 50,
+      "both_right": 32,
+      "both_wrong": 15,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_sociology": {
+      "n": 50,
+      "both_right": 38,
+      "both_wrong": 8,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "mmlu_us_foreign_policy": {
+      "n": 50,
+      "both_right": 45,
+      "both_wrong": 4,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 0,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_virology": {
+      "n": 50,
+      "both_right": 24,
+      "both_wrong": 19,
+      "bf16_only_right": 4,
+      "nvfp4_only_right": 3,
+      "delta_acc": -0.02,
+      "mcnemar_p": 1.0
+    },
+    "mmlu_world_religions": {
+      "n": 50,
+      "both_right": 40,
+      "both_wrong": 6,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "thai_exam_a_level": {
+      "n": 127,
+      "both_right": 20,
+      "both_wrong": 91,
+      "bf16_only_right": 5,
+      "nvfp4_only_right": 11,
+      "delta_acc": 0.047244094488188976,
+      "mcnemar_p": 0.21011352539062494
+    },
+    "thai_exam_ic": {
+      "n": 95,
+      "both_right": 14,
+      "both_wrong": 76,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 4,
+      "delta_acc": 0.031578947368421054,
+      "mcnemar_p": 0.37500000000000044
+    },
+    "thai_exam_onet": {
+      "n": 162,
+      "both_right": 28,
+      "both_wrong": 117,
+      "bf16_only_right": 10,
+      "nvfp4_only_right": 7,
+      "delta_acc": -0.018518518518518517,
+      "mcnemar_p": 0.6290588378906263
+    },
+    "thai_exam_tgat": {
+      "n": 65,
+      "both_right": 11,
+      "both_wrong": 50,
+      "bf16_only_right": 1,
+      "nvfp4_only_right": 3,
+      "delta_acc": 0.03076923076923077,
+      "mcnemar_p": 0.6249999999999994
+    },
+    "thai_exam_tpat1": {
+      "n": 116,
+      "both_right": 28,
+      "both_wrong": 81,
+      "bf16_only_right": 6,
+      "nvfp4_only_right": 1,
+      "delta_acc": -0.04310344827586207,
+      "mcnemar_p": 0.12499999999999994
+    },
+    "thai_exam_v2_a_level": {
+      "n": 127,
+      "both_right": 39,
+      "both_wrong": 68,
+      "bf16_only_right": 9,
+      "nvfp4_only_right": 11,
+      "delta_acc": 0.015748031496062992,
+      "mcnemar_p": 0.8238029479980482
+    },
+    "thai_exam_v2_ic": {
+      "n": 95,
+      "both_right": 46,
+      "both_wrong": 31,
+      "bf16_only_right": 14,
+      "nvfp4_only_right": 4,
+      "delta_acc": -0.10526315789473684,
+      "mcnemar_p": 0.030883789062499986
+    },
+    "thai_exam_v2_onet": {
+      "n": 162,
+      "both_right": 60,
+      "both_wrong": 79,
+      "bf16_only_right": 10,
+      "nvfp4_only_right": 13,
+      "delta_acc": 0.018518518518518517,
+      "mcnemar_p": 0.6776394844055212
+    },
+    "thai_exam_v2_tgat": {
+      "n": 65,
+      "both_right": 42,
+      "both_wrong": 19,
+      "bf16_only_right": 2,
+      "nvfp4_only_right": 2,
+      "delta_acc": 0.0,
+      "mcnemar_p": 0.9999999999999994
+    },
+    "thai_exam_v2_tpat1": {
+      "n": 116,
+      "both_right": 42,
+      "both_wrong": 57,
+      "bf16_only_right": 7,
+      "nvfp4_only_right": 10,
+      "delta_acc": 0.02586206896551724,
+      "mcnemar_p": 0.6290588378906263
+    },
+    "winogrande": {
+      "n": 1267,
+      "both_right": 750,
+      "both_wrong": 262,
+      "bf16_only_right": 147,
+      "nvfp4_only_right": 108,
+      "delta_acc": -0.030781373322809787,
+      "mcnemar_p": 0.017157958794825994
+    },
+    "xcopa_th": {
+      "n": 500,
+      "both_right": 277,
+      "both_wrong": 184,
+      "bf16_only_right": 20,
+      "nvfp4_only_right": 19,
+      "delta_acc": -0.002,
+      "mcnemar_p": 1.0
+    },
+    "xnli_th": {
+      "n": 2490,
+      "both_right": 783,
+      "both_wrong": 1060,
+      "bf16_only_right": 339,
+      "nvfp4_only_right": 308,
+      "delta_acc": -0.012449799196787148,
+      "mcnemar_p": 0.23820675600860278
+    }
+  },
+  "groups": {
+    "english_mc(all)": {
+      "n": 12481,
+      "bf16_only_right": 485,
+      "nvfp4_only_right": 302,
+      "delta_acc": -0.014662286675747135,
+      "mcnemar_p": 7.20218186376992e-11
+    },
+    "thai_mc(all)": {
+      "n": 3890,
+      "bf16_only_right": 408,
+      "nvfp4_only_right": 358,
+      "delta_acc": -0.012853470437017995,
+      "mcnemar_p": 0.07658507980141246
+    },
+    "mmlu(all)": {
+      "n": 2850,
+      "bf16_only_right": 153,
+      "nvfp4_only_right": 86,
+      "delta_acc": -0.023508771929824562,
+      "mcnemar_p": 1.742515914261256e-05
+    },
+    "thai_exam_v1(all)": {
+      "n": 565,
+      "bf16_only_right": 23,
+      "nvfp4_only_right": 26,
+      "delta_acc": 0.005309734513274336,
+      "mcnemar_p": 0.7754496546815761
+    },
+    "thai_exam_v2(all)": {
+      "n": 565,
+      "bf16_only_right": 42,
+      "nvfp4_only_right": 40,
+      "delta_acc": -0.0035398230088495575,
+      "mcnemar_p": 0.9121566075525573
+    },
+    "ALL_MC": {
+      "n": 19786,
+      "bf16_only_right": 1088,
+      "nvfp4_only_right": 786,
+      "delta_acc": -0.015263317497220256,
+      "mcnemar_p": 3.2164096454194835e-12,
+      "note": "excludes thai_exam v1 (broken template, double-counts v2 questions)"
+    }
+  },
+  "matched_limits": {
+    "bf16": {
+      "mmlu_first10_acc": 0.7736842105263158,
+      "mmlu_first10_n": 570,
+      "thai_wiki_bpb_first200": 0.3949079134332711
+    },
+    "nvfp4": {
+      "mmlu_first10_acc": 0.7298245614035088,
+      "mmlu_first10_n": 570,
+      "thai_wiki_bpb_first200": 0.4125152317677803
+    }
+  }
+}
