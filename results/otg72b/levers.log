@@ -1,0 +1,58 @@
+### 18:39:50 arm ngram boot 1
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 90, in run_vendored
+    assert_boot_content(
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 118, in assert_boot_content
+    raise BenchError(
+thai_vllm.bench.run.BenchError: scenario 'agentic' produced ZERO Thai output and that was not pre-declared. A legitimate zero is a measurement, but it must be declared, never silently accepted.
+### 18:57:02 arm ngram boot 2
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 90, in run_vendored
+    assert_boot_content(
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 118, in assert_boot_content
+    raise BenchError(
+thai_vllm.bench.run.BenchError: scenario 'agentic' produced ZERO Thai output and that was not pre-declared. A legitimate zero is a measurement, but it must be declared, never silently accepted.
+ARM_FINAL ngram chat=6.78 tok/s +-0.9% ttft=0.21
+STAGE_DONE ngram
+### 19:14:50 arm kvfp8 boot 1
+BOOT_OK 1
+### 19:37:46 arm kvfp8 boot 2
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 90, in run_vendored
+    assert_boot_content(
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 118, in assert_boot_content
+    raise BenchError(
+thai_vllm.bench.run.BenchError: scenario 'agentic' produced ZERO Thai output and that was not pre-declared. A legitimate zero is a measurement, but it must be declared, never silently accepted.
+ARM_FINAL kvfp8 chat=5.02 tok/s +-1.0% ttft=0.26
+STAGE_DONE kvfp8
+### 19:59:12 conc kvfp8 c1
+Request throughput (req/s):              0.02      
+Output token throughput (tok/s):         4.93      
+### 20:06:17 conc kvfp8 c4
+Request throughput (req/s):              0.08      
+Output token throughput (tok/s):         19.34     
+### 20:13:27 conc kvfp8 c8
+Request throughput (req/s):              0.08      
+Output token throughput (tok/s):         19.54     
+### 20:27:32 baseline relaunch for conc sweep
+### 20:35:35 conc baseline c1
+Request throughput (req/s):              0.02      
+Output token throughput (tok/s):         4.96      
+### 20:42:40 conc baseline c4
+Request throughput (req/s):              0.07      
+Output token throughput (tok/s):         19.01     
+### 20:49:57 conc baseline c8
+Request throughput (req/s):              0.07      
+Output token throughput (tok/s):         19.07     
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 90, in run_vendored
+    assert_boot_content(
+  File "/home/agicafet/Documents/thai-vllm/src/thai_vllm/bench/run.py", line 118, in assert_boot_content
+    raise BenchError(
+thai_vllm.bench.run.BenchError: scenario 'agentic' produced ZERO Thai output and that was not pre-declared. A legitimate zero is a measurement, but it must be declared, never silently accepted.
+STAGE_DONE conc
+LEVERS_COMPLETE 21:17:31

@@ -1,0 +1,95 @@
+{
+ "agentic": {
+  "boots": [
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 3.8129,
+    "ttft_p90_s": 5.1225,
+    "decode_tok_s_median": 9.14,
+    "decode_chars_s_median": 0.0,
+    "chars_per_token_median": 0.0,
+    "zero_thai_output": true
+   },
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 3.2915,
+    "ttft_p90_s": 5.1378,
+    "decode_tok_s_median": 10.04,
+    "decode_chars_s_median": 0.0,
+    "chars_per_token_median": 0.0,
+    "zero_thai_output": true
+   }
+  ],
+  "n_boots": 2,
+  "decode_tok_s_median": 9.59,
+  "decode_tok_s_median_boot_spread_pct": 9.4,
+  "decode_chars_s_median": 0.0,
+  "decode_chars_s_median_boot_spread_pct": null,
+  "ttft_p50_s": 3.55,
+  "ttft_p50_s_boot_spread_pct": 14.7,
+  "chars_per_token_median": 0.0,
+  "zero_thai_output": true
+ },
+ "rag": {
+  "boots": [
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 0.2303,
+    "ttft_p90_s": 0.2329,
+    "decode_tok_s_median": 13.4,
+    "decode_chars_s_median": 22.88,
+    "chars_per_token_median": 1.849,
+    "zero_thai_output": false
+   },
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 0.2289,
+    "ttft_p90_s": 0.2305,
+    "decode_tok_s_median": 11.45,
+    "decode_chars_s_median": 20.48,
+    "chars_per_token_median": 1.86,
+    "zero_thai_output": false
+   }
+  ],
+  "n_boots": 2,
+  "decode_tok_s_median": 12.43,
+  "decode_tok_s_median_boot_spread_pct": 15.7,
+  "decode_chars_s_median": 21.68,
+  "decode_chars_s_median_boot_spread_pct": 11.1,
+  "ttft_p50_s": 0.23,
+  "ttft_p50_s_boot_spread_pct": 0.6,
+  "chars_per_token_median": 1.855,
+  "zero_thai_output": false
+ },
+ "chat": {
+  "boots": [
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 0.2074,
+    "ttft_p90_s": 0.2092,
+    "decode_tok_s_median": 6.81,
+    "decode_chars_s_median": 12.16,
+    "chars_per_token_median": 1.785,
+    "zero_thai_output": false
+   },
+   {
+    "n_after_discard": 8,
+    "ttft_p50_s": 0.2069,
+    "ttft_p90_s": 0.2112,
+    "decode_tok_s_median": 6.75,
+    "decode_chars_s_median": 11.78,
+    "chars_per_token_median": 1.758,
+    "zero_thai_output": false
+   }
+  ],
+  "n_boots": 2,
+  "decode_tok_s_median": 6.78,
+  "decode_tok_s_median_boot_spread_pct": 0.9,
+  "decode_chars_s_median": 11.97,
+  "decode_chars_s_median_boot_spread_pct": 3.2,
+  "ttft_p50_s": 0.21,
+  "ttft_p50_s_boot_spread_pct": 0.2,
+  "chars_per_token_median": 1.772,
+  "zero_thai_output": false
+ }
+}
