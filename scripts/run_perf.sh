@@ -7,6 +7,7 @@ source "$(dirname "$0")/common.sh"
 
 TAG=${1:?usage: run_perf.sh <bf16|nvfp4>}
 OUT=$GATE_ROOT/$TAG/perf
+RELOUT=${GATE_ROOT#"$P/"}   # container-side prefix under /work
 mkdir -p "$OUT"
 
 # PERF_TOKENIZER runs INSIDE the container (docker exec) — use a /work path
@@ -29,7 +30,7 @@ for cfg in "1024 128 1 16" "1024 128 4 64" "128 1024 1 8" "128 1024 4 32"; do
   for r in 1 2 3; do
     docker exec eval-vllm bash -c "$BENCH_BASE --random-input-len $IN --random-output-len $OUTLEN \
       --max-concurrency $C --num-prompts $N \
-      --save-result --result-dir /work/results/$TAG/perf \
+      --save-result --result-dir /work/$RELOUT/$TAG/perf \
       --result-filename ${IN}x${OUTLEN}_c${C}_r${r}.json" 2>&1 | tail -25 | tee "$OUT/${IN}x${OUTLEN}_c${C}_r${r}.log"
     sleep 30
   done

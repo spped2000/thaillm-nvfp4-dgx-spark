@@ -1,0 +1,966 @@
+{
+  "primary_accuracy": {
+    "bf16": {
+      "belebele_tha_Thai": [
+        0.7855555555555556,
+        0.013688819788367295
+      ],
+      "xnli_th": [
+        0.4506024096385542,
+        0.009973042774811572
+      ],
+      "xcopa_th": [
+        0.594,
+        0.021983962090086417
+      ],
+      "thai_exam_v2": [
+        0.479646017699115,
+        0.020597408644799073
+      ],
+      "thai_exam_v2_subsets": {
+        "a_level": 0.3779527559055118,
+        "ic": 0.631578947368421,
+        "onet": 0.43209876543209874,
+        "tgat": 0.676923076923077,
+        "tpat1": 0.4224137931034483
+      },
+      "hellaswag": [
+        0.6003784106751643,
+        0.004888194985996998
+      ],
+      "hellaswag_acc_norm": [
+        0.8036247759410476,
+        0.0039644370122497935
+      ],
+      "arc_challenge": [
+        0.5290102389078498,
+        0.014586776355294413
+      ],
+      "winogrande": [
+        0.7079715864246251,
+        0.01277919849175396
+      ],
+      "mmlu_5shot_50": [
+        0.7487719298245614,
+        0.007785414863299819
+      ],
+      "thai_wiki_bpb": 0.3927065105452547,
+      "thai_wiki_byte_ppl": 1.3128540225403653,
+      "wikitext_bpb": 0.6253346792126566,
+      "wikitext_word_ppl": 10.153789348174305
+    },
+    "nvfp4": {
+      "belebele_tha_Thai": [
+        0.7711111111111111,
+        0.014011705158884454
+      ],
+      "xnli_th": [
+        0.4530120481927711,
+        0.009977719904353874
+      ],
+      "xcopa_th": [
+        0.586,
+        0.022049497969827858
+      ],
+      "thai_exam_v2": [
+        0.48849557522123893,
+        0.020588306730760675
+      ],
+      "thai_exam_v2_subsets": {
+        "a_level": 0.3464566929133858,
+        "ic": 0.6105263157894737,
+        "onet": 0.4876543209876543,
+        "tgat": 0.6923076923076923,
+        "tpat1": 0.43103448275862066
+      },
+      "hellaswag": [
+        0.5941047600079665,
+        0.004900608529778677
+      ],
+      "hellaswag_acc_norm": [
+        0.7948615813582952,
+        0.004029774750192085
+      ],
+      "arc_challenge": [
+        0.5315699658703071,
+        0.014582236460866984
+      ],
+      "winogrande": [
+        0.7024467245461721,
+        0.01284908525461453
+      ],
+      "mmlu_5shot_50": [
+        0.7371929824561404,
+        0.007861049182242733
+      ],
+      "thai_wiki_bpb": 0.4033991957622943,
+      "thai_wiki_byte_ppl": 1.3226205254886234,
+      "wikitext_bpb": 0.6387961681900715,
+      "wikitext_word_ppl": 10.673274709165259
+    }
+  },
+  "paired": {
+    "per_task": {
+      "arc_challenge": {
+        "n": 1172,
+        "both_right": 561,
+        "both_wrong": 490,
+        "bf16_only_right": 59,
+        "nvfp4_only_right": 62,
+        "delta_acc": 0.002559726962457338,
+        "mcnemar_p": 0.8558215992111079
+      },
+      "belebele_tha_Thai": {
+        "n": 900,
+        "both_right": 674,
+        "both_wrong": 173,
+        "bf16_only_right": 33,
+        "nvfp4_only_right": 20,
+        "delta_acc": -0.014444444444444444,
+        "mcnemar_p": 0.09837064844049138
+      },
+      "hellaswag": {
+        "n": 10042,
+        "both_right": 5864,
+        "both_wrong": 3911,
+        "bf16_only_right": 165,
+        "nvfp4_only_right": 102,
+        "delta_acc": -0.00627365066719777,
+        "mcnemar_p": 0.00013867441466840834
+      },
+      "mmlu_abstract_algebra": {
+        "n": 50,
+        "both_right": 29,
+        "both_wrong": 19,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_anatomy": {
+        "n": 50,
+        "both_right": 33,
+        "both_wrong": 16,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_astronomy": {
+        "n": 50,
+        "both_right": 44,
+        "both_wrong": 5,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_business_ethics": {
+        "n": 50,
+        "both_right": 41,
+        "both_wrong": 4,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_clinical_knowledge": {
+        "n": 50,
+        "both_right": 35,
+        "both_wrong": 12,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_college_biology": {
+        "n": 50,
+        "both_right": 40,
+        "both_wrong": 9,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_college_chemistry": {
+        "n": 50,
+        "both_right": 21,
+        "both_wrong": 25,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.6249999999999994
+      },
+      "mmlu_college_computer_science": {
+        "n": 50,
+        "both_right": 29,
+        "both_wrong": 15,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.0,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_college_mathematics": {
+        "n": 50,
+        "both_right": 20,
+        "both_wrong": 24,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 4,
+        "delta_acc": 0.04,
+        "mcnemar_p": 0.6875000000000014
+      },
+      "mmlu_college_medicine": {
+        "n": 50,
+        "both_right": 31,
+        "both_wrong": 16,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_college_physics": {
+        "n": 50,
+        "both_right": 23,
+        "both_wrong": 20,
+        "bf16_only_right": 4,
+        "nvfp4_only_right": 3,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_computer_security": {
+        "n": 50,
+        "both_right": 42,
+        "both_wrong": 7,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_conceptual_physics": {
+        "n": 50,
+        "both_right": 39,
+        "both_wrong": 8,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_econometrics": {
+        "n": 50,
+        "both_right": 30,
+        "both_wrong": 15,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 2,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_electrical_engineering": {
+        "n": 50,
+        "both_right": 38,
+        "both_wrong": 7,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 2,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_elementary_mathematics": {
+        "n": 50,
+        "both_right": 37,
+        "both_wrong": 11,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "mmlu_formal_logic": {
+        "n": 50,
+        "both_right": 28,
+        "both_wrong": 17,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_global_facts": {
+        "n": 50,
+        "both_right": 21,
+        "both_wrong": 27,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_high_school_biology": {
+        "n": 50,
+        "both_right": 40,
+        "both_wrong": 9,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_chemistry": {
+        "n": 50,
+        "both_right": 28,
+        "both_wrong": 16,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.0,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_computer_science": {
+        "n": 50,
+        "both_right": 45,
+        "both_wrong": 3,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "mmlu_high_school_european_history": {
+        "n": 50,
+        "both_right": 37,
+        "both_wrong": 10,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_geography": {
+        "n": 50,
+        "both_right": 42,
+        "both_wrong": 5,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_government_and_politics": {
+        "n": 50,
+        "both_right": 47,
+        "both_wrong": 3,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 0,
+        "delta_acc": 0.0,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_macroeconomics": {
+        "n": 50,
+        "both_right": 37,
+        "both_wrong": 11,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "mmlu_high_school_mathematics": {
+        "n": 50,
+        "both_right": 25,
+        "both_wrong": 23,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_high_school_microeconomics": {
+        "n": 50,
+        "both_right": 40,
+        "both_wrong": 7,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_physics": {
+        "n": 50,
+        "both_right": 26,
+        "both_wrong": 18,
+        "bf16_only_right": 4,
+        "nvfp4_only_right": 2,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.6875000000000014
+      },
+      "mmlu_high_school_psychology": {
+        "n": 50,
+        "both_right": 46,
+        "both_wrong": 3,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_statistics": {
+        "n": 50,
+        "both_right": 33,
+        "both_wrong": 14,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_high_school_us_history": {
+        "n": 50,
+        "both_right": 44,
+        "both_wrong": 3,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_high_school_world_history": {
+        "n": 50,
+        "both_right": 44,
+        "both_wrong": 4,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "mmlu_human_aging": {
+        "n": 50,
+        "both_right": 39,
+        "both_wrong": 10,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_human_sexuality": {
+        "n": 50,
+        "both_right": 41,
+        "both_wrong": 8,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_international_law": {
+        "n": 50,
+        "both_right": 43,
+        "both_wrong": 6,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_jurisprudence": {
+        "n": 50,
+        "both_right": 38,
+        "both_wrong": 9,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_logical_fallacies": {
+        "n": 50,
+        "both_right": 41,
+        "both_wrong": 7,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "mmlu_machine_learning": {
+        "n": 50,
+        "both_right": 30,
+        "both_wrong": 17,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_management": {
+        "n": 50,
+        "both_right": 45,
+        "both_wrong": 3,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_marketing": {
+        "n": 50,
+        "both_right": 45,
+        "both_wrong": 4,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_medical_genetics": {
+        "n": 50,
+        "both_right": 39,
+        "both_wrong": 8,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_miscellaneous": {
+        "n": 50,
+        "both_right": 41,
+        "both_wrong": 8,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_moral_disputes": {
+        "n": 50,
+        "both_right": 35,
+        "both_wrong": 12,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_moral_scenarios": {
+        "n": 50,
+        "both_right": 25,
+        "both_wrong": 20,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 4,
+        "delta_acc": 0.06,
+        "mcnemar_p": 0.37500000000000044
+      },
+      "mmlu_nutrition": {
+        "n": 50,
+        "both_right": 42,
+        "both_wrong": 7,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_philosophy": {
+        "n": 50,
+        "both_right": 42,
+        "both_wrong": 6,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_prehistory": {
+        "n": 50,
+        "both_right": 42,
+        "both_wrong": 6,
+        "bf16_only_right": 0,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_professional_accounting": {
+        "n": 50,
+        "both_right": 21,
+        "both_wrong": 23,
+        "bf16_only_right": 5,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.08,
+        "mcnemar_p": 0.21875000000000017
+      },
+      "mmlu_professional_law": {
+        "n": 50,
+        "both_right": 25,
+        "both_wrong": 22,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_professional_medicine": {
+        "n": 50,
+        "both_right": 38,
+        "both_wrong": 11,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_professional_psychology": {
+        "n": 50,
+        "both_right": 39,
+        "both_wrong": 9,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_public_relations": {
+        "n": 50,
+        "both_right": 31,
+        "both_wrong": 15,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.6249999999999994
+      },
+      "mmlu_security_studies": {
+        "n": 50,
+        "both_right": 32,
+        "both_wrong": 15,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 1,
+        "delta_acc": -0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_sociology": {
+        "n": 50,
+        "both_right": 39,
+        "both_wrong": 8,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.02,
+        "mcnemar_p": 1.0
+      },
+      "mmlu_us_foreign_policy": {
+        "n": 50,
+        "both_right": 44,
+        "both_wrong": 4,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.04,
+        "mcnemar_p": 0.5
+      },
+      "mmlu_virology": {
+        "n": 50,
+        "both_right": 25,
+        "both_wrong": 22,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 0,
+        "delta_acc": -0.06,
+        "mcnemar_p": 0.25000000000000006
+      },
+      "mmlu_world_religions": {
+        "n": 50,
+        "both_right": 41,
+        "both_wrong": 7,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "thai_exam_a_level": {
+        "n": 127,
+        "both_right": 22,
+        "both_wrong": 96,
+        "bf16_only_right": 3,
+        "nvfp4_only_right": 6,
+        "delta_acc": 0.023622047244094488,
+        "mcnemar_p": 0.5078124999999986
+      },
+      "thai_exam_ic": {
+        "n": 95,
+        "both_right": 14,
+        "both_wrong": 79,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 1,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999998
+      },
+      "thai_exam_onet": {
+        "n": 162,
+        "both_right": 33,
+        "both_wrong": 120,
+        "bf16_only_right": 5,
+        "nvfp4_only_right": 4,
+        "delta_acc": -0.006172839506172839,
+        "mcnemar_p": 0.9999999999999972
+      },
+      "thai_exam_tgat": {
+        "n": 65,
+        "both_right": 10,
+        "both_wrong": 50,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 3,
+        "delta_acc": 0.015384615384615385,
+        "mcnemar_p": 1.0
+      },
+      "thai_exam_tpat1": {
+        "n": 116,
+        "both_right": 29,
+        "both_wrong": 80,
+        "bf16_only_right": 5,
+        "nvfp4_only_right": 2,
+        "delta_acc": -0.02586206896551724,
+        "mcnemar_p": 0.453125
+      },
+      "thai_exam_v2_a_level": {
+        "n": 127,
+        "both_right": 38,
+        "both_wrong": 73,
+        "bf16_only_right": 10,
+        "nvfp4_only_right": 6,
+        "delta_acc": -0.031496062992125984,
+        "mcnemar_p": 0.4544982910156246
+      },
+      "thai_exam_v2_ic": {
+        "n": 95,
+        "both_right": 54,
+        "both_wrong": 31,
+        "bf16_only_right": 6,
+        "nvfp4_only_right": 4,
+        "delta_acc": -0.021052631578947368,
+        "mcnemar_p": 0.7539062499999987
+      },
+      "thai_exam_v2_onet": {
+        "n": 162,
+        "both_right": 68,
+        "both_wrong": 81,
+        "bf16_only_right": 2,
+        "nvfp4_only_right": 11,
+        "delta_acc": 0.05555555555555555,
+        "mcnemar_p": 0.02246093749999998
+      },
+      "thai_exam_v2_tgat": {
+        "n": 65,
+        "both_right": 43,
+        "both_wrong": 19,
+        "bf16_only_right": 1,
+        "nvfp4_only_right": 2,
+        "delta_acc": 0.015384615384615385,
+        "mcnemar_p": 1.0
+      },
+      "thai_exam_v2_tpat1": {
+        "n": 116,
+        "both_right": 40,
+        "both_wrong": 57,
+        "bf16_only_right": 9,
+        "nvfp4_only_right": 10,
+        "delta_acc": 0.008620689655172414,
+        "mcnemar_p": 1.0
+      },
+      "winogrande": {
+        "n": 1267,
+        "both_right": 802,
+        "both_wrong": 282,
+        "bf16_only_right": 95,
+        "nvfp4_only_right": 88,
+        "delta_acc": -0.0055248618784530384,
+        "mcnemar_p": 0.6574989153776681
+      },
+      "xcopa_th": {
+        "n": 500,
+        "both_right": 281,
+        "both_wrong": 191,
+        "bf16_only_right": 16,
+        "nvfp4_only_right": 12,
+        "delta_acc": -0.008,
+        "mcnemar_p": 0.5715881884098006
+      },
+      "xnli_th": {
+        "n": 2490,
+        "both_right": 927,
+        "both_wrong": 1167,
+        "bf16_only_right": 195,
+        "nvfp4_only_right": 201,
+        "delta_acc": 0.0024096385542168677,
+        "mcnemar_p": 0.8016519657203225
+      }
+    },
+    "groups": {
+      "english_mc(all)": {
+        "n": 12481,
+        "bf16_only_right": 319,
+        "nvfp4_only_right": 252,
+        "delta_acc": -0.005368159602595946,
+        "mcnemar_p": 0.005697541483980498
+      },
+      "thai_mc(all)": {
+        "n": 3890,
+        "bf16_only_right": 244,
+        "nvfp4_only_right": 233,
+        "delta_acc": -0.002827763496143959,
+        "mcnemar_p": 0.647092485313818
+      },
+      "mmlu(all)": {
+        "n": 2850,
+        "bf16_only_right": 96,
+        "nvfp4_only_right": 63,
+        "delta_acc": -0.011578947368421053,
+        "mcnemar_p": 0.010924560691744883
+      },
+      "thai_exam_v1(all)": {
+        "n": 565,
+        "bf16_only_right": 16,
+        "nvfp4_only_right": 16,
+        "delta_acc": 0.0,
+        "mcnemar_p": 0.9999999999999922
+      },
+      "thai_exam_v2(all)": {
+        "n": 565,
+        "bf16_only_right": 28,
+        "nvfp4_only_right": 33,
+        "delta_acc": 0.008849557522123894,
+        "mcnemar_p": 0.6089207154048273
+      },
+      "ALL_MC": {
+        "n": 19786,
+        "bf16_only_right": 687,
+        "nvfp4_only_right": 581,
+        "delta_acc": -0.005357323359951481,
+        "mcnemar_p": 0.0031758004233292166,
+        "note": "excludes thai_exam v1 (broken template, double-counts v2 questions)"
+      }
+    },
+    "matched_limits": {
+      "bf16": {
+        "mmlu_first10_acc": 0.7736842105263158,
+        "mmlu_first10_n": 570,
+        "thai_wiki_bpb_first200": 0.3949079134332711
+      },
+      "nvfp4": {
+        "mmlu_first10_acc": 0.7491228070175439,
+        "mmlu_first10_n": 570,
+        "thai_wiki_bpb_first200": 0.40551637130185825
+      }
+    }
+  },
+  "fidelity": {
+    "teacher_forced": {
+      "th": {
+        "positions": 32424,
+        "top1_agreement": 0.9032506785097458,
+        "mean_abs_logprob_drift": 0.17769607627571052
+      },
+      "en": {
+        "positions": 13848,
+        "top1_agreement": 0.8748555748122473,
+        "mean_abs_logprob_drift": 0.2273835267835758
+      }
+    },
+    "generations": {
+      "th_factual_qa": {
+        "divergence_token": 17,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_news": {
+        "divergence_token": 6,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_legal": {
+        "divergence_token": 17,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_medical": {
+        "divergence_token": 5,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_education": {
+        "divergence_token": 3,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_business": {
+        "divergence_token": 0,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_travel": {
+        "divergence_token": 4,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_math": {
+        "divergence_token": 6,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "en_econ": {
+        "divergence_token": 22,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "en_science": {
+        "divergence_token": 0,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "code_python": {
+        "divergence_token": 3,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      },
+      "th_en_translate": {
+        "divergence_token": 4,
+        "bf16_tokens": 200,
+        "nvfp4_tokens": 200,
+        "identical": false
+      }
+    }
+  },
+  "perf": {
+    "bf16": {},
+    "nvfp4": {}
+  },
+  "footprint": {
+    "bf16": {
+      "disk_gb": 15.24,
+      "load_s": 150.0,
+      "weights_gib": null
+    },
+    "nvfp4": {
+      "disk_gb": 5.5,
+      "load_s": 90.0,
+      "weights_gib": null
+    }
+  },
+  "references": {
+    "typhoon25": {
+      "belebele_tha_Thai": null,
+      "xnli_th": null,
+      "xcopa_th": null,
+      "thai_exam_v2": null,
+      "mmlu_at10": null,
+      "thai_bpb_at200": null
+    },
+    "sealion45": {
+      "belebele_tha_Thai": null,
+      "xnli_th": null,
+      "xcopa_th": null,
+      "thai_exam_v2": null,
+      "mmlu_at10": null,
+      "thai_bpb_at200": null
+    },
+    "qwen36-35b-nvfp4": {
+      "belebele_tha_Thai": null,
+      "xnli_th": null,
+      "xcopa_th": null,
+      "thai_exam_v2": null,
+      "mmlu_at10": null,
+      "thai_bpb_at200": null
+    },
+    "unsloth27b-nvfp4": {
+      "belebele_tha_Thai": null,
+      "xnli_th": null,
+      "xcopa_th": null,
+      "thai_exam_v2": null,
+      "mmlu_at10": null,
+      "thai_bpb_at200": null
+    },
+    "qwen3-8b-nvfp4": {
+      "belebele_tha_Thai": null,
+      "xnli_th": null,
+      "xcopa_th": null,
+      "thai_exam_v2": null,
+      "mmlu_at10": null,
+      "thai_bpb_at200": null
+    }
+  }
+}

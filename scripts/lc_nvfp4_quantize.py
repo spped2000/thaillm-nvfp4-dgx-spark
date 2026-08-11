@@ -46,9 +46,12 @@ model = AutoModelForCausalLM.from_pretrained(
 tiers = sorted({str(v) for v in getattr(model, "hf_device_map", {}).values()}) or ["single-device"]
 print("hf_device_map tiers:", tiers)
 
+# SCHEME env: NVFP4 (W4A4, needs calibration for input scales) or NVFP4A16
+# (weight-only, data-free - the 7B paired gate rejected W4A4 on this class).
+SCHEME = os.environ.get("SCHEME", "NVFP4")
 recipe = QuantizationModifier(
     targets="Linear",
-    scheme="NVFP4",
+    scheme=SCHEME,
     ignore=["lm_head", "re:.*embed.*"],
 )
 oneshot(
