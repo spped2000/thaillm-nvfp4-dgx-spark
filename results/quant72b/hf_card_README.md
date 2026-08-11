@@ -106,7 +106,7 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 | OpenThaiEval | 78.7 | **76.7** (n=1,232) |
 | Language accuracy / Thai purity* | 98.2 | **99.2*** (n=500) |
 | AIME24-TH | 6.67 (2/30) | greedy 13.33 (4/30); **avg@8** (T=0.6) **8.33**, 95% CI [1.5, 15.2] — card value inside the CI |
-| MATH500-TH | 43.2 (216/500) | **49.20** (246/500, same 500 items — gap NOT significant, p=0.066) |
+| MATH500-TH | 43.2 (216/500) | 49.20 — **comparison WITHDRAWN as quantization evidence (2026-08-11)**: measuring the 7B sibling's BF16 on both harnesses exposed a +28 pt harness gap on MATH500-TH (their runner 24.2 vs our audited grader 52.6, same model) — on this axis the harness difference dominates everything, so no quantization conclusion can be drawn |
 | LiveCodeBench-TH | 32.43 (=36/111, all-or-nothing) | **35.14** (39/111, ALL 2,448 tests incl. hidden, all-or-nothing — statistically indistinguishable from the card) |
 | IFEval-TH (inst strict) | not published | **75.7** (n=215) |
 | Belebele-TH (lm-eval) | not published | **87.9** |
@@ -116,6 +116,13 @@ treat small gaps as harness+precision combined, not as quantization loss alone.
 \* different tests with the same intent: the developer's "Language Accuracy"
 vs our WangchanThaiInstruct code-switching purity — close in spirit, not the
 same dataset, so compare loosely.
+
+**Anchor calibration (added 2026-08-11):** we measured the 7B sibling's BF16
+on both harnesses to size these cross-harness gaps directly
+([details](https://huggingface.co/AGIcafet/openthaigpt1.5-7b-instruct-W4A16)):
+OpenThaiEval gap **+0.5 pt (tiny — the anchor above is sound)**, LCB ~−4.5 pt
+(moderate — read as "not worse than card", never "better"), MATH **+28 pt
+(the MATH row above is withdrawn as quantization evidence)**.
 
 \* **LCB-TH scoring audit trail (2026-08-05):** both sides use the identical
 111-problem `iapp/code_generation_lite-th` set (the card's 32.43 is exactly
