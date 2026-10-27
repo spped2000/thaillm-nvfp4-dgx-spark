@@ -37,7 +37,8 @@ pre-declared serve risk did not materialize). Footprint 5.5 GB.
 - Combined with July's 30B result (W4A4 ~free) and the 72B anchors (~-2):
   4-bit weights are safe at 30B+, marginal at 72B-class tasks, and
   math-destructive at 7B. Parameter count buys redundancy that absorbs
-  weight-precision loss.
+  weight-precision loss. [Withdrawn 2026-10-28: not supported by this data;
+  see CORRECTIONS.md item 1.]
 
 ## What a release WOULD require
 
@@ -55,7 +56,13 @@ run_perf.sh's container-side --result-dir still pointed at the July
 results/{bf16,nvfp4}/perf paths (the host-side OUT was redirected but the
 in-container path was missed), so the 7B perf JSONs transiently overwrote the
 July 30B perf JSONs. Detected via git status before any commit; July files
-restored byte-perfect from git; 7B JSONs preserved under the gate roots
-(arm-1 bf16 + W4A4; arm-2 W4A16 JSONs were never saved - its full printed
-metric tables live in results/otg7b_gate_w4a16/nvfp4/perf/*.log). Script
-fixed to /work/$RELOUT/$TAG/perf. No published number was affected.
+restored byte-perfect from git; 7B JSONs copied under the gate roots.
+[Corrected 2026-10-28, see CORRECTIONS.md item 3. This note originally said
+the gate roots held "arm-1 bf16 + W4A4" JSONs and that "arm-2 W4A16 JSONs
+were never saved". The bf16 JSONs are arm 1, but the JSONs in
+results/otg7b_gate/nvfp4/perf/ are arm-2 NVFP4A16 runs, not W4A4: the arm-1
+W4A4 JSONs were not kept (most likely overwritten in the July path by arm 2
+before the copy). W4A4 survives as the printed metric tables in
+`results/otg7b_gate/nvfp4/perf/*.log`; arm 2's printed tables are in
+`results/otg7b_gate_w4a16/nvfp4/perf/*.log`.] Script fixed to
+/work/$RELOUT/$TAG/perf. No published number was affected.

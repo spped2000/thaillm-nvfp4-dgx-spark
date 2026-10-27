@@ -11,6 +11,8 @@ A complete, reproducible quantization study: [ThaiLLM/ThaiLLM-30B](https://huggi
 **📊 Interactive report:** [thaillm.agicafet.com](https://thaillm.agicafet.com) ·
 **📄 Deep report:** [`results/report.md`](results/report.md)
 
+**Corrections (2026-10-28):** see [`CORRECTIONS.md`](CORRECTIONS.md). It covers which tool made which model, the 7B "W4A16" scheme name (it is NVFP4A16), mislabelled 7B perf files, the pre-registration claims, and 19 ungraded IFEval-TH prompts.
+
 ## Headline results
 
 | | BF16 | NVFP4 | Δ |

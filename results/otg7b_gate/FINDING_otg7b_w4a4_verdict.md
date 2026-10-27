@@ -3,8 +3,10 @@
 Date: 2026-08-11 · Pre-registration: PREREGISTERED.md (written 2026-08-10 before
 any measurement) · All numbers below are true paired BF16-vs-NVFP4 on one DGX
 Spark GB10, identical serving flags (vllm/vllm-openai:v0.25.1, seed 0), same
-llm-compressor 0.12.0.1 NVFP4 W4A4 recipe + half-Thai 512x512 calibration that
-shipped ThaiLLM-30B-NVFP4 and the 72B.
+llm-compressor 0.12.0.1 NVFP4 W4A4 recipe that shipped the 72B, with the same
+half-Thai 512x512 calibration set as ThaiLLM-30B-NVFP4 (which was quantized
+with TensorRT Model Optimizer 0.43.0, not llm-compressor). [Corrected
+2026-10-28, see CORRECTIONS.md item 1.]
 
 ## Ship criteria vs outcome (pre-registered, unchanged)
 
@@ -38,10 +40,15 @@ as pre-registered. Footprint 15.24 GB -> 5.5 GB.
 
 ## The two findings that matter beyond this model
 
-1. **W4A4 cost scales inversely with model size.** Same recipe, same box:
+1. **W4A4 cost scales inversely with model size.** Same box and calibration
+   set, but not the same tool (30B: TensorRT Model Optimizer 0.43.0; 72B and
+   7B: llm-compressor 0.12.0.1) [corrected 2026-10-28, see CORRECTIONS.md
+   item 1]:
    30B -0.53 n.s. (July, paired) · 72B ~-2 vs card anchor (unpaired) ·
    7B -2.35..-10.2 SIGNIFICANT (paired). Small models cannot absorb 4-bit
    activations. For 7B-class use W4A16 (weight-only) or FP8, or don't quantize.
+   [Withdrawn 2026-10-28: this size conclusion and the 7B-class advice are not
+   supported by this data; see CORRECTIONS.md item 1.]
 2. **Logprob MC metrics dramatically understate generative damage.**
    thai_exam_v2 moved -0.35 n.s. while ifeval-th collapsed -10.2 on the same
    checkpoint pair. Error accumulation over long decodes is invisible to
